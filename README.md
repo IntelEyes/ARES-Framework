@@ -40,14 +40,13 @@ ARES-Framework/
     └── Paper1_ISAIA_2026_Overleaf.zip   Direct upload to Overleaf
 ```
 
-Future releases will add:
+Planned additions (in preparation):
 
-- `Paper2_IEEE_SP_Magazine/` — extended magazine paper.
-- `Paper3_IEEE_TDSC/` — full journal extension (extended technical report
-  referenced in Paper 1: complete proofs, per-class breakdowns,
-  contingency tables, robustness sweeps).
-- `extended_materials/` — supplementary tables, figures, and the
-  **SOCAgentFailure-1K (SAFK)** labelled corpus.
+- `Paper2_IEEE_SP_Magazine/` — magazine paper.
+- `Paper3_IEEE_TDSC/` — journal paper.
+- `safk_corpus/` — the **SOCAgentFailure-1K (SAFK)** labelled corpus
+  and the evaluation testbed used to produce the experimental
+  results reported in the paper.
 
 ## Citation
 
