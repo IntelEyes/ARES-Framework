@@ -1,0 +1,67 @@
+\section{Introduction}
+
+The deployment of autonomous AI agents in security operations centres
+(SOCs) is accelerating rapidly. Frameworks such as LangGraph~\cite{langgraph2024},
+AutoGen~\cite{wu2023autogen}, and CrewAI~\cite{crewai2024} enable LLM-based
+agents to perform threat detection, incident triage, and response
+recommendation with minimal human supervision. Yet a fundamental gap persists
+in our understanding of these systems: \textit{when do they fail, why do they
+fail, and how severely?}
+
+The security community has invested heavily in measuring agent
+capabilities (detection accuracy, response speed, ATT\&CK coverage) but
+much less in the conditions under which agents produce incorrect,
+incomplete, or misleading outputs. This asymmetry carries
+serious consequences: a false negative allows an intrusion to persist, a
+hallucinated threat attribution poisons shared intelligence feeds, and an
+agent paralysed by missing tool access delays incident response beyond
+regulatory thresholds.
+
+We identify the core reliability challenge as the
+\textit{Skill--Knowledge--Capability (SKC) Mismatch}: the gap between what
+a security task demands and what an agent can deliver across several
+dimensions. To the best of our knowledge, no existing formal framework ties this
+capability mismatch to failure risk in a quantifiable, pre-execution way.
+
+\textbf{Gap in existing work.}
+Classical dependability theory~\cite{avizienis2004} provides rigorous fault
+taxonomies for conventional software but predates LLM agents and has no
+concept of epistemic uncertainty or knowledge currency. Hallucination
+research~\cite{huang2023hallucination} analyses LLM reasoning failures but
+ignores operational context. AgentBench~\cite{liu2023agentbench} benchmarks
+agent task performance without modelling capability constraints or failure
+conditions. To the best of our knowledge, no unified formal model
+connects capability mismatch to failure risk.
+
+\textbf{Contribution.}
+We present \ARES{} (Agentic Reliability Evaluation for Security systems),
+a compact formal framework for estimating reliability risk in agentic AI
+before and during cybersecurity task execution. The conference contribution
+is narrow:
+\begin{enumerate}[noitemsep, leftmargin=*]
+  \item A \textbf{five-dimensional SKC mismatch model} that quantifies the
+    gap between agent capability and task demand, producing a learnable
+    Agent Reliability Score (ARS) usable as a pre-execution screening
+    signal.
+  \item An \textbf{Epistemic Gap metric} that formalises the hallucination
+    precondition as confident ignorance: the interaction between knowledge
+    deficit and miscalibrated confidence.
+  \item An \textbf{illustrative validation} showing that knowledge
+    mismatch dominantly predicts hallucination, the ARS threshold
+    generalises across threat classes, and the Epistemic Gap provides an
+    interpretable decomposition of false-negative risk into knowledge
+    and calibration components.
+\end{enumerate}
+\ARES{} contributes to intelligent systems research by providing a
+reliability-oriented representation and decision framework for autonomous
+agents operating under incomplete knowledge and capability constraints.
+A cascade reliability bound for tightly-coupled multi-agent pipelines and
+a temporal-drift model for knowledge ageing are reported as supporting
+results.
+
+The remainder of this paper is organised as follows. Section~\ref{sec:related}
+surveys related work. Section~\ref{sec:framework} presents the formal SKC
+reliability framework. Section~\ref{sec:epistemic} introduces the Epistemic
+Gap. Section~\ref{sec:experimental} provides experimental validation.
+Section~\ref{sec:discussion} discusses implications, and
+Section~\ref{sec:conclusion} concludes.

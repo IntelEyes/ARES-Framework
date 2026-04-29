@@ -1,0 +1,119 @@
+\section{Related Work}
+\label{sec:related}
+
+\textbf{AI dependability and fault taxonomies.}
+Avizienis et al.~\cite{avizienis2004} define the foundational taxonomy of
+faults, errors, and failures for computing systems. This framework remains
+the most rigorous treatment of dependability theory, but it was developed
+for conventional deterministic software and has no concept of epistemic
+uncertainty, declarative knowledge coverage, or reasoning chain validity, all of which are
+central to LLM agent reliability. The framework assumes that a correctly
+implemented system has a complete specification against which correctness
+can be verified, an assumption that does not hold for LLM agents operating
+with incomplete and potentially stale knowledge bases.
+
+Humbatova et al.~\cite{humbatova2020} taxonomise real-world bugs in deep
+learning systems across model, data, and training faults, but neither the
+security domain nor the agentic tool-use paradigm is addressed. Their
+taxonomy captures \textit{implementation} faults; \ARES{} captures
+\textit{operational} mismatches where the agent is correctly implemented
+but insufficiently equipped for the task.
+
+\textbf{LLM hallucination and confidence calibration.}
+Huang et al.~\cite{huang2023hallucination} provide a comprehensive survey
+of hallucination in LLMs, distinguishing intrinsic and extrinsic
+hallucination and cataloguing mitigation strategies. However, this work
+treats hallucination as a property of the model in isolation: it does not
+model the \textit{operational context} (tool availability, task complexity,
+knowledge freshness) that characterises SOC agent deployments. None of
+the existing hallucination literature examines the multi-agent
+setting where a hallucination in one agent propagates to downstream
+reasoning stages.
+
+Guo et al.~\cite{guo2017calibration} demonstrate that modern neural
+networks are systematically overconfident, particularly on out-of-distribution
+inputs. This finding is directly relevant to our Epistemic Gap formulation
+(Section~\ref{sec:epistemic}), which measures the interaction between
+knowledge deficit and confidence miscalibration. Existing calibration work
+measures miscalibration globally; the Epistemic Gap targets the specific
+case where miscalibration occurs at the point of greatest knowledge weakness.
+
+\textbf{Agent benchmarking and security AI.}
+AgentBench~\cite{liu2023agentbench} is the closest existing work to our
+evaluation approach, providing a multi-environment benchmark for LLM agents
+across web navigation, code execution, and game playing tasks. However,
+AgentBench includes no security environment, does not model capability
+constraints, and does not support systematic mismatch injection.
+PentestGPT~\cite{deng2023pentest} evaluates LLM penetration testing
+capabilities, and multi-agent cyber defence frameworks~\cite{xu2024}
+demonstrate autonomous defence coordination, but neither models the
+conditions under which agents produce misleading outputs.
+
+The broader AI in cybersecurity literature~\cite{apruzzese2023} catalogues
+AI applications across the security lifecycle but explicitly identifies
+agent reliability as an open problem. All such work characterises
+\textit{what agents can do}, not \textit{how and why they fail}.
+
+\textbf{Contemporary agent-failure taxonomies and benchmarks.}
+Two 2024--2025 efforts overlap with \ARES{}'s scope and require
+explicit positioning. MAST~\cite{cemri2025mast} derives 14
+failure modes from $1{,}600{+}$ annotated traces across seven
+multi-agent frameworks and clusters them into system-design,
+inter-agent-misalignment, and task-verification categories.
+MAST is domain-agnostic and descriptive; \ARES{} is security-specific
+and predictive, providing a \textit{pre-execution} reliability
+score (ARS) and a formal cascade bound that MAST documents
+empirically as ``cascade amplification'' without formalisation.
+AgentDojo~\cite{debenedetti2024agentdojo} provides a dynamic
+environment with 629 prompt-injection test cases for adversarial
+evaluation. \ARES{} covers the orthogonal \textit{non-adversarial}
+failure surface: agents failing because capability does not match
+task demand, independent of any active attacker. The 2025
+hallucination benchmark suite HalluLens~\cite{bang2025hallulens}
+measures LLM factual fabrication on generic QA with retrieval
+probes, and a concurrent broad survey of LLM-agent
+hallucination~\cite{llmagent_halluc_survey2025} catalogues
+taxonomy and mitigation approaches across $70{+}$ studies. Both
+establish that hallucination is a cross-domain agent failure
+mode; \ARES{} contributes the piece that is missing from
+this literature: connecting hallucination rate to the specific
+capability dimensions of a security task, and modelling cascade
+amplification analytically rather than descriptively. At the
+application-governance layer, the OWASP Top~10 for Agentic
+Applications~\cite{owasp2026agentic} names capability
+over-provisioning, tool misuse, and confident hallucination as
+top-tier risks; these correspond precisely to $\delta_C$
+over-provision, $\delta_C$ and $\delta_R$ interaction, and
+Epistemic-Gap failures in our framework.
+
+\textbf{Gap summary.}
+Table~\ref{tab:related_isaia} summarises the coverage landscape. To the
+best of our knowledge, three gaps are simultaneously unaddressed:
+(i)~no formal model covers the full SKC failure surface including
+temporal drift and epistemic gap; (ii)~no framework connects capability
+mismatch to failure probability quantitatively; and (iii)~no model
+predicts hallucination from the interaction of knowledge deficit and
+confidence miscalibration. \ARES{} addresses all three.
+
+\begin{table}[t]
+\caption{Related Work Coverage Comparison}
+\label{tab:related_isaia}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Work} & \textbf{Formal} & \textbf{Security} & \textbf{Failure} & \textbf{Epistemic} & \textbf{Cascade} \\
+& \textbf{Model} & \textbf{Domain} & \textbf{Taxonomy} & \textbf{Gap} & \textbf{Model} \\
+\midrule
+Avizienis~\cite{avizienis2004}   & \checkmark & -- & \checkmark & -- & -- \\
+Huang~\cite{huang2023hallucination} & -- & -- & Partial & -- & -- \\
+Humbatova~\cite{humbatova2020}   & -- & -- & \checkmark & -- & -- \\
+AgentBench~\cite{liu2023agentbench} & -- & -- & -- & -- & -- \\
+PentestGPT~\cite{deng2023pentest} & -- & \checkmark & -- & -- & -- \\
+MAST~\cite{cemri2025mast}            & -- & -- & \checkmark & -- & Partial \\
+AgentDojo~\cite{debenedetti2024agentdojo} & -- & -- & -- & -- & -- \\
+\textbf{\ARES{}} & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark \\
+\bottomrule
+\end{tabular}
+\end{table}

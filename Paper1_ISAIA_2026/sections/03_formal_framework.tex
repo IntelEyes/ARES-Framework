@@ -1,0 +1,224 @@
+\section{ARES Reliability Framework}
+\label{sec:framework}
+
+We use \textit{agentic AI system} for the deployment-level entity (an
+LLM-driven agent or pipeline operating in a SOC) and \textit{AI security
+agent} for its formal model: the five-tuple object of
+Definition~\ref{def:agent} that the framework reasons about.
+
+\subsection{Agent and Task Profiles}
+
+\begin{definition}[AI Security Agent]
+\label{def:agent}
+  An AI security agent $\A$ is a five-tuple:
+  $\A = \langle \Sk, \K, \CC, \R, \Tage \rangle$
+  where $\Sk$ is a finite set of skills (executable procedures),
+  $\K$ is a knowledge base of threat-relevant facts,
+  $\CC$ is a set of capabilities (tool and API access),
+  $\R$ denotes the reasoning engine, and
+  $\Tage \in \mathbb{R}_{\geq 0}$ is the agent's knowledge age in days.
+\end{definition}
+
+\begin{definition}[Task Requirement Profile]
+  A security task $\T$ is a four-tuple:
+  $\T = \langle \Sk^*, \K^*, \CC^*, y^* \rangle$
+  where $\Sk^*$, $\K^*$, $\CC^*$ are the minimum required subsets and
+  $y^* \in \mathcal{Y}$ is the ground-truth correct output.
+\end{definition}
+
+\subsection{Mismatch Indicators}
+
+For each capability dimension, we define a normalised mismatch indicator
+$\delta \in [0,1]$ where 0 denotes full coverage and 1 denotes total
+mismatch:
+
+\begin{definition}[Skill Mismatch]
+  $\delta_S(\A, \T) = |\Sk^* \setminus \Sk| \;/\; |\Sk^*|$
+\end{definition}
+
+\begin{definition}[Knowledge Mismatch]
+  $\delta_K(\A, \T) = |\K^* \setminus \K| \;/\; |\K^*|$,
+  measured as subgraph cardinality over the MITRE ATT\&CK TTP nodes
+  required by the task's kill-chain.
+\end{definition}
+
+\begin{definition}[Capability Mismatch]
+  $\delta_C(\A, \T) = |\CC^* \setminus \CC| \;/\; |\CC^*|$
+\end{definition}
+
+\begin{definition}[Reasoning Mismatch]
+  $\delta_R(\A, \T) = 1 - \mathrm{Sim}(\hat{y}, y^*)$,
+  where $\hat{y}$ is the agent's output and $\mathrm{Sim}(\cdot,\cdot)$ is
+  a domain-appropriate similarity function (exact match for classification;
+  semantic similarity for open-ended reports).
+\end{definition}
+
+\begin{definition}[Temporal Drift]
+  $\delta_T(\A, \tau) = 1 - e^{-\lambda_\tau \cdot \Tage(\A)}$,
+  where $\lambda_\tau > 0$ is the threat landscape volatility parameter for
+  task class $\tau$, capturing the rate at which knowledge becomes outdated.
+\end{definition}
+
+The first three dimensions ($\delta_S$, $\delta_K$, $\delta_C$) and temporal
+drift ($\delta_T$) are computable \textit{prior to task execution}. Only
+$\delta_R$ requires post-hoc measurement. We therefore use ARS in two
+modes: a pre-execution screening score $\ARS^{\mathrm{pre}}$ that drops
+$\delta_R$ and re-normalises the remaining four weights to sum to one,
+and a post-execution diagnostic score $\ARS$ that includes $\delta_R$
+once the agent's output has been observed. Section~\ref{sec:experimental}
+reports both.
+
+\subsection{SKC Mismatch Vector and Agent Reliability Score}
+
+\begin{definition}[SKC Mismatch Vector]
+  $\bdelta(\A, \T) = [\delta_S,\ \delta_K,\ \delta_C,\ \delta_R,\ \delta_T]^\top \in [0,1]^5$
+\end{definition}
+
+\begin{definition}[Agent Reliability Score]
+\label{def:ars}
+  The Agent Reliability Score for agent $\A$ on task $\T$ of class $\tau$ is:
+  \begin{equation}
+    \ARS(\A, \T) = 1 - \bw_\tau^\top \bdelta(\A, \T)
+    \label{eq:ars}
+  \end{equation}
+  where $\bw_\tau = [w_S, w_K, w_C, w_R, w_T]^\top$ is a task-class-specific
+  weight vector with $\norm{\bw_\tau}_1 = 1$ and $w_i \geq 0$. A separate
+  ridge regression is fit per task class on the training split, regressing
+  the labelled per-record reliability outcome (binary anomaly flag) on the
+  observed five-dimensional mismatch vector; the estimated coefficients are
+  projected onto the simplex (clip negatives, $\ell_1$-normalise) to obtain
+  $\bw_\tau$. ARS is clamped to $[0,1]$.
+\end{definition}
+
+Intuitively, ARS decreases when a task requires skills, knowledge, tools,
+reasoning quality, or freshness that the agent lacks.
+
+The task-class dependency of $\bw_\tau$ is a critical design choice.
+Empirical results (Section~\ref{sec:experimental}) show that for APT
+investigation, $w_K$ and $w_R$ dominate; for DDoS detection, $w_S$ and
+$w_C$ lead. A universal weight vector would systematically misestimate
+reliability across threat classes.
+
+Table~\ref{tab:weights_isaia} reports the learned weight vectors, confirming
+that $w_K$ is the highest mean-weight dimension ($\bar{w}_K = 0.30$),
+reflecting the knowledge-intensive nature of threat analysis. The
+task-class variability justifies the class-specific design.
+
+\begin{table}[t]
+\caption{Learned Weight Vectors $\bw_\tau$ per Task Class}
+\label{tab:weights_isaia}
+\centering
+\footnotesize
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Task Class} & $w_S$ & $w_K$ & $w_C$ & $w_R$ & $w_T$ \\
+\midrule
+T1 Ransomware       & 0.18 & 0.35 & 0.22 & 0.17 & 0.08 \\
+T2 Phishing         & 0.21 & 0.31 & 0.19 & 0.21 & 0.08 \\
+T3 Insider Threat   & 0.15 & 0.27 & 0.36 & 0.15 & 0.07 \\
+T4 DDoS             & 0.32 & 0.21 & 0.28 & 0.12 & 0.07 \\
+T5 APT Intrusion    & 0.14 & 0.38 & 0.18 & 0.24 & 0.06 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Cascade Reliability for Multi-Agent Systems}
+
+When agents are composed into a pipeline, failures propagate. We model
+agent dependencies as a directed acyclic graph $G = (V, E, \mu)$ and
+define cascade reliability as:
+\begin{equation}
+  \ARS_{\mathrm{cas}}(G, \T) = \prod_{(i,j) \in E}
+    \!\left(1 - \mu_{ij} \cdot (1 - \ARS(\A_i, \T_i))\right)
+  \label{eq:cascade}
+\end{equation}
+where $\mu_{ij} \in [0,1]$ is the coupling strength between agents.
+
+\begin{theorem}[Cascade Reliability Bound]
+\label{thm:cascade}
+  Let $i^* \in V$ minimise $\ARS(\A_i, \T_i)$, write
+  $r^* = \ARS(\A_{i^*}, \T_{i^*})$, and let
+  $\mu^*_{\max} = \max\{\mu_{i^*j} : (i^*, j) \in E\}$ be the largest
+  coupling on any outgoing edge of the weakest agent. If $i^*$ has at
+  least one outgoing edge, then
+  \begin{equation}
+    \ARS_{\mathrm{cas}}(G, \T) \;\leq\; 1 - \mu^*_{\max}\,(1 - r^*).
+    \label{eq:cascade_bound}
+  \end{equation}
+  In the fully-coupled case ($\mu^*_{\max} = 1$), this reduces to
+  $\ARS_{\mathrm{cas}} \leq r^*$, so cascade reliability is bounded above
+  by the weakest agent whenever that agent's output fully determines its
+  successor's input.
+\end{theorem}
+
+\begin{proof}[Sketch]
+The factor in \eqref{eq:cascade} associated with the outgoing edge of
+$i^*$ achieving $\mu^*_{\max}$ equals $1 - \mu^*_{\max}(1 - r^*)$ and
+lies in $[0,1]$, as do all other factors. The product of nonnegative
+quantities each at most one is bounded above by any single factor,
+yielding \eqref{eq:cascade_bound}. The case $\mu^*_{\max} = 1$ recovers
+the weakest-link inequality. Full proof appears in the extended
+technical report. \qed
+\end{proof}
+
+Equation~\eqref{eq:cascade_bound} makes the role of coupling explicit:
+partial coupling ($\mu < 1$) dilutes the upstream error and can keep
+cascade reliability above $r^*$; full coupling collapses the bound onto
+the weakest agent. The operational implication survives in either case:
+multi-agent pipeline decomposition cannot improve reliability beyond the
+weakest component when stages are tightly coupled.
+
+\subsection{Anomaly Detection}
+
+An agent execution is flagged as anomalous if:
+\begin{equation}
+  \Phi(\A, \T) = \mathbf{1}\!\left[\ARS(\A, \T) < \theta \;\lor\;
+    \E(\A, \T) > \epsilon\right]
+  \label{eq:anomaly}
+\end{equation}
+where $\theta$ and $\epsilon$ are learned thresholds. The dual-condition
+structure captures both resource-deficit failures (low ARS) and
+confident-ignorance failures (high Epistemic Gap).
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  node distance=0.35cm and 0.4cm, font=\footnotesize,
+  prof/.style={rectangle, draw=black!70, rounded corners=2pt,
+               fill=blue!8, minimum width=2.6cm, minimum height=0.7cm, align=center},
+  mm/.style={rectangle, draw=black!70, rounded corners=2pt,
+             fill=orange!12, minimum width=3.6cm, minimum height=0.7cm, align=center},
+  outbox/.style={rectangle, draw=black!70, rounded corners=2pt,
+              fill=green!10, minimum width=3.6cm, minimum height=0.7cm, align=center},
+  arr/.style={-{Latex[length=1.8mm]}, thick, gray!70},
+]
+  %% Top row: Agent and Task side by side
+  \node[prof] (agent) {Agent $\A = \langle \Sk,\K,\CC,\R,\Tage\rangle$};
+  \node[prof, right=of agent] (task) {Task $\T = \langle \Sk^*,\K^*,\CC^*,y^*\rangle$};
+  %% Middle: mismatch vector centred under both
+  \node[mm, below=0.4cm of $(agent.south)!0.5!(task.south)$] (delta)
+       {$\boldsymbol{\delta}=[\delta_S,\delta_K,\delta_C,\delta_R,\delta_T]^\top$};
+  %% Two parallel indicators
+  \node[mm, below left=0.4cm and 0.05cm of delta.south] (ars)
+       {$\ARS = 1 - \bw_\tau^\top\boldsymbol{\delta}$};
+  \node[mm, below right=0.4cm and 0.05cm of delta.south] (eg)
+       {$\E = \delta_K \cdot (1 - U)$};
+  %% Final anomaly box centred at bottom
+  \node[outbox, below=0.4cm of $(ars.south)!0.5!(eg.south)$] (phi)
+       {$\Phi$ (anomaly): $\ARS<\theta \lor \E>\epsilon$};
+
+  \draw[arr] (agent.south) -- (delta.north);
+  \draw[arr] (task.south)  -- (delta.north);
+  \draw[arr] (delta.south) -- (ars.north);
+  \draw[arr] (delta.south) -- (eg.north);
+  \draw[arr] (ars.south)   -- (phi.north);
+  \draw[arr] (eg.south)    -- (phi.north);
+\end{tikzpicture}
+\caption{SKC reliability pipeline. Agent profile $\A$ and task profile
+$\T$ produce a five-dimensional mismatch vector $\boldsymbol{\delta}$,
+which feeds two parallel indicators: the Agent Reliability Score
+($\ARS$) and the Epistemic Gap ($\E = \delta_K(1-U)$). The
+anomaly-detection function $\Phi$ fires when either indicator crosses
+its learned threshold.}
+\label{fig:skc_pipeline}
+\end{figure}

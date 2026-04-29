@@ -1,0 +1,52 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Implications for AI System Evaluation}
+
+The \ARES{} framework provides a principled basis for evaluating AI agent
+reliability \textit{before deployment}. Because four of the five mismatch
+dimensions ($\delta_S$, $\delta_K$, $\delta_C$, $\delta_T$) are computable
+from the agent's declared profile and the task's requirements alone, ARS
+can serve as a pre-execution deployment gate: agents scoring below $\theta^*$
+are automatically escalated to human analysts rather than executing
+autonomously. This approach is consistent with the NIST AI Risk Management
+Framework~\cite{nist_ai_rmf}, which recommends continuous monitoring of AI
+system performance against operational requirements.
+
+The task-class-specific weight vectors (Table~\ref{tab:weights_isaia})
+provide additional operational value: they reveal which capability
+dimensions matter most for each threat type. A SOC deploying an agent for
+ransomware detection should prioritise knowledge coverage ($w_K = 0.35$),
+while an agent assigned to DDoS mitigation should be evaluated primarily
+on skill and capability access ($w_S + w_C = 0.60$). This dimension-specific
+guidance enables targeted agent improvement rather than generic capability
+enhancement.
+
+\subsection{Trustworthy Deployment of AI Agents}
+
+The Epistemic Gap metric supports runtime monitoring of hallucination
+risk: by comparing an agent's stated confidence against its known
+knowledge coverage, organisations can flag high-risk outputs for human
+review before they trigger automated actions. The temporal drift model
+($\delta_T$) provides a quantitative basis for scheduling knowledge
+updates -- e.g., for high-volatility domains like ransomware
+($\lambda = 0.005$), ARS degrades below $\theta^*$ in approximately
+$120$ days, suggesting a quarterly refresh cycle. The cascade
+reliability bound (Theorem~\ref{thm:cascade}) implies that decomposing
+a task into a tightly-coupled pipeline cannot improve reliability beyond
+the weakest agent, so single-agent designs should be preferred for
+critical tasks unless per-agent reliability is independently verified.
+
+\subsection{Limitations}
+
+\textbf{LLM specificity.} Experiments use Mistral-7B-Instruct; absolute
+thresholds will require recalibration for larger models, though directional
+findings should hold since the SKC model is architecture-agnostic.
+\textbf{Linear formulation.} The additive ARS is chosen for
+interpretability and decomposability; nonlinear alternatives may improve
+predictive power at the cost of transparency.
+\textbf{Synthetic data.} The dataset is generated from ATT\&CK and NVD;
+real-world SOC incidents introduce additional noise and ambiguity.
+\textbf{Cascade model.} The formulation assumes acyclic pipelines and
+independent mismatch factors; cyclic architectures and correlated
+dimensions require further modelling.

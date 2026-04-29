@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the conference paper below."
+title: "ARES: A Formal Reliability Framework for Detecting Anomalous Behaviour in Agentic AI Systems"
+type: software
+authors:
+  - family-names: Alam
+    given-names: Mohammad Makchudul
+    email: engrarifcce@gmail.com
+    orcid: "https://orcid.org/0009-0007-1823-2386"
+    affiliation: "BGD e-GOV CIRT, ICT Division; DNS Research Lab, University College Dublin"
+  - family-names: Anik
+    given-names: Md. Redowan Z.
+    email: redowanzanik@gmail.com
+    affiliation: "BGD e-GOV CIRT, ICT Division"
+  - family-names: el Bodour
+    given-names: Sabrein S. E.
+    email: sabreinserag@gmail.com
+    affiliation: "BGD e-GOV CIRT, ICT Division"
+  - family-names: Jurcut
+    given-names: Anca Delia
+    email: anca.jurcut@ucd.ie
+    affiliation: "School of Computer Science, University College Dublin"
+repository-code: "https://github.com/IntelEyes/ARES-Framework"
+license: MIT
+keywords:
+  - agentic AI reliability
+  - SKC mismatch
+  - Agent Reliability Score
+  - Epistemic Gap
+  - LLM hallucination
+  - anomaly detection
+  - SOC
+preferred-citation:
+  type: conference-paper
+  title: "ARES: A Formal Reliability Framework for Detecting Anomalous Behaviour in Agentic AI Systems"
+  authors:
+    - family-names: Alam
+      given-names: Mohammad Makchudul
+    - family-names: Anik
+      given-names: Md. Redowan Z.
+    - family-names: el Bodour
+      given-names: Sabrein S. E.
+    - family-names: Jurcut
+      given-names: Anca Delia
+  conference:
+    name: "IEEE International Symposium on Artificial Intelligence Applications (ISAIA)"
+  year: 2026

@@ -1,0 +1,86 @@
+\section{Epistemic Gap}
+\label{sec:epistemic}
+
+The SKC model captures what an agent \textit{lacks}; the Epistemic Gap
+captures what an agent \textit{thinks it has} versus what it actually has.
+This distinction is critical for predicting hallucination, the most
+dangerous failure mode in SOC environments.
+
+\begin{definition}[Expressed Uncertainty]
+  The expressed uncertainty $U(\A, \T) \in [0,1]$ is the complement of
+  the confidence score the agent associates with its output:
+  $U = 1 - \mathrm{conf}(\hat{y})$.
+\end{definition}
+
+\begin{definition}[Epistemic Gap]
+  \begin{equation}
+    \E(\A, \T) = \delta_K(\A, \T) \cdot (1 - U(\A, \T))
+    \label{eq:epistemic_gap}
+  \end{equation}
+\end{definition}
+
+Equation~\eqref{eq:epistemic_gap} formalises the \textit{confident ignorance}
+failure mode. An agent with large knowledge deficit ($\delta_K \approx 1$)
+that simultaneously reports high confidence ($U \approx 0$) produces
+$\E \approx 1$: the maximal epistemic gap and the precondition for
+hallucination. Conversely, an agent that correctly identifies its knowledge
+limits ($U \approx 1$) produces $\E \approx 0$: it may fail the task but
+will not fabricate an answer.
+
+\begin{hypothesis}[Hallucination Precondition]
+\label{hyp:hallucination}
+  Hallucination probability $P_H$ is driven primarily by confident ignorance:
+  $P_H \propto \E(\A, \T) = \delta_K \cdot (1 - U)$. This is empirically
+  supported in Section~\ref{sec:experimental}.
+\end{hypothesis}
+
+\textbf{Connection to calibration theory.}
+The Epistemic Gap operationalises findings from the confidence calibration
+literature~\cite{guo2017calibration} for the specific case of agentic AI.
+Modern neural networks are known to be systematically overconfident,
+particularly on out-of-distribution inputs. The Epistemic Gap measures
+whether this miscalibration occurs precisely where the agent's knowledge
+is weakest: the most dangerous combination. A well-calibrated agent (one
+whose confidence accurately reflects its accuracy) will produce low
+$\E$ even under knowledge deficit, because it appropriately hedges its
+outputs. This suggests that improving calibration in LLM-based security
+agents may be as important as expanding their knowledge for reducing
+dangerous failures.
+
+\textbf{Why hallucination is particularly dangerous in SOC.}
+An agent that says ``I don't have sufficient context'' is safe: it triggers
+human escalation. An agent that confidently asserts a false threat
+attribution is dangerous: it may trigger automated containment actions,
+propagate fabricated IOCs to shared feeds, and erode analyst trust. The
+Epistemic Gap captures exactly this distinction: it separates safe ignorance
+(high $\delta_K$, high $U$, low $\E$) from dangerous confident ignorance
+(high $\delta_K$, low $U$, high $\E$).
+
+\textbf{Practical interpretation.}
+Table~\ref{tab:eg_examples} illustrates the four quadrants of the Epistemic
+Gap space with concrete SOC scenarios.
+
+\begin{table}[t]
+\caption{Epistemic Gap Quadrants with SOC Examples}
+\label{tab:eg_examples}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{ccp{3.8cm}}
+\toprule
+$\delta_K$ & $U$ & \textbf{Scenario and Risk} \\
+\midrule
+Low  & Low  & Agent knows the threat and is confident. \textit{Safe: correct output likely.} \\
+Low  & High & Agent knows but hedges. \textit{Suboptimal but safe: triggers review.} \\
+High & High & Agent lacks knowledge and admits it. \textit{Safe: triggers escalation.} \\
+High & Low  & Agent lacks knowledge but is confident. \textit{Dangerous: hallucination risk maximal ($\E \approx 1$).} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The bottom-right quadrant (high $\delta_K$, low $U$, maximal $\E$) is
+precisely where hallucination occurs: the agent does not possess the
+knowledge required to answer correctly but proceeds with high confidence
+regardless. The Epistemic Gap metric targets this quadrant specifically,
+enabling monitoring systems to flag the most dangerous outputs before they
+trigger automated actions.

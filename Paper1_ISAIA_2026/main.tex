@@ -1,0 +1,119 @@
+\documentclass[conference]{IEEEtran}
+
+% ── Encoding & Fonts ─────────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% ── Mathematics ──────────────────────────────────────────────────
+\usepackage{amsmath,amssymb,amsthm}
+
+% ── Graphics & Figures ───────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows.meta,positioning,calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% ── Tables ───────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{array}
+
+% ── Hyperlinks & References ───────────────────────────────────────
+\usepackage[hidelinks]{hyperref}
+\usepackage{cite}
+\usepackage{url}
+\hypersetup{
+  pdftitle={ARES: A Formal Reliability Framework for Detecting Anomalous Behaviour in Agentic AI Systems},
+  pdfauthor={Mohammad Makchudul Alam; Md. Redowan Z. Anik; Sabrein S. E. el Bodour; Anca Delia Jurcut},
+  pdfsubject={Agentic AI reliability, hallucination, SOC, IEEE ISAIA 2026},
+  pdfkeywords={ARES; agentic AI reliability; SKC mismatch; Agent Reliability Score; Epistemic Gap; anomaly detection; LLM hallucination}
+}
+
+% ── Misc ─────────────────────────────────────────────────────────
+\usepackage{xcolor}
+\usepackage{balance}
+\usepackage{microtype}
+\usepackage{enumitem}
+
+% ── Theorem environments ─────────────────────────────────────────
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{hypothesis}{Hypothesis}
+
+% ── Custom notation ───────────────────────────────────────────────
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Sk}{\mathcal{S}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\ARS}{\mathrm{ARS}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bdelta}{\boldsymbol{\delta}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\Tage}{\mathcal{T}_{\mathrm{age}}}
+
+% ── Framework name macros ─────────────────────────────────────────
+\newcommand{\ARES}{\textsc{ARES}}
+\newcommand{\ARESBench}{\textsc{ARES-Bench}}
+\newcommand{\SAFK}{\textsc{SOCAgentFailure-1K}}
+
+% ─────────────────────────────────────────────────────────────────
+\begin{document}
+
+\title{ARES: A Formal Reliability Framework\\
+for Detecting Anomalous Behaviour\\
+in Agentic AI Systems}
+
+\author{%
+\IEEEauthorblockN{1\textsuperscript{st} Mohammad Makchudul Alam}
+\IEEEauthorblockA{\textit{BGD e-GOV CIRT, ICT Division}\\
+\textit{DNS Research Lab, UCD}\\
+Dhaka, Bangladesh \\
+engrarifcce@gmail.com \\
+\small ORCID: 0009-0007-1823-2386}
+\and
+\IEEEauthorblockN{2\textsuperscript{nd} Md.~Redowan Z.\ Anik}
+\IEEEauthorblockA{\textit{BGD e-GOV CIRT} \\
+\textit{ICT Division, Bangladesh}\\
+Dhaka, Bangladesh \\
+redowanzanik@gmail.com}
+\and
+\IEEEauthorblockN{3\textsuperscript{rd} Sabrein S.~E.~el Bodour}
+\IEEEauthorblockA{\textit{BGD e-GOV CIRT} \\
+\textit{ICT Division, Bangladesh}\\
+Dhaka, Bangladesh \\
+sabreinserag@gmail.com}
+\and
+\IEEEauthorblockN{4\textsuperscript{th} Anca Delia Jurcut}
+\IEEEauthorblockA{\textit{Sch.\ of Computer Science} \\
+\textit{Univ.\ College Dublin}\\
+Dublin, Ireland \\
+anca.jurcut@ucd.ie}
+}
+
+\maketitle
+
+\begin{abstract}
+\input{sections/00_abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+ARES framework, agentic AI reliability, SKC mismatch, Agent Reliability Score,
+epistemic gap, anomaly detection, LLM hallucination
+\end{IEEEkeywords}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_formal_framework}
+\input{sections/04_epistemic_gap}
+\input{sections/05_experimental}
+\input{sections/06_discussion}
+\input{sections/07_conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
