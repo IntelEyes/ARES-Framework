@@ -1,12 +1,10 @@
 # ARES: A Formal Reliability Framework for Agentic AI Security Systems
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Status: Public Release](https://img.shields.io/badge/status-public%20release-brightgreen.svg)](#)
 
-This repository hosts the public release artifacts for the **ARES**
-(Agentic Reliability Evaluation for Security systems) framework — a formal
-reliability and anomaly-detection model for autonomous AI agents deployed in
-Security Operations Centres (SOCs).
+Project page for the **ARES** (Agentic Reliability Evaluation for Security
+systems) framework — a formal reliability and anomaly-detection model for
+autonomous AI agents deployed in Security Operations Centres (SOCs).
 
 ## What is ARES?
 
@@ -25,14 +23,14 @@ The framework introduces:
 - A **cascade reliability bound** for tightly-coupled multi-agent
   pipelines, and a **temporal-drift model** for knowledge ageing.
 
-## Repository Contents
+## Contents
 
 ```
 ARES-Framework/
 ├── README.md
 ├── LICENSE                      MIT
 ├── CITATION.cff                 Cite this repository
-└── Paper1_ISAIA_2026/           Conference paper (IEEE ISAIA 2026)
+└── Paper1_ISAIA_2026/           IEEE ISAIA 2026 conference paper
     ├── main.pdf                   Camera-ready PDF
     ├── main.tex                   LaTeX source (IEEEtran)
     ├── references.bib
@@ -40,13 +38,12 @@ ARES-Framework/
     └── Paper1_ISAIA_2026_Overleaf.zip   Direct upload to Overleaf
 ```
 
-Planned additions (in preparation):
-
-- `Paper2_IEEE_SP_Magazine/` — magazine paper.
-- `Paper3_IEEE_TDSC/` — journal paper.
-- `safk_corpus/` — the **SOCAgentFailure-1K (SAFK)** labelled corpus
-  and the evaluation testbed used to produce the experimental
-  results reported in the paper.
+The conference paper is self-contained: all definitions, the
+five-dimensional SKC mismatch model, the Agent Reliability Score, the
+Epistemic Gap, the cascade reliability bound, and the experimental
+findings on 1,000 labelled execution traces are reported inside the
+PDF. This page is the project home where future outputs of the ARES
+research line will be published as they become available.
 
 ## Citation
 
