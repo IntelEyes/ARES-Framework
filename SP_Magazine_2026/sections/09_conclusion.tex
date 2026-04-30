@@ -1,0 +1,34 @@
+\section{Conclusion}
+
+As AI agents take on greater operational responsibility in defending critical
+infrastructure, frameworks for understanding their failure behaviour become
+essential, not as an afterthought, but as a prerequisite for responsible
+deployment. \ARES{} provides the first integrated treatment of this problem
+for the cybersecurity domain: a failure taxonomy that classifies how agents
+fail across origin, manifestation, and impact dimensions; a quantitative
+reliability model based on skill--knowledge--capability mismatch; an open
+evaluation testbed supporting controlled experimentation; and a labelled
+failure dataset enabling reproducible benchmarking.
+
+Our empirical results establish three findings with direct implications for
+SOC operations. First, knowledge gaps are the dominant driver of
+hallucination: agents operating without relevant threat context fabricate
+information at alarming rates, making knowledge completeness verification
+the highest-priority deployment check. Second, multi-agent pipelines amplify
+rather than mitigate component failures, challenging the intuition that
+task decomposition improves outcomes. Third, the Epistemic Gap (capturing
+what an agent does not know it does not know) decomposes
+false-negative risk into a knowledge term and a calibration term that
+are statistically equivalent in raw predictive power but independently
+controllable, making confidence calibration as actionable a lever as
+knowledge coverage.
+
+These findings translate into actionable deployment guidance: pre-execution
+reliability screening via ARS, runtime confidence monitoring via the
+Epistemic Gap, evidence-based knowledge refresh scheduling via the temporal
+drift model, and conservative multi-agent pipeline design informed by
+cascade reliability analysis.
+
+\ARES{}, \ARESBench{}, and \SAFK{} are publicly released to support
+reproducible research in AI security agent
+dependability.\footnote{\url{https://github.com/IntelEyes/ARES}}

@@ -1,0 +1,122 @@
+\documentclass[journal,compsoc]{IEEEtran}
+
+% ── Encoding & Fonts ─────────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% ── Mathematics (light usage for magazine style) ─────────────────
+\usepackage{amsmath,amssymb}
+
+% ── Graphics & Figures ───────────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows.meta,positioning,fit,backgrounds,calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% ── Tables ───────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{array}
+
+% ── Hyperlinks & References ───────────────────────────────────────
+\usepackage[hidelinks]{hyperref}
+\usepackage{cite}
+\usepackage{url}
+\hypersetup{
+  pdftitle={ARES: A Framework for Measuring Reliability and Failure Modes in Autonomous AI Security Agents},
+  pdfauthor={Mohammad Makchudul Alam; Md. Redowan Z. Anik; Sabrein S. E. el Bodour; Anca Delia Jurcut},
+  pdfsubject={IEEE Security \& Privacy Magazine special issue on Autonomous AI Agents in Computer Security},
+  pdfkeywords={ARES; AI security agents; reliability; SKC mismatch; Agent Reliability Score; Epistemic Gap; SOC; hallucination}
+}
+
+% ── Misc ─────────────────────────────────────────────────────────
+\usepackage{xcolor}
+\usepackage{balance}
+\usepackage{microtype}
+\usepackage{enumitem}
+
+% ── Framework name macros ─────────────────────────────────────────
+\newcommand{\ARES}{\textsc{ARES}}
+\newcommand{\ARESBench}{\textsc{ARES-Bench}}
+\newcommand{\SAFK}{\textsc{SOCAgentFailure-1K}}
+
+% ── TikZ styles ───────────────────────────────────────────────────
+\tikzset{
+  svcbox/.style={rectangle, draw=black!75, line width=0.55pt,
+    rounded corners=3pt,
+    minimum width=2.2cm, minimum height=0.6cm,
+    font=\footnotesize, fill=gray!10, align=center},
+  infra/.style={svcbox, fill=blue!8},
+  agent/.style={svcbox, fill=orange!12},
+  core/.style={svcbox, fill=green!10},
+  arr/.style={-{Latex[length=2.4mm]}, line width=0.7pt, black!75},
+  arrb/.style={-{Latex[length=2.4mm]}, line width=0.6pt, dashed, black!55},
+  busline/.style={line width=1.0pt, black!60}
+}
+
+% ─────────────────────────────────────────────────────────────────
+\begin{document}
+
+\title{ARES: A Framework for Measuring Reliability and Failure Modes
+in Autonomous AI Security Agents}
+
+\author{
+\IEEEauthorblockN{Mohammad Makchudul Alam,
+Anca Delia Jurcut,
+Md.~Redowan Zaman Anik,
+Sabrein Serag El Din el Bodour}
+\IEEEauthorblockA{University College Dublin \quad|\quad DNS Research Lab \quad|\quad BGD e-GOV CIRT}
+}
+
+\IEEEtitleabstractindextext{%
+\begin{abstract}
+\input{sections/00_abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+AI agent reliability, cybersecurity, failure taxonomy, hallucination,
+SOC automation, epistemic gap
+\end{IEEEkeywords}
+}
+
+\maketitle
+
+\input{sections/01_introduction}
+\input{sections/02_why_reliability}
+\input{sections/03_failure_taxonomy}
+\input{sections/04_reliability_model}
+\input{sections/05_ares_bench}
+\input{sections/06_empirical_insights}
+\input{sections/07_implications}
+\input{sections/08_limitations}
+\input{sections/09_conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+% ── Author biographies ────────────────────────────────────────────
+\begin{IEEEbiographynophoto}{Mohammad Makchudul Alam}
+is a Visiting Researcher with the DNS Research Lab, University College
+Dublin (UCD). His research interests include agentic AI reliability and
+failure characterisation in autonomous security operations.
+\end{IEEEbiographynophoto}
+
+\begin{IEEEbiographynophoto}{Anca Delia Jurcut}
+is an Assistant Professor with the School of Computer Science, University
+College Dublin. Her research interests include network security, anomaly
+detection, and trustworthy AI for cybersecurity.
+\end{IEEEbiographynophoto}
+
+\begin{IEEEbiographynophoto}{Md.~Redowan Zaman Anik}
+is an Incident Handler with the Bangladesh Government e-GOV CIRT. His
+interests span SOC automation and the deployment of AI assistants in
+computer security incident response.
+\end{IEEEbiographynophoto}
+
+\begin{IEEEbiographynophoto}{Sabrein Serag El Din el Bodour}
+is a System Analyst with the Bangladesh Government e-GOV CIRT. His
+contributions to \ARES{} focus on scenario grounding and failure-trace
+labelling.
+\end{IEEEbiographynophoto}
+
+\end{document}

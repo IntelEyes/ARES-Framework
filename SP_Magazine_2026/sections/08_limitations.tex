@@ -1,0 +1,23 @@
+\section{Limitations and Future Work}
+
+\textbf{Synthetic benchmark data.} \SAFK{} is generated from
+ATT\&CK and NVD using template-based scenarios. Real SOC incidents
+introduce noise and edge cases this construction does not capture.
+
+\textbf{Closed-world hallucination labels.} Hallucination labels
+treat ATT\&CK and NVD as ground truth, so novel post-corpus facts may
+be incorrectly flagged as hallucinations.
+
+\textbf{Model-specific thresholds.} Absolute ARS values and the
+$\theta^* = 0.58$ threshold were learned on Mistral-7B-Instruct and
+will require recalibration for larger backbones; directional
+findings should hold because the SKC model is architecture-agnostic.
+
+\textbf{Reasoning mismatch is diagnostic.} The reasoning mismatch
+dimension ($\delta_R$) is computed post-hoc from output comparison
+with ground truth; in production it must be estimated via proxy
+measures, making it a diagnostic rather than a pre-execution
+predictor. The remaining four dimensions remain fully prospective.
+
+Future work extends \ARES{} to larger LLMs, real-world SOC data,
+cyclic multi-agent architectures, and adversarial mismatch injection.

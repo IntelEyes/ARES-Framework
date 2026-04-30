@@ -1,0 +1,88 @@
+\section{Introduction}
+
+Security Operations Centres (SOCs) are undergoing a fundamental transformation.
+Autonomous AI agents (powered by large language models (LLMs) and equipped
+with tool-use capabilities) now perform threat detection, alert triage,
+and incident response tasks that were previously the exclusive domain of
+human analysts~\cite{apruzzese2023}. Frameworks such as
+LangGraph~\cite{langgraph2024} and AutoGen~\cite{wu2023autogen} have made it
+straightforward to deploy multi-step reasoning agents that query SIEM systems,
+correlate indicators of compromise (IOCs), and recommend containment actions
+with minimal human oversight. Commercial platforms including CrowdStrike
+Charlotte AI and SentinelOne Purple AI have begun embedding agent-based
+automation into production SOC workflows, and the trend is accelerating.
+
+Yet a critical question remains unanswered: \textit{when do these agents fail,
+and how dangerous are those failures?} The security community has focused
+heavily on measuring what AI agents can do (detection accuracy, response
+speed, ATT\&CK coverage) while paying far less attention to the conditions
+under which agents produce incorrect, incomplete, or actively misleading
+outputs. This gap carries serious operational consequences:
+
+\begin{itemize}[noitemsep, leftmargin=*]
+  \item A \textbf{false negative} allows an intrusion to persist undetected
+    for hours or days, expanding the attacker's foothold while the SOC
+    believes the environment is clean.
+  \item A \textbf{hallucinated threat attribution} propagates incorrect IOCs
+    into shared intelligence feeds, poisoning downstream defences across
+    multiple organisations that consume the same threat data.
+  \item A \textbf{delayed response}, caused by an agent paralysed by missing
+    tool access or overwhelmed by input complexity, allows an incident to
+    escalate beyond regulatory reporting thresholds.
+\end{itemize}
+
+These are not hypothetical scenarios: they are predictable consequences of
+deploying agents whose capabilities do not match the demands of their assigned
+tasks. We call this the \textit{Skill--Knowledge--Capability (SKC) mismatch}
+problem: the systematic gap between what a security task requires and what
+an agent can actually deliver across multiple dimensions including procedural
+skills, declarative threat knowledge, tool access, reasoning quality, and
+knowledge currency.
+
+Existing work addresses fragments of this problem in isolation. Classical
+dependability theory~\cite{avizienis2004} predates LLM agents and has no
+notion of epistemic uncertainty or knowledge currency.
+Hallucination research~\cite{llmagent_halluc_survey2025} treats reasoning
+failures as model-internal properties without modelling tool availability,
+task complexity, or knowledge freshness. Calibration
+work~\cite{guo2017calibration} shows neural networks are miscalibrated but
+does not connect this to agent reliability. Agent
+benchmarks~\cite{liu2023agentbench, deng2023pentest} measure capability
+without modelling failure conditions. The closest
+recent efforts —
+MAST~\cite{cemri2025mast}, a domain-agnostic 14-mode failure
+taxonomy, and AgentDojo~\cite{debenedetti2024agentdojo}, an
+adversarial prompt-injection environment — each cover one slice of
+the surface. To the best of our knowledge, no existing work provides a
+unified reliability model, evaluation testbed, and labelled failure
+dataset for the full non-adversarial failure surface of AI security
+agents.
+
+\textbf{This paper presents \ARES{}} (Agentic Reliability Evaluation for
+Security systems), a framework designed to fill this gap. \ARES{} provides:
+\begin{enumerate}[noitemsep, leftmargin=*]
+  \item A \textbf{three-axis failure taxonomy} classifying AI security agent
+    failures by origin (8 classes), manifestation (8 classes), and operational
+    impact (7 classes), grounded in CSIRT practice.
+  \item A \textbf{quantitative reliability model} based on SKC mismatch,
+    including an Agent Reliability Score (ARS) with task-class-specific
+    weights and an Epistemic Gap metric that formalises the hallucination
+    precondition.
+  \item \textbf{\ARESBench{}}, a fully open-source, Docker-deployable
+    evaluation testbed supporting four agent architectures across five
+    threat scenario classes.
+  \item \textbf{\SAFK{}}, a labelled dataset of 1,000 agent execution
+    traces under controlled failure conditions, released under CC~BY~4.0.
+\end{enumerate}
+
+Together they let SOC architects screen an agent for a given task before
+it ever sees production traffic.
+
+Parallel 2025--2026 efforts confirm the urgency: hallucination
+benchmarks~\cite{bang2025hallulens} treat confident factual errors as
+a cross-domain failure class, and the OWASP Top~10 for Agentic
+Applications~\cite{owasp2026agentic} elevates capability-mismatch and
+tool-misuse failures to first-class operational risks. None of these
+efforts connect agent reliability to SOC-specific consequences: a
+misclassified ransomware beacon or a fabricated CVE attribution.
+\ARES{} fills that gap.

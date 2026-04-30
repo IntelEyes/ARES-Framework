@@ -1,0 +1,120 @@
+\section{Empirical Insights}
+
+We summarise five findings from the \SAFK{} experiments most
+relevant to practitioners deploying AI agents in security
+environments. Each is paired with the operational implication it
+carries for SOC teams.
+
+\subsection{Knowledge Mismatch Drives Hallucination}
+
+\textbf{Finding.} Across 750 LLM-based agent executions,
+hallucination rate increases monotonically with knowledge mismatch
+($\delta_K$): from 1.4\% at $\delta_K = 0$ to 39.1\% at $\delta_K = 1.0$
+(Pearson $\rho = 0.92$, $p < 0.001$). The pattern holds across all three
+LLM architectures (LangGraph, AutoGen, CrewAI). The rule-based baseline
+(AUT-4) hallucinates zero times regardless of $\delta_K$, confirming
+hallucination as an LLM-specific failure mode.
+
+\textbf{Implication.} Verify threat-knowledge coverage before
+autonomous execution. Knowledge gaps are the single strongest
+predictor of dangerous output fabrication, which makes
+retrieval-augmented generation (RAG) pipeline quality a first-order
+reliability concern: the completeness of the retrieved context
+directly determines hallucination risk.
+
+\subsection{Different Mismatches Produce Distinct Failure Signatures}
+
+\textbf{Finding.} Each mismatch dimension produces a diagnostically
+separable failure pattern (chi-square test of independence,
+$p < 0.001$). Conditioning on the LLM-agent records whose
+\textit{primary} mismatch dimension is at level $\geq 0.5$:
+capability deprivation ($\delta_C$) predominantly produces
+\textit{Paralysis} (78\%); skill deficit ($\delta_S$) produces silent
+\textit{Omission} (72\%); knowledge gaps ($\delta_K$) produce
+\textit{Hallucination} (32\%) and \textit{Misclassification} (21\%);
+reasoning perturbation ($\delta_R$) produces \textit{Confabulation}
+(38\%) and \textit{Overclaiming} (17\%).
+
+\textbf{Implication.} The manifestation pattern is a diagnostic
+fingerprint. A SOC observing high paralysis should investigate tool
+access and API permissions, not LLM quality. A high confabulation rate
+suggests reasoning corruption or adversarial input manipulation rather
+than knowledge gaps. This enables targeted remediation rather than
+wholesale agent replacement.
+
+\subsection{ARS Generalises as a Reliability Gate}
+
+\textbf{Finding.} The learned ARS threshold ($\theta^* = 0.58$)
+achieves test F1 = 0.96 across all five threat classes
+(Table~\ref{tab:e3_mag}), with perfect precision (1.00) and recall
+ranging from 0.84 to 1.00. The minimal train-test gap (0.95 vs.\ 0.96)
+indicates that ARS captures a generalisable reliability signal rather
+than overfitting to specific threat classes or agent architectures.
+
+\begin{table}[t]
+\caption{ARS Anomaly Detection Performance (Test Set)}
+\label{tab:e3_mag}
+\centering
+\footnotesize
+\begin{tabular}{lccc}
+\toprule
+\textbf{Threat Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+\midrule
+Ransomware     & 1.00 & 0.94 & 0.97 \\
+Phishing       & 1.00 & 0.94 & 0.97 \\
+Insider Threat & 1.00 & 0.87 & 0.93 \\
+DDoS           & 1.00 & 0.84 & 0.91 \\
+APT Intrusion  & 1.00 & 1.00 & 1.00 \\
+\midrule
+\textbf{Overall} & \textbf{1.00} & \textbf{0.92} & \textbf{0.96} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Implication.} ARS works operationally as a pre-execution
+deployment gate. Perfect precision means no false alarms: every
+flagged execution truly exhibited anomalous behaviour, removing the
+common adoption blocker where reliability tooling generates so many
+false alerts that SOC teams disable it.
+
+\subsection{Multi-Agent Pipelines Amplify Failures}
+
+\textbf{Finding.} Comparing AUT-1 (single-agent LangGraph) with
+AUT-2 (three-stage AutoGen pipeline) shows a 5.7\% headline ARS gap
+that conflates framework identity with pipeline depth. A controlled
+ablation on 27 strictly matched mismatch buckets isolates the two
+contributions: framework identity contributes \textbf{0.13\%}
+(essentially zero) and pure pipeline depth contributes
+\textbf{17.25\%} relative ARS reduction, consistent across all five
+threat classes.
+
+\textbf{Implication.} Decomposing a security task into a multi-agent
+pipeline does not improve reliability; it reduces it whenever
+component agents carry mismatch vulnerabilities. Prefer well-validated
+single-agent designs for critical tasks. If multi-agent is required,
+add inter-stage verification checkpoints and confidence-gated
+propagation so that low-confidence intermediate outputs do not silently
+seed downstream stages.
+
+\subsection{Epistemic Gap Separates Knowledge Risk from Confidence Risk}
+
+\textbf{Finding.} The Epistemic Gap ($\mathcal{E}$) and raw knowledge
+mismatch ($\delta_K$) achieve statistically equivalent correlation
+with false-negative severity ($\rho_\mathcal{E} = \rho_{\delta_K} =
+0.80$, Fisher $z$-test $p = 0.78$). On 30 live CISA KEV incidents
+beyond every model's training cutoff, five frontier LLMs scored
+identically on surface accuracy (vendor 67\%, product 63\%, CVE
+$\leq$3\%), yet stated confidence diverged sharply: GPT-5.4-mini
+reported mean confidence 0.78 on 29/30 records while Claude Opus 4.7
+abstained on 27/30. Same accuracy, different operational risk.
+
+\textbf{Implication.} The Epistemic Gap's value is not raw predictive
+lift but \textit{interpretability}: it factorises risk into a
+``what the agent does not know'' term ($\delta_K$) and a
+``how confidently it acts under that ignorance'' term ($1 - U$),
+exposing two independently controllable mitigations. Calibration is
+therefore as actionable a lever as knowledge coverage. The
+hallucination-versus-$\delta_K$ relationship replicates directionally
+across four LLM families from 7B to frontier scale (bucket-aggregated
+$\rho \in [0.78, 0.95]$), so the reliability signal is structural
+rather than backbone-specific.

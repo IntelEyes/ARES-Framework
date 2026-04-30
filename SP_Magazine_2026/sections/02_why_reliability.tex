@@ -1,0 +1,76 @@
+\section{Why Reliability of AI Agents Matters for Cybersecurity}
+
+The reliability of AI agents is not merely an academic concern: it is an
+operational safety requirement. When an AI agent operates autonomously in a
+SOC, its outputs directly influence incident response decisions that affect
+the security posture of entire organisations. Unlike traditional software,
+where bugs produce deterministic incorrect outputs, LLM-based agents
+introduce a qualitatively different failure surface: \textit{stochastic,
+context-dependent, and confidence-inflated errors} that are difficult to
+detect and dangerous to act upon.
+
+\textbf{Risks of autonomous AI decisions.}
+A human analyst who encounters an unfamiliar threat pattern will typically
+escalate or seek additional context. An LLM-based agent, by contrast, may
+confidently classify a novel threat using superficially similar patterns from
+its training data, a failure mode known as hallucination. In cybersecurity,
+hallucination is particularly dangerous because the domain is dense with
+specific factual claims (CVE identifiers, threat actor names, TTP chains)
+that are easy to fabricate convincingly but difficult to verify in
+real-time~\cite{llmagent_halluc_survey2025}. The consequences of
+incorrect autonomous decisions are often irreversible: once a compromised
+host is left un-isolated or a fabricated IOC enters a shared feed, the damage
+propagates faster than human review can contain it.
+
+\textbf{Impact on incident response.}
+Consider a three-stage agent pipeline: triage, enrichment, and remediation
+recommendation. If the triage agent misclassifies a ransomware intrusion as
+a benign false positive, the enrichment agent never investigates, and the
+remediation agent recommends no action. The intrusion persists, the attacker
+escalates privileges, and exfiltration proceeds undetected. Conversely,
+if the triage agent hallucinates a threat actor attribution (for example,
+incorrectly attributing a commodity phishing campaign to an APT group) the
+enrichment agent may propagate fabricated IOCs to shared intelligence feeds
+such as STIX/TAXII repositories, corrupting defences across every
+organisation that consumes those feeds. In a third scenario, an agent that
+lacks access to the EDR containment API (capability mismatch) may correctly
+identify the threat but fail to execute the recommended isolation action,
+introducing a critical delay in response.
+
+\textbf{Trust and accountability.}
+SOC analysts must trust AI agent outputs enough to act on them, but not so
+much that they stop verifying. When agents fail silently, producing
+plausible but incorrect outputs, they erode this trust calibration over
+time. Repeated false confidence leads analysts to either
+over-rely on AI-assisted workflows (automation complacency) or disengage
+from them entirely (automation aversion), both of which degrade operational
+effectiveness. The challenge is compounded in organisations subject to
+regulatory frameworks such as NIS2 or DORA, where accountability for
+incident response decisions must be traceable regardless of whether a human
+or an AI agent made the initial assessment.
+
+\textbf{Why hallucination is uniquely dangerous in SOC environments.}
+General-purpose hallucination is problematic; hallucination in security
+operations is \textit{actionable and consequential}. A hallucinated medical
+diagnosis triggers further tests before treatment. A hallucinated legal
+citation is caught during review. But a hallucinated threat attribution may
+trigger immediate containment actions (host isolation, network segmentation,
+threat feed updates) with real operational cost and often no natural
+verification checkpoint before execution. The combination of high confidence,
+domain-specific factual density, and automated downstream actions makes SOC
+hallucination uniquely dangerous among AI application domains.
+
+\textbf{Why existing assurance approaches fall short.}
+Classical software testing does not catch stochastic, context-dependent
+agent failures: a test suite that passes at build time says nothing about
+reliability under a new CVE or novel ransomware variant. SOC peer review
+is the safety net for sensitive decisions, but autonomous agents are
+deployed precisely to remove that bottleneck. Adversarial ML benchmarks
+measure robustness against crafted perturbations rather than against the
+benign-but-unfamiliar inputs that dominate SOC workload. Hallucination
+benchmarks~\cite{bang2025hallulens} count how often models fabricate
+facts but do not connect fabrication to the downstream security actions
+that turn a wrong answer into operational harm. These gaps motivate a
+structured framework for measuring agent reliability \textit{before
+deployment} and monitoring it \textit{during operation} — which is what
+\ARES{} provides.

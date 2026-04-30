@@ -1,0 +1,179 @@
+\section{Reliability Model: SKC Mismatch}
+
+The taxonomy tells us \textit{how} agents fail; the reliability model tells
+us \textit{why} and \textit{how likely}. At its core, \ARES{} measures the
+gap between what a security task demands and what an agent can deliver across
+five dimensions. The model extends classical dependability
+theory~\cite{avizienis2004} by introducing knowledge incompleteness,
+probabilistic reasoning errors, and capability constraints as first-class
+failure sources: dimensions that do not exist in traditional deterministic
+software systems.
+Figure~\ref{fig:skc_pipeline_mag} summarises the end-to-end flow.
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[
+  node distance=0.35cm and 0.4cm, font=\footnotesize,
+  prof/.style={rectangle, draw=black!70, rounded corners=2pt,
+               fill=blue!8, minimum width=2.6cm, minimum height=0.7cm, align=center},
+  mm/.style={rectangle, draw=black!70, rounded corners=2pt,
+             fill=orange!12, minimum width=3.6cm, minimum height=0.7cm, align=center},
+  outbox/.style={rectangle, draw=black!70, rounded corners=2pt,
+              fill=green!10, minimum width=3.6cm, minimum height=0.7cm, align=center},
+  arr/.style={-{Latex[length=1.8mm]}, thick, gray!70},
+]
+  \node[prof] (agent) {Agent profile $(\mathcal{S},\mathcal{K},\mathcal{C},\mathcal{R},\mathcal{T}_{\mathrm{age}})$};
+  \node[prof, right=of agent] (task) {Task profile $(\mathcal{S}^*,\mathcal{K}^*,\mathcal{C}^*,y^*)$};
+  \node[mm, below=0.4cm of $(agent.south)!0.5!(task.south)$] (delta)
+       {Mismatch vector $\boldsymbol{\delta}=[\delta_S,\delta_K,\delta_C,\delta_R,\delta_T]$};
+  \node[mm, below left=0.4cm and 0.05cm of delta.south] (ars)
+       {ARS $= 1 - \mathbf{w}_\tau^\top\boldsymbol{\delta}$};
+  \node[mm, below right=0.4cm and 0.05cm of delta.south] (eg)
+       {Epistemic Gap $\mathcal{E} = \delta_K(1-U)$};
+  \node[outbox, below=0.4cm of $(ars.south)!0.5!(eg.south)$] (phi)
+       {Anomaly: ARS $<\theta$ \;or\; $\mathcal{E}>\epsilon$};
+  \draw[arr] (agent.south) -- (delta.north);
+  \draw[arr] (task.south)  -- (delta.north);
+  \draw[arr] (delta.south) -- (ars.north);
+  \draw[arr] (delta.south) -- (eg.north);
+  \draw[arr] (ars.south)   -- (phi.north);
+  \draw[arr] (eg.south)    -- (phi.north);
+\end{tikzpicture}
+\caption{The \ARES{} reliability pipeline. The agent's declared
+profile and the task's requirement profile produce a five-dimensional
+mismatch vector that feeds two parallel indicators: the Agent
+Reliability Score and the Epistemic Gap. Either crossing its learned
+threshold flags the execution as anomalous.}
+\label{fig:skc_pipeline_mag}
+\end{figure}
+
+\subsection{Five Mismatch Dimensions}
+
+For each dimension, we compute a normalised mismatch score between 0 (full
+coverage) and 1 (total mismatch):
+
+\begin{itemize}[noitemsep, leftmargin=*]
+  \item \textbf{Skill mismatch} ($\delta_S$): the fraction of required
+    procedural skills the agent lacks. For example, a log-correlation agent
+    assigned binary malware analysis has a high $\delta_S$ because the
+    required analytical procedure is outside its repertoire.
+  \item \textbf{Knowledge mismatch} ($\delta_K$): the fraction of required
+    threat knowledge missing from the agent's context, measured over the
+    MITRE ATT\&CK~\cite{strom2022} knowledge graph. An agent unaware of a
+    recently emerged ransomware variant has high $\delta_K$ for tasks
+    involving that family.
+  \item \textbf{Capability mismatch} ($\delta_C$): the fraction of
+    required tools or APIs the agent cannot access. An agent that recommends
+    host isolation but lacks EDR API access has high $\delta_C$: it knows
+    \textit{what} to do but cannot \textit{do} it.
+  \item \textbf{Reasoning mismatch} ($\delta_R$): the divergence between
+    the agent's output and ground truth, capturing inference quality. This
+    dimension is unique in that it can only be measured post-execution.
+  \item \textbf{Temporal drift} ($\delta_T$): knowledge staleness modelled
+    as exponential decay, parameterised by the threat domain's volatility.
+    Ransomware intelligence ($\lambda = 0.005$~day$^{-1}$) decays rapidly;
+    APT attribution knowledge ($\lambda = 0.001$~day$^{-1}$) remains stable
+    for longer.
+\end{itemize}
+
+A critical design property: the first three dimensions ($\delta_S$,
+$\delta_K$, $\delta_C$) and temporal drift ($\delta_T$) can all be computed
+\textit{before} task execution from the agent's declared profile and the
+task's requirements. In deployment, \ARES{} therefore uses skill,
+knowledge, capability, and temporal drift for pre-execution
+screening; reasoning mismatch ($\delta_R$) is used after execution
+for diagnosis and model improvement.
+
+\subsection{Agent Reliability Score}
+
+The five mismatch scores are combined into a single
+\textbf{Agent Reliability Score (ARS)}:
+\[
+  \mathrm{ARS} = 1 - \mathbf{w}_\tau^\top \boldsymbol{\delta}
+\]
+where $\boldsymbol{\delta} = [\delta_S, \delta_K, \delta_C, \delta_R,
+\delta_T]$ is the mismatch vector and $\mathbf{w}_\tau$ is a weight vector
+specific to the threat class $\tau$, learned via ridge regression on labelled
+training data. An ARS of 1.0 indicates perfect alignment between agent
+capability and task demand; values below a learned threshold $\theta^*$
+flag the agent as unreliable for that task.
+
+The weights are learned per threat class because different security tasks
+stress different dimensions. In our experiments, knowledge coverage
+($w_K = 0.35$) dominates for ransomware detection, while skill and
+capability access ($w_S = 0.32$, $w_C = 0.28$) lead for DDoS mitigation,
+and knowledge combined with reasoning ($w_K = 0.38$, $w_R = 0.24$) lead
+for APT intrusion investigation. A single universal weight vector would
+systematically misestimate reliability by at least 12\% on certain threat
+classes.
+
+\subsection{Epistemic Gap: The ``Confident Ignorance'' Problem}
+
+The most dangerous agent failures occur not when an agent lacks knowledge,
+but when it \textit{does not know that it lacks knowledge}, a failure of
+confidence calibration~\cite{guo2017calibration}. We formalise this as the
+\textbf{Epistemic Gap}:
+\[
+  \mathcal{E} = \delta_K \times (1 - U)
+\]
+where $U$ is the agent's expressed uncertainty (complement of its stated
+confidence). An agent with a large knowledge deficit ($\delta_K \approx 1$)
+that simultaneously reports high confidence ($U \approx 0$) produces a
+maximal Epistemic Gap: the precondition for hallucination. Conversely, an
+agent that correctly identifies its knowledge limits ($U \approx 1$) produces
+a near-zero Epistemic Gap: it may fail the task but will not fabricate
+an answer.
+
+This concept relates directly to the confidence calibration literature, which
+has shown that modern neural networks (including LLMs) are systematically
+overconfident on out-of-distribution inputs~\cite{guo2017calibration}. The
+Epistemic Gap operationalises this finding for the specific case of agentic
+AI: it measures not just whether the model is miscalibrated in general, but
+whether that miscalibration occurs precisely where the agent's knowledge is
+weakest: the most dangerous combination.
+
+The distinction is critical for SOC operations. An agent that says
+``I don't have sufficient context to classify this threat'' is safe: it
+triggers human escalation. An agent that confidently asserts a false threat
+attribution is dangerous: it triggers automated actions based on fabricated
+intelligence.
+
+\subsection{Cascade Reliability in Multi-Agent Systems}
+
+When agents are composed into pipelines, failures propagate through
+information dependencies. We model this using a directed acyclic graph
+where each edge represents an inter-agent data flow, and show that cascade
+reliability is bounded above by the \textit{weakest agent} in the pipeline.
+
+This result has a counterintuitive practical consequence: decomposing
+a security task into a multi-agent pipeline cannot improve reliability
+beyond the weakest component agent. It can only reduce it. A triage agent
+that hallucinates an IOC passes corrupted input to the enrichment agent,
+which inherits the error, potentially amplifies it by adding supporting
+(but irrelevant) context, and the recommendation agent acts on the
+compounded misinformation. Our empirical results decompose this effect cleanly. The naive
+head-line gap between single-agent LangGraph and three-stage
+AutoGen is $\sim 5.7\%$ relative ARS, but it conflates framework
+identity with pipeline depth. A controlled ablation on $27$
+strictly matched mismatch buckets isolates the two contributions:
+framework identity contributes $\mathbf{0.13\%}$ (essentially
+zero) and pure pipeline depth contributes $\mathbf{17.25\%}$. The
+cascade-induced reliability loss is therefore an order of
+magnitude larger than the head-line number suggests, and it is
+attributable entirely to multi-stage composition rather than to
+the choice of agent framework. Full ablation numbers are reported
+in the empirical-insights section.
+
+\subsection{From Score to Action}
+
+Operationally, an ARS assessment runs at task-assignment time and
+yields three control points. If ARS clears the threshold, the agent
+runs autonomously. If it falls short, the decomposition itself
+identifies the cheapest mitigation: a high $\delta_K$ calls for a
+knowledge refresh, a high $\delta_C$ for tool provisioning, and a
+high $\delta_T$ for a scheduled retraining cadence. The Epistemic
+Gap is computed at output time and gates downstream propagation:
+high-$\mathcal{E}$ outputs go to human review rather than to
+automated containment or shared threat feeds. Because four of the
+five dimensions are observable before execution, the screening cost
+is effectively zero.

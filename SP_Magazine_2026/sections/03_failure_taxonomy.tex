@@ -1,0 +1,90 @@
+\section{Failure Taxonomy for AI Security Agents}
+
+Understanding \textit{how} agents fail is a prerequisite for measuring
+reliability. We propose a three-axis taxonomy that decomposes each
+failure event along three orthogonal dimensions: what caused it
+(\textit{origin}), what it looked like (\textit{manifestation}), and
+what it cost (\textit{impact}). Unlike prior fault taxonomies developed
+for conventional software~\cite{avizienis2004}, this taxonomy is
+designed specifically for autonomous AI security agents, where
+failures are not bugs to be patched but operational risks that affect
+real-world security outcomes. Table~\ref{tab:taxonomy_mag} summarises
+the three axes.
+
+\begin{table}[t]
+\caption{Three-Axis Failure Taxonomy for AI Security Agents}
+\label{tab:taxonomy_mag}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.85cm} p{2.5cm} p{4.0cm}}
+\toprule
+\textbf{Code} & \textbf{Class} & \textbf{Description} \\
+\midrule
+\multicolumn{3}{l}{\textit{Axis 1: Origin (root cause)}} \\
+O1 & Epistemic Deficiency & Lacks required threat knowledge \\
+O2 & Skill Boundary & Task requires an unlearned procedure \\
+O3 & Capability Deprivation & Required tool or API unavailable \\
+O4 & Reasoning Corruption & Inference produces invalid output \\
+O5 & Context Overload & Input exceeds processing capacity \\
+O6 & Adversarial Perturbation & Malicious content degrades output \\
+O7 & Orchestration Failure & Multi-agent coordination breakdown \\
+O8 & Temporal Drift & Knowledge has become stale \\
+\midrule
+\multicolumn{3}{l}{\textit{Axis 2: Manifestation (observable signal)}} \\
+M1 & Hallucination & Asserts verifiably false facts \\
+M2 & Omission & Fails to detect a present threat \\
+M3 & Misclassification & Wrong threat family or category \\
+M4 & Confabulation & Coherent reasoning from false premises \\
+M5 & Paralysis & No output or persistent retry loop \\
+M6 & Overclaiming & High confidence on weak evidence \\
+M7 & Attribution Error & Wrong threat actor or campaign \\
+M8 & Cascade Failure & Error propagates across agents \\
+\midrule
+\multicolumn{3}{l}{\textit{Axis 3: Impact (operational consequence)}} \\
+I1 & False Negative\hfill\textbf{*} & Threat undetected; attacker persists \\
+I2 & False Positive & Benign activity flagged \\
+I3 & Delayed Response & Action issued past SLA \\
+I4 & Wrong Remediation\hfill\textbf{*} & Incorrect containment executed \\
+I5 & Intelligence Pollution\hfill\textbf{*} & Fabricated IOCs propagate to feeds \\
+I6 & Trust Erosion & Analyst confidence reduced \\
+I7 & Compliance Violation & Regulatory threshold breached \\
+\bottomrule
+\multicolumn{3}{l}{\footnotesize \textbf{*}\;Critical impact category.} \\
+\end{tabular}
+\end{table}
+
+Two distinctions matter for practitioners. First, \textit{Hallucination}
+(M1) and \textit{Confabulation} (M4) are not synonyms. Hallucination
+asserts atomic facts that are verifiably false against a closed-world
+corpus; confabulation produces internally coherent reasoning founded
+on non-existent premises. Confabulation is more dangerous because it
+is harder to detect by automated checks and more persuasive to
+analysts reviewing the agent's reasoning trace. Second,
+\textit{Intelligence Pollution} (I5) is qualitatively unlike the other
+impacts: a single hallucinated IOC pushed to a STIX/TAXII feed
+propagates beyond the originating organisation to the entire
+information-sharing community.
+
+The power of the three-axis decomposition is its diagnostic
+composability. A practitioner who observes a cluster of M1 events can
+trace back to O1 (knowledge deficiency) or O5 (context overload) as
+the most probable origins, and forward to I1 (false negative) or I5
+(intelligence pollution) as the likely consequences. Each origin maps
+to a distinct operational action: O1 calls for knowledge refresh, O5
+for input preprocessing, O3 for tool provisioning.
+
+\textbf{Worked example: Intelligence Pollution.}
+A multi-agent pipeline correctly identifies a phishing campaign, but
+the enrichment stage invents three IOC URLs by extrapolating from a
+domain pattern it has seen before. A downstream automation pushes
+these IOCs to the shared threat feed; within minutes, partner SOCs
+block legitimate subdomains of a genuine customer-service platform.
+The trace decomposes cleanly: origin is O1 (the enrichment agent
+lacked the TTP chain required to enumerate IOCs correctly);
+manifestation is M1 (hallucinated factual claims); impact is I5,
+with a blast radius far beyond the originating organisation. The same
+trace motivates three design decisions simultaneously: per-IOC
+confidence gating, confidence-proportional feed propagation, and
+human-in-the-loop review for feed writes — each traceable to a
+distinct axis of the taxonomy.

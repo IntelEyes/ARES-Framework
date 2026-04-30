@@ -30,24 +30,35 @@ ARES-Framework/
 ├── README.md
 ├── LICENSE                  MIT
 ├── CITATION.cff             Cite this repository
-└── ISAIA_2026/              IEEE ISAIA 2026 conference paper
-    ├── main.pdf               Camera-ready PDF
-    ├── main.tex               LaTeX source (IEEEtran)
+├── ISAIA_2026/              IEEE ISAIA 2026 conference paper
+│   ├── main.pdf               PDF
+│   ├── main.tex               LaTeX source (IEEEtran)
+│   ├── references.bib
+│   ├── sections/              Per-section .tex files
+│   └── ISAIA_2026_Overleaf.zip   Direct upload to Overleaf
+└── SP_Magazine_2026/        IEEE Security & Privacy Magazine article
+    ├── main.pdf               PDF
+    ├── main.tex               LaTeX source (IEEEtran journal/compsoc)
     ├── references.bib
     ├── sections/              Per-section .tex files
-    └── ISAIA_2026_Overleaf.zip   Direct upload to Overleaf
+    ├── SP_Magazine_2026_Overleaf.zip   Direct upload to Overleaf
+    └── REVIEWER_QA.md         21 anticipated reviewer Qs with
+                               evidence-backed answers (project notes)
 ```
 
-The conference paper is self-contained: all definitions, the
-five-dimensional SKC mismatch model, the Agent Reliability Score, the
-Epistemic Gap, the cascade reliability bound, and the experimental
-findings on 1,000 labelled execution traces are reported inside the
-PDF. This page is the project home where future outputs of the ARES
-research line will be published as they become available.
+Both papers are self-contained: all definitions, the five-dimensional
+SKC mismatch model, the Agent Reliability Score, the Epistemic Gap,
+the cascade reliability bound, and the experimental findings on 1,000
+labelled execution traces are reported inside the respective PDFs.
+The conference paper (ISAIA 2026) gives the formal contribution; the
+magazine article (S&P Magazine 2026) translates it into deployment
+guidance for SOC teams. This page is the project home where future
+outputs of the ARES research line will be published as they become
+available.
 
 ## Citation
 
-If you use this work, please cite:
+If you use this work, please cite the conference paper:
 
 ```bibtex
 @inproceedings{alam2026ares,
@@ -58,6 +69,20 @@ If you use this work, please cite:
   booktitle = {Proc.\ IEEE Int.\ Symp.\ on Artificial Intelligence
                Applications (ISAIA)},
   year      = {2026}
+}
+```
+
+For the magazine article:
+
+```bibtex
+@article{alam2026aresmag,
+  title   = {ARES: A Framework for Measuring Reliability and Failure
+             Modes in Autonomous AI Security Agents},
+  author  = {Alam, Mohammad Makchudul and Anik, Md.~Redowan Z. and
+             el Bodour, Sabrein S.~E. and Jurcut, Anca Delia},
+  journal = {IEEE Security \& Privacy},
+  year    = {2026},
+  note    = {Special issue on Autonomous AI Agents in Computer Security}
 }
 ```
 
