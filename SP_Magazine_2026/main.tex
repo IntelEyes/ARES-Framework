@@ -101,35 +101,41 @@ SOC automation, epistemic gap
 \bibliographystyle{IEEEtran}
 \bibliography{references}
 
+\balance
+
 % ── Author biographies ────────────────────────────────────────────
+% Override IEEEtran's bio environment with a tight magazine-style
+% format so all five bios fit on the same page.
+\renewenvironment{IEEEbiographynophoto}[1]{%
+  \par\vspace{0.35em}%
+  \noindent\textbf{#1}\space\ignorespaces}{%
+  \par}
 \begin{IEEEbiographynophoto}{Mohammad Makchudul Alam}
-is a Researcher with the DNS Research Lab. His research interests
-include agentic AI reliability and failure characterisation in
-autonomous security operations.
+is a Researcher with the DNS Research Lab specialising in agentic
+AI reliability and failure characterisation in autonomous security
+operations.
 \end{IEEEbiographynophoto}
 
 \begin{IEEEbiographynophoto}{Md.~Redowan Zaman Anik}
-is an Incident Handler with the Bangladesh Government e-GOV CIRT. His
-interests span SOC automation and the deployment of AI assistants in
-computer security incident response.
+is an Incident Handler with BGD e-GOV CIRT, focusing on SOC
+automation and AI-assisted incident response.
 \end{IEEEbiographynophoto}
 
 \begin{IEEEbiographynophoto}{Sabrein Serag El Din el Bodour}
-is a System Analyst with the Bangladesh Government e-GOV CIRT. His
-contributions to \ARES{} focus on scenario grounding and failure-trace
-labelling.
+is a System Analyst with BGD e-GOV CIRT, contributing scenario
+grounding and failure-trace labelling to \ARES{}.
 \end{IEEEbiographynophoto}
 
 \begin{IEEEbiographynophoto}{Moshiul Islam Mishu}
-is Founder and CEO of EIC Limited, Dhaka, Bangladesh; a PCI-DSS QSA
-and Certified Forensic Examiner specialising in PCI-DSS audits, VAPT,
-SOC, and GRC. Contact: moshiul@eicsecure.com.
+is a PCI-DSS Auditor and Cybersecurity Professional with EIC Limited,
+Dhaka, Bangladesh, specialising in PCI-DSS audits, VAPT, SOC, and GRC.
+Contact: moshiul@eicsecure.com.
 \end{IEEEbiographynophoto}
 
 \begin{IEEEbiographynophoto}{Anca Delia Jurcut}
-is an Assistant Professor with the School of Computer Science, University
-College Dublin. Her research interests include network security, anomaly
-detection, and trustworthy AI for cybersecurity.
+is an Assistant Professor at University College Dublin specialising
+in network security, anomaly detection, and trustworthy AI for
+cybersecurity.
 \end{IEEEbiographynophoto}
 
 \end{document}
