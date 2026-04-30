@@ -28,14 +28,14 @@ The framework introduces:
 ```
 ARES-Framework/
 ├── README.md
-├── LICENSE                      MIT
-├── CITATION.cff                 Cite this repository
-└── Paper1_ISAIA_2026/           IEEE ISAIA 2026 conference paper
-    ├── main.pdf                   Camera-ready PDF
-    ├── main.tex                   LaTeX source (IEEEtran)
+├── LICENSE                  MIT
+├── CITATION.cff             Cite this repository
+└── ISAIA_2026/              IEEE ISAIA 2026 conference paper
+    ├── main.pdf               Camera-ready PDF
+    ├── main.tex               LaTeX source (IEEEtran)
     ├── references.bib
-    ├── sections/                  Per-section .tex files
-    └── Paper1_ISAIA_2026_Overleaf.zip   Direct upload to Overleaf
+    ├── sections/              Per-section .tex files
+    └── ISAIA_2026_Overleaf.zip   Direct upload to Overleaf
 ```
 
 The conference paper is self-contained: all definitions, the
@@ -66,11 +66,12 @@ repository" widget in the sidebar.
 
 ## Authors
 
-- **Mohammad Makchudul Alam** — BGD e-GOV CIRT, ICT Division;
-  DNS Research Lab, UCD ([engrarifcce@gmail.com](mailto:engrarifcce@gmail.com),
+- **Mohammad Makchudul Alam** — CTI, BGD e-GOV CIRT;
+  [DNS Research Lab, UCD](https://dnsresearchlabs.ucd.ie)
+  ([engrarifcce@gmail.com](mailto:engrarifcce@gmail.com),
   ORCID: [0009-0007-1823-2386](https://orcid.org/0009-0007-1823-2386))
-- **Md.~Redowan Z. Anik** — BGD e-GOV CIRT, ICT Division
-- **Sabrein S.~E. el Bodour** — BGD e-GOV CIRT, ICT Division
+- **Md. Redowan Z. Anik** — Cyber Threat Intelligence, BGD e-GOV CIRT
+- **Sabrein S. E. el Bodour** — Cyber Threat Intelligence, BGD e-GOV CIRT
 - **Anca Delia Jurcut** — School of Computer Science, University College
   Dublin
 
