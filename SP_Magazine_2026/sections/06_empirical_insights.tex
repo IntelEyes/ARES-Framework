@@ -50,6 +50,10 @@ achieves test F1 = 0.96 across all five threat classes
 ranging from 0.84 to 1.00. The minimal train-test gap (0.95 vs.\ 0.96)
 indicates that ARS captures a generalisable reliability signal rather
 than overfitting to specific threat classes or agent architectures.
+The reported F1 uses the post-execution ARS that includes $\delta_R$;
+in deployment, the pre-execution gate uses $\delta_S$, $\delta_K$,
+$\delta_C$, and $\delta_T$, with $\delta_R$ added after execution
+for diagnosis and continuous improvement.
 
 \begin{table}[t]
 \caption{ARS Anomaly Detection Performance (Test Set)}
@@ -106,7 +110,11 @@ beyond every model's training cutoff, five frontier LLMs scored
 identically on surface accuracy (vendor 67\%, product 63\%, CVE
 $\leq$3\%), yet stated confidence diverged sharply: GPT-5.4-mini
 reported mean confidence 0.78 on 29/30 records while Claude Opus 4.7
-abstained on 27/30. Same accuracy, different operational risk.
+abstained on 27/30.\footnote{Model identifiers reflect the public API
+versions current at evaluation time (April 2026); \texttt{gpt-5.4-mini}
+and \texttt{claude-opus-4-7} are accessed through the OpenAI and
+Anthropic APIs respectively.} Same accuracy, different operational
+risk.
 
 \textbf{Implication.} The Epistemic Gap's value is not raw predictive
 lift but \textit{interpretability}: it factorises risk into a
