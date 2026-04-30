@@ -6,20 +6,19 @@ authors:
   - family-names: Alam
     given-names: Mohammad Makchudul
     email: engrarifcce@gmail.com
-    orcid: "https://orcid.org/0009-0007-1823-2386"
-    affiliation: "CTI, BGD e-GOV CIRT; DNS Research Lab, University College Dublin"
+    affiliation: "CTI, BGD e-GOV CIRT; DNS Research Lab (www.dnsresearchlabs.ucd.ie), Dhaka, Bangladesh"
   - family-names: Anik
     given-names: Md. Redowan Z.
     email: redowanzanik@gmail.com
-    affiliation: "Cyber Threat Intelligence, BGD e-GOV CIRT"
+    affiliation: "Cyber Threat Intelligence, BGD e-GOV CIRT, Dhaka, Bangladesh"
   - family-names: el Bodour
     given-names: Sabrein S. E.
     email: sabreinserag@gmail.com
-    affiliation: "Cyber Threat Intelligence, BGD e-GOV CIRT"
+    affiliation: "Cyber Threat Intelligence, BGD e-GOV CIRT, Dhaka, Bangladesh"
   - family-names: Jurcut
     given-names: Anca Delia
     email: anca.jurcut@ucd.ie
-    affiliation: "School of Computer Science, University College Dublin"
+    affiliation: "School of Computer Science, University College Dublin, Dublin, Ireland"
 repository-code: "https://github.com/IntelEyes/ARES-Framework"
 license: MIT
 keywords:

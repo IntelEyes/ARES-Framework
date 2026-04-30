@@ -67,13 +67,18 @@ repository" widget in the sidebar.
 ## Authors
 
 - **Mohammad Makchudul Alam** — CTI, BGD e-GOV CIRT;
-  [DNS Research Lab, UCD](https://dnsresearchlabs.ucd.ie)
-  ([engrarifcce@gmail.com](mailto:engrarifcce@gmail.com),
-  ORCID: [0009-0007-1823-2386](https://orcid.org/0009-0007-1823-2386))
-- **Md. Redowan Z. Anik** — Cyber Threat Intelligence, BGD e-GOV CIRT
-- **Sabrein S. E. el Bodour** — Cyber Threat Intelligence, BGD e-GOV CIRT
+  [DNS Research Lab](https://www.dnsresearchlabs.ucd.ie),
+  Dhaka, Bangladesh
+  ([engrarifcce@gmail.com](mailto:engrarifcce@gmail.com))
+- **Md. Redowan Z. Anik** — Cyber Threat Intelligence, BGD e-GOV CIRT,
+  Dhaka, Bangladesh
+  ([redowanzanik@gmail.com](mailto:redowanzanik@gmail.com))
+- **Sabrein S. E. el Bodour** — Cyber Threat Intelligence, BGD e-GOV CIRT,
+  Dhaka, Bangladesh
+  ([sabreinserag@gmail.com](mailto:sabreinserag@gmail.com))
 - **Anca Delia Jurcut** — School of Computer Science, University College
-  Dublin
+  Dublin, Dublin, Ireland
+  ([anca.jurcut@ucd.ie](mailto:anca.jurcut@ucd.ie))
 
 ## License
 
