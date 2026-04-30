@@ -76,9 +76,9 @@ For the magazine article:
 @article{alam2026aresmag,
   title   = {ARES: A Framework for Measuring Reliability and Failure
              Modes in Autonomous AI Security Agents},
-  author  = {Alam, Mohammad Makchudul and Jurcut, Anca Delia and
-             Anik, Md.~Redowan Z. and el Bodour, Sabrein S.~E. and
-             Islam, Moshiul},
+  author  = {Alam, Mohammad Makchudul and Anik, Md.~Redowan Z. and
+             el Bodour, Sabrein S.~E. and Islam, Moshiul and
+             Jurcut, Anca Delia},
   journal = {IEEE Security \& Privacy},
   year    = {2026},
   note    = {Special issue on Autonomous AI Agents in Computer Security}
@@ -100,12 +100,14 @@ repository" widget in the sidebar.
 - **Sabrein S. E. el Bodour** — Cyber Threat Intelligence, BGD e-GOV CIRT,
   Dhaka, Bangladesh
   ([sabreinserag@gmail.com](mailto:sabreinserag@gmail.com))
+- **Moshiul Islam** — Founder and CEO, EIC Limited, Dhaka, Bangladesh.
+  PCI-DSS QSA and Certified Forensic Examiner; conducts PCI-DSS audits
+  and provides cybersecurity services in VAPT, SOC, and GRC domains.
+  *(IEEE S&P Magazine article only)*
+  ([moshiul@eicsecure.com](mailto:moshiul@eicsecure.com))
 - **Anca Delia Jurcut** — School of Computer Science, University College
   Dublin, Dublin, Ireland
   ([anca.jurcut@ucd.ie](mailto:anca.jurcut@ucd.ie))
-- **Moshiul Islam** — EIC Limited, Dhaka, Bangladesh
-  *(IEEE S&P Magazine article only)*
-  ([moshiul@eicsecure.com](mailto:moshiul@eicsecure.com))
 
 ## License
 
