@@ -28,7 +28,8 @@ The framework introduces:
 ```
 ARES-Framework/
 ├── README.md
-├── LICENSE                  MIT
+├── LICENSE                  MIT (code)
+├── LICENSE-DATA             CC BY 4.0 (SAFK corpus + analysis files)
 ├── CITATION.cff             Cite this repository
 ├── ISAIA_2026/              IEEE ISAIA 2026 conference paper
 │   ├── main.pdf               PDF
@@ -36,12 +37,27 @@ ARES-Framework/
 │   ├── references.bib
 │   ├── sections/              Per-section .tex files
 │   └── ISAIA_2026_Overleaf.zip   Direct upload to Overleaf
-└── SP_Magazine_2026/        IEEE Security & Privacy Magazine article
-    ├── main.pdf               PDF
-    ├── main.tex               LaTeX source (IEEEtran journal/compsoc)
-    ├── references.bib
-    ├── sections/              Per-section .tex files
-    └── SP_Magazine_2026_Overleaf.zip   Direct upload to Overleaf
+├── SP_Magazine_2026/        IEEE Security & Privacy Magazine article
+│   ├── main.pdf               PDF
+│   ├── main.tex               LaTeX source (IEEEtran journal/compsoc)
+│   ├── references.bib
+│   ├── sections/              Per-section .tex files
+│   └── SP_Magazine_2026_Overleaf.zip   Direct upload to Overleaf
+├── ares_bench/              ARES-Bench testbed (Docker, 6 microservices)
+│   ├── README.md
+│   ├── docker-compose.yml
+│   ├── .env.example
+│   ├── generate_dataset.py
+│   ├── services/  shared/  analysis/  tests/
+└── safk_corpus/             SOCAgentFailure-1K labelled benchmark
+    ├── README.md
+    ├── socagentfailure_1k.jsonl / .csv      1,000 labelled traces
+    ├── dataset_stats.json
+    ├── canonical_paper_numbers.json         Reproducibility bundle
+    ├── cascade_ablation.json
+    ├── cross_model_results.json
+    ├── real_incident_runs_v2.json
+    └── real_incident_labels.csv
 ```
 
 Both papers are self-contained: all definitions, the five-dimensional

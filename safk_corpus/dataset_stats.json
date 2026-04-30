@@ -1,0 +1,142 @@
+{
+  "dataset_name": "SOCAgentFailure-1K",
+  "total_records": 1000,
+  "generated_at": "2026-03-25T23:22:49.387514+00:00",
+  "seed": 42,
+  "overall": {
+    "mean_ars": 0.6441,
+    "std_ars": 0.2349,
+    "min_ars": 0.06,
+    "max_ars": 1.0,
+    "mean_epistemic_gap": 0.3486,
+    "anomaly_rate": 0.383,
+    "hallucination_rate_llm_only": 0.1587
+  },
+  "cascade_analysis": {
+    "aut2_mean_ars": 0.6214,
+    "single_agent_mean_ars": 0.6548,
+    "cascade_degradation_pct": 5.1
+  },
+  "by_architecture": {
+    "AUT-1": {
+      "count": 250,
+      "mean_ars": 0.6589,
+      "std_ars": 0.2355,
+      "min_ars": 0.07,
+      "max_ars": 1.0,
+      "anomaly_rate": 0.384,
+      "hallucination_rate": 0.148
+    },
+    "AUT-2": {
+      "count": 250,
+      "mean_ars": 0.6214,
+      "std_ars": 0.227,
+      "min_ars": 0.072,
+      "max_ars": 0.9869,
+      "anomaly_rate": 0.404,
+      "hallucination_rate": 0.136
+    },
+    "AUT-3": {
+      "count": 250,
+      "mean_ars": 0.6507,
+      "std_ars": 0.223,
+      "min_ars": 0.0924,
+      "max_ars": 0.9869,
+      "anomaly_rate": 0.392,
+      "hallucination_rate": 0.192
+    },
+    "AUT-4": {
+      "count": 250,
+      "mean_ars": 0.6454,
+      "std_ars": 0.2514,
+      "min_ars": 0.06,
+      "max_ars": 1.0,
+      "anomaly_rate": 0.352,
+      "hallucination_rate": 0.0
+    }
+  },
+  "by_threat_type": {
+    "T1": {
+      "count": 200,
+      "mean_ars": 0.6387,
+      "min_ars": 0.08,
+      "max_ars": 1.0,
+      "anomaly_rate": 0.37
+    },
+    "T2": {
+      "count": 200,
+      "mean_ars": 0.6482,
+      "min_ars": 0.08,
+      "max_ars": 1.0,
+      "anomaly_rate": 0.375
+    },
+    "T3": {
+      "count": 200,
+      "mean_ars": 0.6569,
+      "min_ars": 0.07,
+      "max_ars": 1.0,
+      "anomaly_rate": 0.355
+    },
+    "T4": {
+      "count": 200,
+      "mean_ars": 0.6614,
+      "min_ars": 0.07,
+      "max_ars": 1.0,
+      "anomaly_rate": 0.39
+    },
+    "T5": {
+      "count": 200,
+      "mean_ars": 0.6153,
+      "min_ars": 0.06,
+      "max_ars": 1.0,
+      "anomaly_rate": 0.425
+    }
+  },
+  "by_split": {
+    "train": {
+      "count": 600,
+      "mean_ars": 0.6513,
+      "anomaly_rate": 0.3817
+    },
+    "validation": {
+      "count": 200,
+      "mean_ars": 0.6661,
+      "anomaly_rate": 0.335
+    },
+    "test": {
+      "count": 200,
+      "mean_ars": 0.6006,
+      "anomaly_rate": 0.435
+    }
+  },
+  "taxonomy_distribution": {
+    "origin": {
+      "O1": 130,
+      "O2": 1,
+      "O3": 182,
+      "O4": 93,
+      "O5": 60,
+      "O6": 28,
+      "O7": 256,
+      "O8": 250
+    },
+    "manifestation": {
+      "M1": 168,
+      "M2": 259,
+      "M3": 116,
+      "M4": 137,
+      "M5": 215,
+      "M6": 52,
+      "M7": 53
+    },
+    "impact": {
+      "I1": 27,
+      "I2": 317,
+      "I3": 60,
+      "I4": 221,
+      "I5": 174,
+      "I6": 201
+    }
+  },
+  "mismatch_conditions_used": 16
+}

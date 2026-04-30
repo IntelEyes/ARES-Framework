@@ -1,0 +1,217 @@
+{
+  "E1_knowledge_mismatch_hallucination": {
+    "description": "Knowledge Mismatch and Hallucination (RQ1)",
+    "n_llm_records": 750,
+    "hr_per_dk_level": {
+      "0.0": 0.0143,
+      "0.33": 0.1056,
+      "0.66": 0.2196,
+      "1.0": 0.3905
+    },
+    "hr_per_arch_level": {
+      "AUT-1": {
+        "0.0": 0.0143,
+        "0.33": 0.0667,
+        "0.66": 0.2235,
+        "1.0": 0.3714
+      },
+      "AUT-2": {
+        "0.0": 0.0286,
+        "0.33": 0.1167,
+        "0.66": 0.1529,
+        "1.0": 0.3429
+      },
+      "AUT-3": {
+        "0.0": 0.0,
+        "0.33": 0.1333,
+        "0.66": 0.2824,
+        "1.0": 0.4571
+      }
+    },
+    "n_per_dk_level": {
+      "0.0": 210,
+      "0.33": 180,
+      "0.66": 255,
+      "1.0": 105
+    },
+    "pearson_rho_aggregated": 0.9162,
+    "pearson_rho_point_biserial": 0.3401,
+    "pearson_rho": 0.9162,
+    "pearson_p": 2.8e-05,
+    "pass_threshold_075": "True",
+    "n_all_llm": 750,
+    "n_buckets": 12
+  },
+  "E2_mismatch_dimension_failure_dist": {
+    "description": "Mismatch Dimension and Failure Distribution (RQ2)",
+    "dimensions": {
+      "delta_S": {
+        "label": "\u03b4S",
+        "n": 48,
+        "distribution": {
+          "M2": 29,
+          "M5": 10,
+          "M1": 6,
+          "M4": 3
+        },
+        "dominant_manifestation": "M2",
+        "expected_dominant": "M2",
+        "match": true
+      },
+      "delta_K": {
+        "label": "\u03b4K",
+        "n": 37,
+        "distribution": {
+          "M3": 8,
+          "M2": 6,
+          "M1": 12,
+          "M7": 3,
+          "M5": 6,
+          "M4": 2
+        },
+        "dominant_manifestation": "M1",
+        "expected_dominant": "M1",
+        "match": true
+      },
+      "delta_C": {
+        "label": "\u03b4C",
+        "n": 33,
+        "distribution": {
+          "M5": 25,
+          "M6": 3,
+          "M2": 5
+        },
+        "dominant_manifestation": "M5",
+        "expected_dominant": "M5",
+        "match": true
+      },
+      "delta_R": {
+        "label": "\u03b4R",
+        "n": 17,
+        "distribution": {
+          "M3": 3,
+          "M6": 4,
+          "M4": 9,
+          "M2": 1
+        },
+        "dominant_manifestation": "M4",
+        "expected_dominant": "M4",
+        "match": true
+      }
+    },
+    "chi_square": 146.7001,
+    "chi_square_p": 0.0,
+    "chi_square_dof": 18,
+    "significant": "True",
+    "manifestation_codes_used": [
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "M5",
+      "M6",
+      "M7"
+    ]
+  },
+  "E3_ars_threshold_generalisation": {
+    "description": "ARS Threshold Generalisation (RQ3)",
+    "optimal_theta": 0.58,
+    "train_f1": 0.9471,
+    "test_overall": {
+      "precision": 1.0,
+      "recall": 0.9195,
+      "f1": 0.9581,
+      "tp": 80,
+      "fp": 0,
+      "fn": 7,
+      "tn": 113
+    },
+    "test_per_class": {
+      "T1": {
+        "n": 40,
+        "precision": 1.0,
+        "recall": 0.9444,
+        "f1": 0.9714
+      },
+      "T2": {
+        "n": 40,
+        "precision": 1.0,
+        "recall": 0.9412,
+        "f1": 0.9697
+      },
+      "T3": {
+        "n": 40,
+        "precision": 1.0,
+        "recall": 0.8667,
+        "f1": 0.9286
+      },
+      "T4": {
+        "n": 40,
+        "precision": 1.0,
+        "recall": 0.8421,
+        "f1": 0.9143
+      },
+      "T5": {
+        "n": 40,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "all_classes_f1_ge_080": true,
+    "overall_f1_ge_080": true
+  },
+  "E4_single_vs_multi_agent": {
+    "description": "Single-Agent vs Multi-Agent Cascade (RQ4)",
+    "aut1_mean_ars": 0.6447,
+    "aut2_mean_cascade_ars": 0.4955,
+    "aut2_mean_base_ars": 0.6068,
+    "ars_degradation_pct": -23.1416,
+    "aut1_hr": 0.1542,
+    "aut2_hr": 0.1417,
+    "aut1_task_success": 0.5333,
+    "aut2_task_success": 0.325,
+    "ttest_t": 7.2198,
+    "ttest_p": 0.0,
+    "significant": "True",
+    "degradation_ge_20pct": true,
+    "n_aut1": 240,
+    "n_aut2": 240
+  },
+  "E5_epistemic_gap_fnr_predictor": {
+    "description": "Epistemic Gap vs Raw \u03b4K as FNR Predictor (RQ5)",
+    "n": 1000,
+    "fn_count": 125,
+    "fn_rate": 0.125,
+    "continuous_fn_score": {
+      "pearson_dk": {
+        "rho": 0.9417,
+        "p": 0.0
+      },
+      "pearson_eg": {
+        "rho": 0.9597,
+        "p": 0.0
+      },
+      "fisher_z": -4.2159,
+      "fisher_z_p": 2.5e-05,
+      "eg_stronger": "True",
+      "significant": "True"
+    },
+    "binary_fn": {
+      "spearman_dk": {
+        "rho": -0.0149,
+        "p": 0.638372
+      },
+      "spearman_eg": {
+        "rho": -0.0202,
+        "p": 0.524141
+      },
+      "fisher_z": 0.1181,
+      "fisher_z_p": 0.906016,
+      "eg_stronger": "True",
+      "significant": "False"
+    },
+    "primary_eg_stronger": "True",
+    "primary_significant": "True"
+  }
+}

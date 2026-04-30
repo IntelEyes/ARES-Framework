@@ -1,0 +1,907 @@
+{
+  "n_subsample": 40,
+  "seed": 42,
+  "models": [
+    "gpt-4o-mini",
+    "claude-haiku-4-5",
+    "claude-sonnet-4-6"
+  ],
+  "summary": {
+    "gpt-4o-mini": {
+      "n": 40,
+      "errors": 0,
+      "hallucination_by_delta_K": {
+        "0.0": 0.0,
+        "0.33": 0.0,
+        "0.66": 0.0,
+        "1.0": 0.4
+      },
+      "hallucination_at_dk_1.0": 0.4,
+      "overall_hallucination_rate": 0.1,
+      "bucket_aggregated_pearson_rho": 0.7792278204816827
+    },
+    "claude-haiku-4-5": {
+      "n": 40,
+      "errors": 0,
+      "hallucination_by_delta_K": {
+        "0.0": 0.0,
+        "0.33": 0.3,
+        "0.66": 0.7,
+        "1.0": 0.7
+      },
+      "hallucination_at_dk_1.0": 0.7,
+      "overall_hallucination_rate": 0.425,
+      "bucket_aggregated_pearson_rho": 0.9460002515088939
+    },
+    "claude-sonnet-4-6": {
+      "n": 40,
+      "errors": 0,
+      "hallucination_by_delta_K": {
+        "0.0": 0.2,
+        "0.33": 0.5,
+        "0.66": 0.8,
+        "1.0": 0.8
+      },
+      "hallucination_at_dk_1.0": 0.8,
+      "overall_hallucination_rate": 0.575,
+      "bucket_aggregated_pearson_rho": 0.941424789356525
+    }
+  },
+  "raw": {
+    "gpt-4o-mini": {
+      "records": [
+        {
+          "id": 0,
+          "delta_K": 0.0,
+          "threat_type": "T1",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: Ransomware\n\n(2) Suspected MITRE ATT&CK TTPs: T1059 (Command and Scripting Interpreter), T1003 (Credential Dumping), T1083 (File and Directory Discovery), T1105 (Ingress Tool Transfer)\n\n(3) Recommended response actions:\n- Isolate affected systems from the network to prevent further spread.\n- Identify and preserve forensic evidence (logs, memory dumps).\n- Assess the extent of the compromise and impacted data.\n- Notify relevant stakeholders and initiate incident respo"
+        },
+        {
+          "id": 1,
+          "delta_K": 0.0,
+          "threat_type": "T1",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: Ransomware\n\n(2) Suspected MITRE ATT&CK TTPs: T1486 (Data Encrypted for Impact), T1490 (Inhibit System Recovery), T1059 (Scripting), T1027 (Obfuscated Files or Information)\n\n(3) Recommended response actions:\n- Isolate affected systems to prevent further spread.\n- Conduct a thorough investigation to identify the initial entry point and any lateral movement.\n- Collect and preserve evidence for further analysis.\n- Notify relevant stakeholders and initiate incident resp"
+        },
+        {
+          "id": 2,
+          "delta_K": 0.333333,
+          "threat_type": "T1",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: Ransomware\n\n(2) Suspected MITRE ATT&CK TTPs: T1059 (Command and Scripting Interpreter), T1003 (Credential Dumping), T1083 (File and Directory Discovery)\n\n(3) Recommended response actions:\n- Isolate affected systems from the network to prevent further spread.\n- Conduct a thorough investigation to confirm the ransomware activity and identify the variant.\n- Analyze logs for indicators of compromise (IoCs) related to the identified TTPs.\n- Preserve evidence for potenti"
+        },
+        {
+          "id": 3,
+          "delta_K": 0.375,
+          "threat_type": "T1",
+          "hallucinated": false,
+          "output": "1. Most likely threat family: Ransomware\n\n2. Suspected MITRE ATT&CK TTPs: T1486 (Data Encrypted for Impact), T1490 (Inhibit System Recovery)\n\n3. Recommended response actions:\n   - Isolate affected systems to prevent further spread.\n   - Conduct forensic analysis to ascertain the scope of the attack.\n   - Check for ransom notes or indicators of compromise.\n   - Notify relevant stakeholders and law enforcement.\n   - Restore data from backups if available and secure.\n   - Review and enhance securit"
+        },
+        {
+          "id": 4,
+          "delta_K": 0.625,
+          "threat_type": "T1",
+          "hallucinated": false,
+          "output": "1. Most likely threat family: Ransomware\n\n2. Suspected MITRE ATT&CK TTPs: T1486 (Data Encrypted for Impact), T1490 (Inhibit System Recovery)\n\n3. Recommended response actions:\n   - Isolate the affected systems to prevent further spread.\n   - Identify and preserve evidence for forensic analysis.\n   - Assess the scope of the infection and identify impacted files.\n   - Notify relevant stakeholders (e.g., management, IT, legal).\n   - Begin recovery processes, including restoring from backups if avail"
+        },
+        {
+          "id": 5,
+          "delta_K": 0.666667,
+          "threat_type": "T1",
+          "hallucinated": false,
+          "output": "1. Most likely threat family: Ransomware\n\n2. Suspected MITRE ATT&CK TTPs: T1059 (Command and Scripting Interpreter)\n\n3. Recommended response actions:\n   - Isolate the affected systems to prevent further spread.\n   - Conduct a thorough forensic investigation to identify the ransomware variant and its entry point.\n   - Engage incident response teams to analyze the attack vector and contain the threat.\n   - Restore affected systems from clean backups, if available.\n   - Notify relevant stakeholders"
+        },
+        {
+          "id": 6,
+          "delta_K": 1.0,
+          "threat_type": "T1",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: Ransomware\n\n(2) Suspected MITRE ATT&CK TTPs: T1486 (Data Encrypted for Impact)\n\n(3) Recommended response actions:\n- Isolate affected systems from the network to prevent further spread.\n- Identify and analyze the ransomware variant if possible.\n- Preserve logs and evidence for investigation.\n- Inform relevant stakeholders and initiate incident response procedures.\n- Consider restoring from backups if available and clean the environment before restoring data.\n- Monit"
+        },
+        {
+          "id": 7,
+          "delta_K": 1.0,
+          "threat_type": "T1",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: Ransomware\n\n(2) Suspected MITRE ATT&CK TTPs: T1486 (Data Encrypted for Impact)\n\n(3) Recommended response actions:\n- Isolate affected systems to prevent further spread.\n- Conduct a thorough investigation to identify the ransomware variant and its entry point.\n- Restore data from backups if available and secure.\n- Notify relevant stakeholders and law enforcement if necessary.\n- Implement improved security measures and user training to prevent future incidents."
+        },
+        {
+          "id": 8,
+          "delta_K": 0.0,
+          "threat_type": "T2",
+          "hallucinated": false,
+          "output": "1. **Most likely threat family:** Phishing\n\n2. **Suspected MITRE ATT&CK TTPs:** \n   - T1566.002 (Phishing: Spear Phishing Link)\n   - T1078 (Valid Accounts)\n\n3. **Recommended response actions:**\n   - Verify the source of the phishing attempt and gather any related indicators of compromise (IOCs).\n   - Educate users about recognizing phishing attempts and encourage reporting suspicious emails.\n   - Block the sender's email address and any associated URLs.\n   - Monitor for any unauthorized access a"
+        },
+        {
+          "id": 9,
+          "delta_K": 0.0,
+          "threat_type": "T2",
+          "hallucinated": false,
+          "output": "1. Most likely threat family: Phishing.\n\n2. Suspected MITRE ATT&CK TTPs: \n   - T1566.001 (Phishing: Spear Phishing Link)\n   - T1059 (Scripting)\n   - T1071 (Application Layer Protocol)\n\n3. Recommended response actions:\n   - Isolate affected systems to prevent any further compromise.\n   - Conduct an investigation to identify the scope of the phishing campaign and any potential data exfiltration.\n   - Educate users on recognizing phishing attempts and reinforce security awareness training.\n   - Imp"
+        },
+        {
+          "id": 10,
+          "delta_K": 0.4,
+          "threat_type": "T2",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: Phishing\n\n(2) Suspected MITRE ATT&CK TTPs: T1566.001 (Phishing: Spear Phishing Link) and T1059 (Command and Scripting Interpreter)\n\n(3) Recommended response actions:\n- Investigate the source of the phishing email(s) and any associated indicators of compromise (IOCs).\n- Implement user awareness training to educate employees on recognizing phishing attempts.\n- Review email filtering and security measures to block similar phishing attempts in the future.\n- Monitor for"
+        },
+        {
+          "id": 11,
+          "delta_K": 0.25,
+          "threat_type": "T2",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: Phishing.\n\n(2) Suspected MITRE ATT&CK TTPs: T1566.002 (Phishing: Spear Phishing Link) and T1078 (Valid Accounts).\n\n(3) Recommended response actions: \n- Investigate the source of the phishing emails and identify any compromised accounts.\n- Educate users about recognizing phishing attempts and implement a security awareness training program.\n- Enforce multi-factor authentication (MFA) for all accounts to mitigate the risk of account compromise.\n- Monitor network traf"
+        },
+        {
+          "id": 12,
+          "delta_K": 0.75,
+          "threat_type": "T2",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: Phishing.\n\n(2) Suspected MITRE ATT&CK TTPs: T1566 (Phishing).\n\n(3) Recommended response actions:\n- Investigate the source of the phishing campaign.\n- Block any identified malicious URLs or email addresses.\n- Educate users on recognizing phishing attempts.\n- Monitor for any signs of compromise related to the campaign.\n- Implement or reinforce email filtering and security measures."
+        },
+        {
+          "id": 13,
+          "delta_K": 0.6,
+          "threat_type": "T2",
+          "hallucinated": false,
+          "output": "1. Most likely threat family: Phishing\n\n2. Suspected MITRE ATT&CK TTPs: T1566.001 (Phishing: Spear Phishing Link)\n\n3. Recommended response actions:\n   - Investigate the source of the phishing campaign and identify any affected users.\n   - Block the sender's email address and any associated domains.\n   - Educate users about recognizing phishing attempts and encourage them to report suspicious emails.\n   - Review email logs for similar phishing attempts and monitor for any signs of compromise.\n   "
+        },
+        {
+          "id": 14,
+          "delta_K": 1.0,
+          "threat_type": "T2",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: Phishing\n\n(2) Suspected MITRE ATT&CK TTPs: T1566 (Phishing)\n\n(3) Recommended response actions:\n- Analyze the email headers and content for indicators of compromise.\n- Block the sender's email address and URLs associated with the phishing attempt.\n- Educate users about recognizing phishing attempts and report suspicious emails.\n- Monitor for any signs of credential theft or unauthorized access following the incident.\n- Consider implementing multi-factor authenticati"
+        },
+        {
+          "id": 15,
+          "delta_K": 1.0,
+          "threat_type": "T2",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: Phishing\n\n(2) Suspected MITRE ATT&CK TTPs: T1566 (Phishing)\n\n(3) Recommended response actions:\n- Investigate the source of the phishing emails and identify any affected users.\n- Educate users about recognizing phishing attempts and encourage reporting suspicious emails.\n- Implement email filtering solutions to block known malicious domains or attachments.\n- Review and strengthen email security policies and practices.\n- Monitor for any signs of compromise or unusual"
+        },
+        {
+          "id": 16,
+          "delta_K": 0.0,
+          "threat_type": "T3",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: Insider Threat\n\n(2) Suspected MITRE ATT&CK TTPs: T1078 (Valid Accounts), T1048 (Exfiltration Over Alternative Protocol), T1530 (Data from Information Repositories), T1560 (Archive Collected Data)\n\n(3) Recommended response actions: \n- Conduct a behavioral analysis of the suspected insider, focusing on access patterns and data usage.\n- Review logs for unusual account activity and validate account legitimacy.\n- Implement access controls and limit sensitive data access"
+        },
+        {
+          "id": 17,
+          "delta_K": 0.0,
+          "threat_type": "T3",
+          "hallucinated": false,
+          "output": "1. Most likely threat family: Insider Threat\n\n2. Suspected MITRE ATT&CK TTPs: \n   - T1078.004 (Valid Accounts: Domain Accounts)\n   - T1530 (Data from Information Repositories)\n   - T1070 (Indicator Removal on Host)\n\n3. Recommended response actions:\n   - Investigate user activity logs for unusual access patterns or data exfiltration.\n   - Review permissions and access levels of the suspected insider.\n   - Conduct interviews or discussions with the affected employee and colleagues.\n   - Implement "
+        },
+        {
+          "id": 18,
+          "delta_K": 0.4,
+          "threat_type": "T3",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: Insider Threat\n\n(2) Suspected MITRE ATT&CK TTPs: T1078 (Valid Accounts), T1048 (Exploitation of Remote Services)\n\n(3) Recommended response actions:\n- Conduct a thorough investigation of the user's account activity and access logs.\n- Review and analyze any unusual data access or exfiltration patterns.\n- Implement user account restrictions or monitoring if suspicious behavior is confirmed.\n- Engage with HR and legal teams as necessary, depending on the findings.\n- In"
+        },
+        {
+          "id": 19,
+          "delta_K": 0.25,
+          "threat_type": "T3",
+          "hallucinated": false,
+          "output": "1. **Most Likely Threat Family:** Insider Threat\n\n2. **Suspected MITRE ATT&CK TTPs:** \n   - T1078.004 (Valid Accounts: Domain Accounts)\n   - T1530 (Data from Information Repositories)\n\n3. **Recommended Response Actions:**\n   - Conduct a thorough investigation to confirm the insider threat, including reviewing user activity logs and access patterns.\n   - Interview the suspected individual and relevant personnel to gather context.\n   - Monitor for unusual data access or exfiltration activities.\n  "
+        },
+        {
+          "id": 20,
+          "delta_K": 0.6,
+          "threat_type": "T3",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: Insider Threat\n\n(2) Suspected MITRE ATT&CK TTPs: T1078 (Valid Accounts), T1048 (Exploitation of Trust Relationships)\n\n(3) Recommended response actions:\n- Investigate the user's activity logs for any suspicious behavior.\n- Review access permissions and roles for the suspected insider.\n- Monitor for any data exfiltration or unauthorized access attempts.\n- Conduct interviews with the involved personnel if necessary.\n- Implement additional security measures, such as li"
+        },
+        {
+          "id": 21,
+          "delta_K": 0.75,
+          "threat_type": "T3",
+          "hallucinated": false,
+          "output": "1. Most likely threat family: Insider Threat\n\n2. Suspected MITRE ATT&CK TTPs: T1078.004 (Account Use for Legitimate Business Functions)\n\n3. Recommended response actions:\n   - Conduct a thorough investigation of the user's activities and access logs.\n   - Review the user's permissions and recent changes to their account.\n   - Interview the user and relevant personnel to understand the context of their actions.\n   - Monitor for any further suspicious activity from the user or related accounts.\n   "
+        },
+        {
+          "id": 22,
+          "delta_K": 1.0,
+          "threat_type": "T3",
+          "hallucinated": true,
+          "output": "1. **Most Likely Threat Family:** Insider Threat\n\n2. **Suspected MITRE ATT&CK TTPs:** Since no specific techniques are available in the agent's knowledge base, I cannot provide specific TTPs. However, general TTPs associated with insider threats may include T1078 (Valid Accounts) and T1218 (Signed Binary Proxy Execution).\n\n3. **Recommended Response Actions:**\n   - Conduct a thorough investigation to gather evidence of the suspected insider behavior.\n   - Review access logs and user activity for "
+        },
+        {
+          "id": 23,
+          "delta_K": 1.0,
+          "threat_type": "T3",
+          "hallucinated": true,
+          "output": "(1) Most likely threat family: Insider Threat.\n\n(2) Suspected MITRE ATT&CK TTPs: T1071.001 (Application Layer Protocol: Web Protocols), T1086 (PowerShell), T1218 (System Binary Proxy Execution) - noting that these are common techniques associated with insider threats, but specific techniques may vary based on the context.\n\n(3) Recommended response actions:\n- Conduct a thorough investigation of the user's activity logs and access patterns.\n- Interview the suspected insider to gather context and i"
+        },
+        {
+          "id": 24,
+          "delta_K": 0.0,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "1. Most likely threat family: DDoS (Distributed Denial of Service) attack.\n\n2. Suspected MITRE ATT&CK TTPs: T1499 (Network Denial of Service), T1499.001 (Application Layer DDoS).\n\n3. Recommended response actions: \n   - Implement rate limiting and traffic filtering on network devices.\n   - Engage DDoS mitigation services if available.\n   - Monitor network traffic for unusual patterns or spikes.\n   - Notify stakeholders and prepare for potential service disruption.\n   - Review and strengthen incid"
+        },
+        {
+          "id": 25,
+          "delta_K": 0.0,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: DDoS (Distributed Denial of Service)\n\n(2) Suspected MITRE ATT&CK TTPs: T1498 (Network Denial of Service), T1498.001 (Application Layer Network Denial of Service)\n\n(3) Recommended response actions:\n- Implement DDoS mitigation strategies (e.g., rate limiting, web application firewalls).\n- Alert network and security teams to monitor traffic patterns closely.\n- Engage with your ISP or DDoS protection service for additional support.\n- Prepare to analyze logs and traffic"
+        },
+        {
+          "id": 26,
+          "delta_K": 0.25,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: DDoS (Distributed Denial of Service) attack.\n\n(2) Suspected MITRE ATT&CK TTPs: T1499 (Network Denial of Service) and T1499.001 (Volumetric DoS).\n\n(3) Recommended response actions:\n- Monitor network traffic to identify the source and nature of the DDoS attack.\n- Implement rate limiting or traffic filtering to mitigate the attack.\n- Engage with your internet service provider (ISP) for additional support and to explore DDoS protection services.\n- Review firewall and i"
+        },
+        {
+          "id": 27,
+          "delta_K": 0.25,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: DDoS (Distributed Denial of Service)\n\n(2) Suspected MITRE ATT&CK TTPs: T1498 (Network Denial of Service), T1498.001 (Application Layer Denial of Service)\n\n(3) Recommended response actions:\n- Implement rate limiting or traffic filtering to mitigate the attack.\n- Engage with your ISP to discuss potential mitigation strategies.\n- Monitor network traffic for unusual patterns and identify the attack vectors.\n- Prepare to scale infrastructure if necessary to absorb the a"
+        },
+        {
+          "id": 28,
+          "delta_K": 0.75,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: DDoS (Distributed Denial of Service)\n\n(2) Suspected MITRE ATT&CK TTPs: T1499 (Network Denial of Service)\n\n(3) Recommended response actions:\n- Verify and assess the nature of the DDoS attack.\n- Implement DDoS mitigation strategies (e.g., traffic filtering, rate limiting).\n- Notify the relevant stakeholders and incident response team.\n- Monitor network traffic for abnormal patterns and further indicators of compromise.\n- Review logs and historical data to identify po"
+        },
+        {
+          "id": 29,
+          "delta_K": 0.75,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: DDoS (Distributed Denial of Service) attack.\n\n(2) Suspected MITRE ATT&CK TTPs: T1498 (Network Denial of Service).\n\n(3) Recommended response actions:\n- Confirm the nature of the traffic and the affected services.\n- Implement DDoS mitigation strategies, such as rate limiting or IP blocking.\n- Engage your DDoS protection service, if available.\n- Monitor network traffic for unusual patterns and potential follow-up attacks.\n- Communicate with stakeholders about the inci"
+        },
+        {
+          "id": 30,
+          "delta_K": 1.0,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: DDoS (Distributed Denial of Service)\n\n(2) Suspected MITRE ATT&CK TTPs: T1498 (Network Denial of Service)\n\n(3) Recommended response actions:\n- Monitor network traffic for unusual spikes and patterns.\n- Implement rate limiting and traffic filtering on network devices.\n- Engage with your Internet Service Provider (ISP) for support on mitigating the attack.\n- Review and update incident response plans for DDoS attacks.\n- Prepare to engage DDoS protection services if the"
+        },
+        {
+          "id": 31,
+          "delta_K": 1.0,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: DDoS (Distributed Denial of Service).\n\n(2) Suspected MITRE ATT&CK TTPs: T1498 (Network Denial of Service).\n\n(3) Recommended response actions:\n- Verify the alert by analyzing network traffic patterns and logs.\n- Implement rate limiting and traffic filtering on affected services.\n- Notify relevant stakeholders and prepare for potential service disruptions.\n- Engage with your DDoS mitigation service provider if available.\n- Monitor network performance and continue to "
+        },
+        {
+          "id": 32,
+          "delta_K": 0.0,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: APT (Advanced Persistent Threat)\n\n(2) Suspected MITRE ATT&CK TTPs: T1190 (Exploit Public-Facing Application), T1059 (Command and Scripting Interpreter), T1003 (Credential Dumping), T1021 (Remote Services), T1053 (Scheduled Task/Job), T1055 (Process Injection), T1041 (Exfiltration Over Command and Control Channel), T1572 (Protocol Tunneling), T1568 (Dynamic Resolution)\n\n(3) Recommended response actions:\n- Contain the affected systems to prevent further intrusion.\n- "
+        },
+        {
+          "id": 33,
+          "delta_K": 0.0,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: APT (Advanced Persistent Threat).\n\n(2) Suspected MITRE ATT&CK TTPs: \n- T1195 (Supply Chain Compromise)\n- T1059 (Command and Scripting Interpreter)\n- T1105 (Remote File Copy)\n- T1071 (Application Layer Protocol)\n- T1041 (Exfiltration Over Command and Control Channel)\n\n(3) Recommended response actions:\n- Isolate affected systems to prevent further compromise.\n- Conduct a thorough investigation to identify the extent of the intrusion.\n- Analyze logs and network traffi"
+        },
+        {
+          "id": 34,
+          "delta_K": 0.333333,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: APT (Advanced Persistent Threat)\n\n(2) Suspected MITRE ATT&CK TTPs: T1195 (Supply Chain Compromise), T1059 (Command and Scripting Interpreter), T1105 (Ingress Tool Transfer)\n\n(3) Recommended response actions:\n- Isolate affected systems to prevent further compromise.\n- Conduct a thorough investigation to identify the scope of the intrusion.\n- Collect and analyze logs from affected systems and network traffic.\n- Review and validate application and system integrity, fo"
+        },
+        {
+          "id": 35,
+          "delta_K": 0.3,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: APT (Advanced Persistent Threat).\n\n(2) Suspected MITRE ATT&CK TTPs: T1190 (Exploit Public-Facing Application), T1059 (Command and Scripting Interpreter), T1003 (Credential Dumping), T1021 (Remote Services), T1053 (Scheduled Task/Job), T1055 (Process Injection).\n\n(3) Recommended response actions:\n- Isolate affected systems to prevent further spread of the intrusion.\n- Conduct a thorough investigation to identify indicators of compromise (IOCs).\n- Analyze logs and ne"
+        },
+        {
+          "id": 36,
+          "delta_K": 0.7,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: APT (Advanced Persistent Threat).\n\n(2) Suspected MITRE ATT&CK TTPs: T1190 (Exploitation of Remote Services), T1059 (Command and Scripting Interpreter), T1003 (Credential Dumping).\n\n(3) Recommended response actions:\n- Isolate affected systems to prevent further compromise.\n- Conduct a thorough investigation to determine the extent of the intrusion.\n- Analyze logs and network traffic for unusual activities related to the identified TTPs.\n- Change credentials and impl"
+        },
+        {
+          "id": 37,
+          "delta_K": 0.666667,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "(1) Most likely threat family: APT (Advanced Persistent Threat).\n\n(2) Suspected MITRE ATT&CK TTPs: T1195 (Supply Chain Compromise), T1059 (Command and Scripting Interpreter).\n\n(3) Recommended response actions:\n- Isolate affected systems to prevent further compromise.\n- Conduct a thorough investigation to identify the intrusion vector and scope of the breach.\n- Analyze logs and network traffic for indicators of compromise (IoCs) related to the suspected APT.\n- Assess and strengthen supply chain s"
+        },
+        {
+          "id": 38,
+          "delta_K": 1.0,
+          "threat_type": "T5",
+          "hallucinated": true,
+          "output": "1. Most likely threat family: APT (Advanced Persistent Threat).\n\n2. Suspected MITRE ATT&CK TTPs: Without specific details, it is difficult to pinpoint exact techniques; however, potential TTPs for APTs generally include:\n   - T1071.001: Application Layer Protocol: Web Protocols\n   - T1190: Exploit Public-Facing Application\n   - T1203: Credential Dumping\n   - T1086: PowerShell\n\n3. Recommended response actions:\n   - Initiate a full investigation to confirm the intrusion.\n   - Collect and analyze l"
+        },
+        {
+          "id": 39,
+          "delta_K": 1.0,
+          "threat_type": "T5",
+          "hallucinated": true,
+          "output": "(1) Most likely threat family: Advanced Persistent Threat (APT)\n\n(2) Suspected MITRE ATT&CK TTPs: \n- T1071 (Application Layer Protocol)\n- T1059 (Command and Scripting Interpreter)\n- T1203 (Exploitation for Client Execution) \n(Note: Specific techniques may vary based on the context of the incident.)\n\n(3) Recommended response actions:\n- Isolate affected systems to prevent further compromise.\n- Conduct a thorough investigation to determine the extent of the intrusion.\n- Collect and analyze logs fro"
+        }
+      ],
+      "errors": 0
+    },
+    "claude-haiku-4-5": {
+      "records": [
+        {
+          "id": 0,
+          "delta_K": 0.0,
+          "threat_type": "T1",
+          "hallucinated": false,
+          "output": "# SOC Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Unknown** \u2013 The alert designation \"scenario T1-02\" is not a recognized ransomware family identifier in standard threat intelligence frameworks. Additional context needed (file hashes, ransom note signatures, encryption patterns, C2 domains) to determine specific family.\n\n## (2) Suspected MITRE ATT&CK TTPs\n\nBased on the knowledge base provided and typical ransomware attack chains:\n\n- **T1059** \u2013 Command and Scripting Interpreter (likel"
+        },
+        {
+          "id": 1,
+          "delta_K": 0.0,
+          "threat_type": "T1",
+          "hallucinated": false,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Unknown** \u2013 The alert designation \"T1-01\" appears to be an internal scenario identifier rather than a recognized ransomware family signature. Insufficient indicators (file signatures, ransom note format, C2 patterns, encryption algorithms) are provided to attribute to a specific family (e.g., LockBit, BlackCat, Cl0p).\n\n## (2) Suspected MITRE ATT&CK TTPs\nBased on the ransomware context and provided knowledge base:\n\n- **T1486** \u2013 Encrypt Se"
+        },
+        {
+          "id": 2,
+          "delta_K": 0.333333,
+          "threat_type": "T1",
+          "hallucinated": false,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Unknown** - The alert references a scenario identifier (T1-02) rather than a specific malware family name. Insufficient data to determine the actual ransomware variant.\n\n## (2) Suspected MITRE ATT&CK TTPs\nBased on the knowledge base provided:\n- **T1059** - Command and Scripting Interpreter\n- **T1003** - OS Credential Dumping\n- **T1083** - File and Directory Discovery\n\n**Note:** These are reconnaissance/execution techniques commonly preced"
+        },
+        {
+          "id": 3,
+          "delta_K": 0.375,
+          "threat_type": "T1",
+          "hallucinated": true,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Unable to determine with confidence.** The alert designation \"T1-01\" appears to be an internal scenario identifier rather than a standard threat family name. Common ransomware families include Conti, LockBit, and BlackCat, but this alert provides insufficient indicators (file signatures, ransom note content, C2 infrastructure, encryption algorithms) to attribute to a specific family.\n\n## (2) Suspected MITRE ATT&CK TTPs\nBased on the alert "
+        },
+        {
+          "id": 4,
+          "delta_K": 0.625,
+          "threat_type": "T1",
+          "hallucinated": false,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Unable to determine with certainty.** The alert designation \"T1-01\" appears to be an internal scenario identifier rather than a standard threat family name. Common ransomware families include Conti, LockBit, BlackCat, and Cl0p, but the alert lacks sufficient indicators (file signatures, ransom note format, C2 domains, etc.) to attribute to a specific family.\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1486** \u2013 Data Encrypted for Impact (encr"
+        },
+        {
+          "id": 5,
+          "delta_K": 0.666667,
+          "threat_type": "T1",
+          "hallucinated": true,
+          "output": "# SOC Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Unknown** \u2013 The alert designation \"T1-02\" appears to be an internal scenario identifier rather than a recognized ransomware family signature. Insufficient indicators of compromise (IoCs) provided to determine specific family (e.g., LockBit, Royal, BlackCat, etc.).\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1059** \u2013 Command and Scripting Interpreter (confirmed in knowledge base)\n- **T1486** \u2013 Data Encrypted for Impact (ransomware encrypt"
+        },
+        {
+          "id": 6,
+          "delta_K": 1.0,
+          "threat_type": "T1",
+          "hallucinated": true,
+          "output": "# SOC Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Unable to determine with confidence.** The alert designation \"scenario T1-01\" is a custom label, not a standard threat classification. Without additional indicators (file signatures, ransom notes, encryption patterns, C2 communications, etc.), I cannot attribute this to a specific ransomware family (e.g., LockBit, BlackCat, Cl0p).\n\n## (2) Suspected MITRE ATT&CK TTPs\nBased on the \"suspected ransomware activity\" descriptor alone:\n- **T1"
+        },
+        {
+          "id": 7,
+          "delta_K": 1.0,
+          "threat_type": "T1",
+          "hallucinated": true,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Unknown** \u2013 Insufficient data provided. The alert designation \"T1-02\" appears to be an internal scenario identifier rather than a standard threat classification. Cannot determine ransomware family without additional indicators (file signatures, encryption patterns, ransom note content, C2 communications, etc.).\n\n## (2) Suspected MITRE ATT&CK TTPs\nBased on the \"suspected ransomware activity\" descriptor alone, likely techniques include:\n- *"
+        },
+        {
+          "id": 8,
+          "delta_K": 0.0,
+          "threat_type": "T2",
+          "hallucinated": false,
+          "output": "# Alert Triage Report: T2-02 Phishing Campaign\n\n## (1) Most Likely Threat Family\n**Unknown** \u2013 The alert designation \"T2-02\" does not correspond to a recognized threat family in standard threat intelligence databases. Additional context (sender analysis, payload inspection, infrastructure WHOIS data, etc.) would be needed for family attribution.\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1566.002** \u2013 Phishing: Spearphishing Link\n- **T1078** \u2013 Valid Accounts (likely post-compromise, if credentials "
+        },
+        {
+          "id": 9,
+          "delta_K": 0.0,
+          "threat_type": "T2",
+          "hallucinated": false,
+          "output": "# SOC Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Phishing/Social Engineering Campaign** \u2013 Consistent with initial access vectors. Cannot determine specific malware family from alert details provided.\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1566.001** \u2013 Phishing: Spearphishing Attachment (or Email)\n- **T1059** \u2013 Command and Scripting Interpreter (likely post-compromise)\n- **T1071** \u2013 Application Layer Protocol (C2 communication)\n\n## (3) Recommended Response Actions\n1. **Immediate**:"
+        },
+        {
+          "id": 10,
+          "delta_K": 0.4,
+          "threat_type": "T2",
+          "hallucinated": false,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Phishing malware family (generic)** \u2013 Insufficient data to identify a specific family. The alert references \"scenario T2-01\" which appears to be an internal classification rather than a recognized threat family identifier.\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1566.001** \u2013 Phishing: Spearphishing Attachment\n- **T1059** \u2013 Command and Scripting Interpreter (likely secondary if payloads execute scripts)\n\n*Note: T1059 may be premature to c"
+        },
+        {
+          "id": 11,
+          "delta_K": 0.25,
+          "threat_type": "T2",
+          "hallucinated": true,
+          "output": "# SOC Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Credential harvesting/phishing malware** \u2013 Consistent with a phishing campaign targeting user credentials for initial access.\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1566.002** \u2013 Phishing: Spearphishing Link\n- **T1078** \u2013 Valid Accounts (likely post-compromise objective)\n- **T1598** \u2013 Phishing for Information (possible reconnaissance variant)\n\n*Note: The alert references \"T2-02\" which is not a standard MITRE ATT&CK ID; additional con"
+        },
+        {
+          "id": 12,
+          "delta_K": 0.75,
+          "threat_type": "T2",
+          "hallucinated": true,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Unknown** \u2013 Insufficient technical indicators provided to determine a specific malware family or threat actor group. The alert references only a generic phishing campaign designation (T2-02) without payload analysis, sender infrastructure, or lure content details.\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1566.002** \u2013 Phishing: Spearphishing Link (most probable for email-based phishing)\n- **T1566.001** \u2013 Phishing: Spearphishing Attachment "
+        },
+        {
+          "id": 13,
+          "delta_K": 0.6,
+          "threat_type": "T2",
+          "hallucinated": true,
+          "output": "# SOC Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Phishing/Social Engineering malware** \u2013 consistent with a phishing campaign. Without additional indicators (payload analysis, sender infrastructure, command & control signatures), I cannot attribute to a specific named family (e.g., Emotet, Qakbot, etc.).\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1566.001** \u2013 Phishing: Spearphishing Attachment (confirmed in knowledge base)\n- **T1566.002** \u2013 Phishing: Spearphishing Link (likely, pending"
+        },
+        {
+          "id": 14,
+          "delta_K": 1.0,
+          "threat_type": "T2",
+          "hallucinated": true,
+          "output": "# SOC Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Generic Phishing / Social Engineering**\n\nThe alert references a phishing campaign without additional indicators (malware signatures, payload analysis, infrastructure patterns) that would allow attribution to a specific threat family.\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1566.002** \u2013 Phishing: Spearphishing Link\n- **T1566.001** \u2013 Phishing: Spearphishing Attachment\n- **T1598** \u2013 Phishing for Information\n\n*Note: The exact technique c"
+        },
+        {
+          "id": 15,
+          "delta_K": 1.0,
+          "threat_type": "T2",
+          "hallucinated": true,
+          "output": "# SOC Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Generic Phishing / Social Engineering**\n\nWithout additional indicators (payload type, infrastructure, sender patterns, etc.), I cannot narrow this to a specific family (e.g., Emotet, Qakbot, credential harvesters). More context needed.\n\n## (2) Suspected MITRE ATT&CK TTPs\n**T1566** \u2013 Phishing (primary technique)\n\nLikely sub-techniques depending on delivery method:\n- **T1566.001** \u2013 Phishing: Spearphishing Attachment\n- **T1566.002** \u2013 P"
+        },
+        {
+          "id": 16,
+          "delta_K": 0.0,
+          "threat_type": "T3",
+          "hallucinated": false,
+          "output": "# SOC Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Insider Threat / Data Exfiltration**\n\nThe scenario designation (T3-01) and alert framing indicate malicious activity by an internal or privileged actor rather than external threat actors.\n\n## (2) Suspected MITRE ATT&CK TTPs\n\nBased on the knowledge base provided:\n- **T1078** \u2013 Valid Accounts (leveraging legitimate insider credentials)\n- **T1048** \u2013 Exfiltration Over Alternative Protocol (data movement via non-standard channels)\n- **T15"
+        },
+        {
+          "id": 17,
+          "delta_K": 0.0,
+          "threat_type": "T3",
+          "hallucinated": false,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Insider Threat / Credential Abuse**\n\nThe scenario designation (T3-02) and alert framing indicate a credential-based insider threat rather than a malware family.\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1078.004** \u2013 Valid Accounts: Cloud Accounts (credential misuse)\n- **T1530** \u2013 Data from Cloud Storage (unauthorized access/exfiltration)\n- **T1070** \u2013 Indicator Removal (log tampering or activity concealment)\n\n## (3) Recommended Response Ac"
+        },
+        {
+          "id": 18,
+          "delta_K": 0.4,
+          "threat_type": "T3",
+          "hallucinated": false,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Insider Threat / Credential Abuse**\n\nThe alert explicitly references an insider threat scenario, suggesting malicious activity by an authorized user or compromised legitimate credentials.\n\n---\n\n## (2) Suspected MITRE ATT&CK TTPs\n\n- **T1078** \u2013 Valid Accounts (use of legitimate credentials for unauthorized purposes)\n- **T1048** \u2013 Exfiltration Over Alternative Protocol (potential data theft via non-standard channels)\n\n**Note:** Without addi"
+        },
+        {
+          "id": 19,
+          "delta_K": 0.25,
+          "threat_type": "T3",
+          "hallucinated": true,
+          "output": "# SOC Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Insider Threat / Credential Abuse**\n\nThe alert designation (T3-02 scenario) and context point to malicious or negligent activity by an authorized user leveraging legitimate access.\n\n---\n\n## (2) Suspected MITRE ATT&CK TTPs\n\n- **T1078.004** \u2013 Valid Accounts: Cloud Accounts (credential misuse by legitimate user)\n- **T1530** \u2013 Data from Cloud Storage Object (exfiltration via authorized cloud access)\n\n*Note: These are the techniques explic"
+        },
+        {
+          "id": 20,
+          "delta_K": 0.6,
+          "threat_type": "T3",
+          "hallucinated": true,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Insider Threat / Credential Abuse**\n\nThe alert explicitly flags an insider threat scenario, suggesting malicious activity by an authorized user or compromised legitimate credentials.\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1078** \u2013 Valid Accounts (credential misuse by insider or compromised account)\n- **T1048** \u2013 Exfiltration Over Alternative Protocol (data theft via non-standard channels)\n\n**Note:** These are the techniques in the agent"
+        },
+        {
+          "id": 21,
+          "delta_K": 0.75,
+          "threat_type": "T3",
+          "hallucinated": true,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Insider Threat / Credential Abuse**\n- Scenario T3-02 suggests unauthorized access or data exfiltration by an internal actor with legitimate credentials.\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1078.004** \u2013 Valid Accounts: Domain Accounts (confirmed in knowledge base)\n- **T1530** \u2013 Data from Cloud Storage Object (likely, if cloud resources involved)\n- **T1041** \u2013 Exfiltration Over C2 Channel (possible, depending on data movement observed)"
+        },
+        {
+          "id": 22,
+          "delta_K": 1.0,
+          "threat_type": "T3",
+          "hallucinated": true,
+          "output": "# SOC Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Insider Threat / Credential Abuse**\n- Malicious or negligent insider activity\n\n## (2) Suspected MITRE ATT&CK TTPs\nBased on typical insider threat scenarios, likely techniques include:\n- **T1078** \u2013 Valid Accounts\n- **T1020** \u2013 Automated Exfiltration\n- **T1537** \u2013 Transfer Data to Cloud Account\n- **T1567** \u2013 Exfiltration Over Web Service\n- **T1005** \u2013 Data from Local System\n\n*Note: The specific scenario reference (T3-01) is not a stand"
+        },
+        {
+          "id": 23,
+          "delta_K": 1.0,
+          "threat_type": "T3",
+          "hallucinated": true,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Unknown** \u2013 Insufficient data provided. The alert references a scenario code (T3-02) rather than observable indicators (e.g., file exfiltration, unauthorized access patterns, lateral movement). Cannot determine threat family without additional context.\n\n## (2) Suspected MITRE ATT&CK TTPs\n**Cannot determine** \u2013 The alert lacks technical indicators needed to map to specific ATT&CK techniques. Insider threats typically involve multiple poten"
+        },
+        {
+          "id": 24,
+          "delta_K": 0.0,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Botnet/DDoS malware** (generic classification based on available data)\n\nCommon families associated with DDoS attacks include Mirai, Qbot, or similar botnets, but I cannot definitively determine the specific family from the alert information provided.\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1499** - Service Exhaustion Denial of Service\n- **T1499.001** - Direct Network Flood\n\n## (3) Recommended Response Actions\n\n**Immediate:**\n1. Confirm a"
+        },
+        {
+          "id": 25,
+          "delta_K": 0.0,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Botnet/DDoS malware** (generic classification)\n\nWithout additional indicators (malware signatures, C2 infrastructure, payload analysis, or geographic/targeting patterns), I cannot identify a specific threat family (e.g., Mirai, Emotet, Qbot).\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1498** \u2013 Network Denial of Service\n- **T1498.001** \u2013 Direct Network Flood\n\n## (3) Recommended Response Actions\n\n**Immediate:**\n- Activate DDoS mitigation (rat"
+        },
+        {
+          "id": 26,
+          "delta_K": 0.25,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Distributed Denial of Service (DDoS) / Network-based Attack**\n\nGiven the alert classification as \"suspected DDoS attack,\" this aligns with generic volumetric or protocol-based attack patterns. Without additional indicators (malware signatures, C2 communications, etc.), I cannot attribute this to a specific named threat family (e.g., Mirai, Botnet-X).\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1499** \u2013 Endpoint Denial of Service\n- **T1499.00"
+        },
+        {
+          "id": 27,
+          "delta_K": 0.25,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Botnet/DDoS malware** (generic classification)\n- Without additional indicators (malware signatures, C2 infrastructure, payload analysis), I cannot attribute to a specific family (e.g., Mirai, Emotet, etc.)\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1498** - Network Denial of Service\n- **T1498.001** - Direct Network Flood\n\n## (3) Recommended Response Actions\n\n**Immediate:**\n- Validate alert authenticity (confirm traffic spike is external, no"
+        },
+        {
+          "id": 28,
+          "delta_K": 0.75,
+          "threat_type": "T4",
+          "hallucinated": true,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Botnet or DDoS-as-a-Service (DaaS) malware**\n\nCommon families associated with DDoS attacks include Mirai, Botnet variants, or similar distributed attack infrastructure. However, without additional indicators (traffic patterns, source IPs, payload analysis), I cannot definitively identify the specific family.\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1498** \u2013 Network Denial of Service (generic DDoS)\n- **T1498.001** \u2013 Direct Network Flood (i"
+        },
+        {
+          "id": 29,
+          "delta_K": 0.75,
+          "threat_type": "T4",
+          "hallucinated": true,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Botnet or DDoS malware** (generic classification)\n\nWithout additional indicators (traffic patterns, source IPs, payload signatures, target protocols), I cannot identify a specific threat family (e.g., Mirai, Qbot, etc.).\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1498** \u2013 Network Denial of Service\n- **T1498.001** \u2013 Direct Network Flood\n- **T1498.002** \u2013 Reflection Amplification (if applicable based on traffic analysis)\n\n*Note: The scenario "
+        },
+        {
+          "id": 30,
+          "delta_K": 1.0,
+          "threat_type": "T4",
+          "hallucinated": true,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Generic DDoS botnet or attack tool** \u2013 insufficient data to identify a specific malware family. The \"T4-02\" scenario designation suggests this is a templated or simulated alert rather than tied to a known threat family.\n\n## (2) Suspected MITRE ATT&CK TTPs\n- **T1498** \u2013 Network Denial of Service (primary technique)\n- **T1498.001** \u2013 Direct Network Flood (if volumetric attack)\n- **T1498.002** \u2013 Reflection Amplification (if amplification-bas"
+        },
+        {
+          "id": 31,
+          "delta_K": 1.0,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Botnet/DDoS malware** (generic classification)\n\nCommon families associated with DDoS attacks include Mirai, Qbot, or similar botnet variants, but I cannot determine the specific family from the information provided.\n\n## (2) Suspected MITRE ATT&CK TTPs\n\nBased on DDoS attack characteristics:\n- **T1498** \u2013 Network Denial of Service\n- **T1498.001** \u2013 Direct Network Flood\n- **T1498.002** \u2013 Reflection Amplification\n\n*Note: I cannot correlate wi"
+        },
+        {
+          "id": 32,
+          "delta_K": 0.0,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "# SOC Alert Triage Report\n\n## (1) Most Likely Threat Family\n**I do not know** the specific threat family from the identifier \"T5-01\" alone. This appears to be an internal scenario designation rather than a standard threat intelligence reference. Additional context (indicators, malware signatures, C2 infrastructure, etc.) would be needed to attribute this to a known APT group.\n\n## (2) Suspected MITRE ATT&CK TTPs\nBased on the provided knowledge base, the following TTPs are consistent with typical "
+        },
+        {
+          "id": 33,
+          "delta_K": 0.0,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "# SOC Triage Report\n\n## (1) Most Likely Threat Family\n**Unable to determine with confidence.** The scenario identifier \"T5-02\" is not a standard MITRE ATT&CK designation, and insufficient contextual details are provided (e.g., indicators of compromise, affected systems, observed behaviors, network signatures). APT families are numerous and require specific forensic evidence to attribute.\n\n## (2) Suspected MITRE ATT&CK TTPs\nBased on the provided knowledge base, the following techniques are releva"
+        },
+        {
+          "id": 34,
+          "delta_K": 0.333333,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "# SOC Triage Report\n\n## (1) Most Likely Threat Family\n**Unknown/Indeterminate** \u2013 The alert designation \"scenario T5-02\" is not a recognized threat family identifier in standard threat intelligence frameworks. Insufficient context provided to attribute to a specific APT group or malware family.\n\n## (2) Suspected MITRE ATT&CK TTPs\nBased on the knowledge base provided:\n- **T1195** \u2013 Supply Chain Compromise\n- **T1059** \u2013 Command and Scripting Interpreter\n- **T1105** \u2013 Ingress Tool Transfer\n\n*Note: "
+        },
+        {
+          "id": 35,
+          "delta_K": 0.3,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "# SOC Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Unknown** \u2013 The alert designation \"scenario T5-01\" does not correspond to a recognized threat family in standard threat intelligence frameworks. Additional context (indicators of compromise, malware signatures, network artifacts, or victim profile) is needed to classify the threat family.\n\n## (2) Suspected MITRE ATT&CK TTPs\nBased on the provided knowledge base, the following techniques are likely involved:\n\n- **T1190** \u2013 Exploit Publi"
+        },
+        {
+          "id": 36,
+          "delta_K": 0.7,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "# SOC Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Unknown** \u2013 Insufficient data provided. The alert references \"scenario T5-01\" which is not a standard threat family designation. Additional context needed such as:\n- Malware signatures or hashes\n- Network indicators (C2 domains/IPs)\n- Host-based artifacts\n- Initial access vector\n\n## (2) Suspected MITRE ATT&CK TTPs\nBased on provided knowledge base:\n- **T1190** \u2013 Exploit Public-Facing Application\n- **T1059** \u2013 Command and Scripting Inte"
+        },
+        {
+          "id": 37,
+          "delta_K": 0.666667,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Unknown** \u2013 The alert references \"scenario T5-02\" which is not a standard threat family designation I can reliably map. Insufficient context provided to determine if this is a known APT group (e.g., APT28, Lazarus, etc.).\n\n## (2) Suspected MITRE ATT&CK TTPs\nBased on provided knowledge base:\n- **T1195** \u2013 Supply Chain Compromise\n- **T1059** \u2013 Command and Scripting Interpreter\n\n**Note:** These appear to be the only confirmed TTPs available."
+        },
+        {
+          "id": 38,
+          "delta_K": 1.0,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "# Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Unknown** \u2013 Insufficient data provided. The alert designation \"scenario T5-01\" appears to be an internal reference rather than a recognized threat family identifier. No malware signatures, IOCs, or behavioral indicators are included to enable threat family classification.\n\n## (2) Suspected MITRE ATT&CK TTPs\n**Cannot determine** \u2013 The alert lacks technical details (logs, artifacts, network activity, process behavior, etc.) needed to map to"
+        },
+        {
+          "id": 39,
+          "delta_K": 1.0,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "# SOC Alert Triage Report\n\n## (1) Most Likely Threat Family\n**Unknown** \u2013 Insufficient data provided. The alert references \"scenario T5-02\" which does not correspond to standard MITRE ATT&CK taxonomy (which uses Txxxx format). Additional context needed regarding:\n- Indicators of compromise (IOCs)\n- Affected systems/assets\n- Observed behaviors\n- Log sources\n\n## (2) Suspected MITRE ATT&CK TTPs\n**Cannot determine** \u2013 No technical artifacts or behavioral indicators provided. The knowledge base refer"
+        }
+      ],
+      "errors": 0
+    },
+    "claude-sonnet-4-6": {
+      "records": [
+        {
+          "id": 0,
+          "delta_K": 0.0,
+          "threat_type": "T1",
+          "hallucinated": false,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected Ransomware Activity (T1-02)\n\n---\n\n### (1) Most Likely Threat Family\n**Ransomware** (specific family cannot be confirmed without additional IOCs such as file extensions, ransom note content, or C2 indicators). Common families consistent with this TTP profile include **LockBit, BlackCat/ALPHV, or Conti-lineage variants** \u2014 but this is speculative without further evidence.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n\n| TTP ID | Technique | Relevance |\n|---|---|"
+        },
+        {
+          "id": 1,
+          "delta_K": 0.0,
+          "threat_type": "T1",
+          "hallucinated": false,
+          "output": "## SOC Triage Report \u2014 Alert: T1-01 (Suspected Ransomware Activity)\n\n---\n\n### (1) Most Likely Threat Family\n**Ransomware** (specific family cannot be determined from the alert data provided; additional IOCs \u2014 hashes, ransom note content, C2 patterns \u2014 would be required for family-level attribution).\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n| ID | Technique | Relevance |\n|----|-----------|-----------|\n| **T1486** | Data Encrypted for Impact | Core ransomware encryption behavior |\n| **T1490** | I"
+        },
+        {
+          "id": 2,
+          "delta_K": 0.333333,
+          "threat_type": "T1",
+          "hallucinated": false,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected Ransomware Activity (T1-02)\n\n---\n\n### (1) Most Likely Threat Family\n**Ransomware** (specific family cannot be confirmed without additional IOCs such as file extensions, ransom note content, or C2 indicators). Common families consistent with this activity pattern include LockBit, BlackCat/ALPHV, or Conti variants \u2014 **but this is not confirmed**.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\nBased on the knowledge base provided and standard ransomware kill-chain"
+        },
+        {
+          "id": 3,
+          "delta_K": 0.375,
+          "threat_type": "T1",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected Ransomware Activity (T1-01)\n\n---\n\n### (1) Most Likely Threat Family\n**Ransomware** (generic classification). Insufficient indicators in this alert to attribute to a specific family \u2014 e.g., LockBit, BlackCat, Conti \u2014 without additional forensic artifacts (file extensions, ransom note content, C2 IOCs, etc.).\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\nBased on the provided knowledge base and typical ransomware behavior:\n\n| TTP ID | Name | Rationale |\n|-------"
+        },
+        {
+          "id": 4,
+          "delta_K": 0.625,
+          "threat_type": "T1",
+          "hallucinated": false,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected Ransomware Activity (T1-01)\n\n---\n\n### (1) Most Likely Threat Family\n**Ransomware** (specific family cannot be determined from the alert data provided; additional IOCs such as ransom note content, file extension patterns, or C2 indicators would be required to attribute to a specific family, e.g., LockBit, BlackCat/ALPHV, Ryuk, etc.)\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\nBased on the alert and the knowledge base provided:\n\n| TTP ID | Name | Rationale |\n|"
+        },
+        {
+          "id": 5,
+          "delta_K": 0.666667,
+          "threat_type": "T1",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected Ransomware Activity (T1-02)\n\n---\n\n### (1) Most Likely Threat Family\n**Ransomware** (specific family cannot be determined from the information provided \u2014 insufficient indicators such as ransom note content, file extension, or C2 infrastructure to attribute to a specific family e.g., LockBit, BlackCat, Conti).\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\nBased on available knowledge base and typical ransomware behavior:\n\n| TTP ID | Name | Basis |\n|---|---|---|\n"
+        },
+        {
+          "id": 6,
+          "delta_K": 1.0,
+          "threat_type": "T1",
+          "hallucinated": true,
+          "output": "# SOC Triage Report \u2013 Alert T1-01\n\n---\n\n## (1) Most Likely Threat Family\n**Ransomware** (specific family cannot be determined from the information provided \u2014 insufficient IOCs, hashes, ransom note content, or behavioral telemetry to attribute to a specific family such as LockBit, BlackCat/ALPHV, Conti, etc.)\n\n---\n\n## (2) Suspected MITRE ATT&CK TTPs\nBased on common ransomware attack patterns (not confirmed from alert data):\n\n| TTP | Description |\n|-----|-------------|\n| T1486 | Data Encrypted for"
+        },
+        {
+          "id": 7,
+          "delta_K": 1.0,
+          "threat_type": "T1",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected Ransomware Activity (T1-02)\n\n---\n\n### (1) Most Likely Threat Family\n**Ransomware** (specific family cannot be determined from the information provided). Common families associated with generic ransomware alerts include LockBit, BlackCat (ALPHV), or Ryuk, but **I cannot confirm a specific family without additional indicators** (file hashes, ransom note content, C2 IOCs, etc.).\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\nBased on well-established ransomware be"
+        },
+        {
+          "id": 8,
+          "delta_K": 0.0,
+          "threat_type": "T2",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected Phishing Campaign (T2-02)\n\n---\n\n### (1) Most Likely Threat Family\n**Spear-phishing / Credential Harvesting Campaign** \u2014 likely a business email compromise (BEC) or initial-access broker operation. No specific named malware family can be confirmed from the information provided.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n| TTP ID | Name | Rationale |\n|---|---|---|\n| **T1566.002** | Phishing: Spearphishing Link | Core technique per known knowledge base entry; "
+        },
+        {
+          "id": 9,
+          "delta_K": 0.0,
+          "threat_type": "T2",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert T2-01\n\n---\n\n### (1) Most Likely Threat Family\n**Phishing-initiated malware delivery** \u2014 consistent with commodity phishing campaigns (e.g., initial access brokers, info-stealers, or ransomware precursors such as **Emotet, QakBot, or similar loaders**). Specific family cannot be confirmed without artifact analysis (email headers, attachments, URLs, payload hashes).\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n| ID | Name | Rationale |\n|----|------|-----------|\n| **T1566."
+        },
+        {
+          "id": 10,
+          "delta_K": 0.4,
+          "threat_type": "T2",
+          "hallucinated": false,
+          "output": "## SOC Triage Report \u2014 Alert T2-01\n\n---\n\n### (1) Most Likely Threat Family\n**Phishing-delivered malware campaign** \u2014 consistent with an initial access broker or commodity malware dropper (e.g., Emotet, QakBot, or similar email-borne loaders). Specific family cannot be confirmed without further artifact analysis.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n\n| TTP ID | Name | Rationale |\n|---|---|---|\n| **T1566.001** | Phishing: Spearphishing Attachment | Email-based lure with malicious attachment \u2014"
+        },
+        {
+          "id": 11,
+          "delta_K": 0.25,
+          "threat_type": "T2",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected Phishing Campaign (T2-02)\n\n---\n\n### (1) Most Likely Threat Family\n**Spear-phishing / Credential Harvesting Campaign** \u2014 consistent with business email compromise (BEC) or initial access broker activity. Insufficient IOC detail to attribute to a specific named threat group or malware family.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n\n| TTP ID | Name | Rationale |\n|---|---|---|\n| **T1566.002** | Phishing: Spear-phishing Link | Core technique per alert and kn"
+        },
+        {
+          "id": 12,
+          "delta_K": 0.75,
+          "threat_type": "T2",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2013 Alert: Suspected Phishing Campaign (T2-02)\n\n---\n\n### (1) Most Likely Threat Family\n**Phishing / Initial Access campaign** \u2014 likely a commodity phishing operation (e.g., credential harvesting or malware delivery via email). Without additional IOCs (sender, payload, URLs, targeted users), a specific named threat family (e.g., TA453, Emotet) **cannot be confirmed**.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n\n| TTP ID | Name | Rationale |\n|---|---|---|\n| **T1566** | Phishing |"
+        },
+        {
+          "id": 13,
+          "delta_K": 0.6,
+          "threat_type": "T2",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert T2-01\n\n---\n\n### (1) Most Likely Threat Family\n**Phishing / Initial Access campaign** \u2014 consistent with a credential harvesting or malware delivery operation. Without additional IOCs (sender domain, payload type, lure content), a specific malware family (e.g., Emotet, QakBot) **cannot be confirmed**; classifying as generic phishing at this time.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n\n| TTP ID | Name | Rationale |\n|---|---|---|\n| **T1566.001** | Phishing: Spearphis"
+        },
+        {
+          "id": 14,
+          "delta_K": 1.0,
+          "threat_type": "T2",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert T2-01 (Suspected Phishing Campaign)\n\n---\n\n### (1) Most Likely Threat Family\n**Phishing / Initial Access campaign** \u2014 likely a commodity or targeted phishing operation. Without additional IOCs (sender, payload, URLs, attachment hashes), I cannot attribute to a specific named threat family (e.g., TA453, Emotet, etc.).\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n\n| TTP ID | Name |\n|---|---|\n| **T1566** | Phishing (parent) |\n| **T1566.001** | Spearphishing Attachment |\n| *"
+        },
+        {
+          "id": 15,
+          "delta_K": 1.0,
+          "threat_type": "T2",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected Phishing Campaign (T2-02)\n\n---\n\n### (1) Most Likely Threat Family\n**Phishing / Initial Access campaign** \u2014 likely a commodity phishing operation or targeted spear-phishing. Without additional IOCs (sender, payload, URLs, attachment hashes), I cannot attribute to a specific named threat family (e.g., TA453, Emotet, etc.).\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n\n| TTP ID | Technique |\n|---|---|\n| **T1566** | Phishing (parent) |\n| **T1566.001** | Spear-phi"
+        },
+        {
+          "id": 16,
+          "delta_K": 0.0,
+          "threat_type": "T3",
+          "hallucinated": false,
+          "output": "# SOC Triage Report \u2014 Alert T3-01 (Suspected Insider Threat)\n\n---\n\n## (1) Most Likely Threat Family\n**Insider Threat / Data Theft** \u2014 a malicious or negligent insider leveraging legitimate access to exfiltrate sensitive data.\n\n---\n\n## (2) Suspected MITRE ATT&CK TTPs\n\n| TTP ID | Name | Relevance |\n|---|---|---|\n| **T1078** | Valid Accounts | Insider uses own/stolen legitimate credentials to avoid detection |\n| **T1530** | Data from Cloud Storage Object | Accessing cloud repositories (S3, SharePoi"
+        },
+        {
+          "id": 17,
+          "delta_K": 0.0,
+          "threat_type": "T3",
+          "hallucinated": false,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected Insider Threat (T3-02)\n\n---\n\n### (1) Most Likely Threat Family\n**Insider Threat / Data Exfiltration by Malicious or Negligent Insider**\nLikely involves abuse of legitimate credentials and cloud storage access, with evidence destruction to cover tracks.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n\n| TTP ID | Name | Relevance |\n|---|---|---|\n| **T1078.004** | Valid Accounts: Cloud Accounts | Insider leveraging legitimate cloud credentials to avoid detection |\n"
+        },
+        {
+          "id": 18,
+          "delta_K": 0.4,
+          "threat_type": "T3",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert T3-01 (Suspected Insider Threat)\n\n---\n\n### (1) Most Likely Threat Family\n**Insider Threat / Malicious Insider** \u2014 likely involving abuse of legitimate credentials and unauthorized data exfiltration. No specific malware family is indicated; the threat actor is presumed to be an authenticated internal user.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n\n| TTP ID | Name | Rationale |\n|--------|------|-----------|\n| **T1078** | Valid Accounts | Insider leveraging their own ("
+        },
+        {
+          "id": 19,
+          "delta_K": 0.25,
+          "threat_type": "T3",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert T3-02 (Suspected Insider Threat)\n\n---\n\n### (1) Most Likely Threat Family\n**Insider Threat / Cloud Data Exfiltration**\nLikely a malicious or negligent insider leveraging valid cloud credentials to access and stage/exfiltrate data from cloud storage.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n\n| TTP ID | Name | Relevance |\n|---|---|---|\n| **T1078.004** | Valid Accounts: Cloud Accounts | Insider using legitimate cloud credentials to avoid detection |\n| **T1530** | Data f"
+        },
+        {
+          "id": 20,
+          "delta_K": 0.6,
+          "threat_type": "T3",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert T3-01 (Suspected Insider Threat)\n\n---\n\n### (1) Most Likely Threat Family\n**Insider Threat / Malicious Insider** \u2014 likely involving abuse of legitimate credentials and unauthorized data exfiltration. No specific malware family is indicated; this appears to be a human-actor, living-off-the-land scenario.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n\n| TTP ID | Name | Rationale |\n|--------|------|-----------|\n| **T1078** | Valid Accounts | Insider leveraging legitimate cre"
+        },
+        {
+          "id": 21,
+          "delta_K": 0.75,
+          "threat_type": "T3",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected Insider Threat (T3-02)\n\n---\n\n### (1) Most Likely Threat Family\n**Insider Threat / Malicious Insider** \u2014 likely involving abuse of legitimate credentials or privileged access, potentially for data exfiltration or sabotage.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n\n| TTP ID | Name | Rationale |\n|---|---|---|\n| **T1078.004** | Valid Accounts: Cloud Accounts | Confirmed related technique; insider abusing cloud credentials |\n| **T1078** | Valid Accounts (paren"
+        },
+        {
+          "id": 22,
+          "delta_K": 1.0,
+          "threat_type": "T3",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected Insider Threat (T3-01)\n\n---\n\n### (1) Most Likely Threat Family\n**Insider Threat / Malicious Insider**\nWithout additional observable indicators (logs, file access patterns, network telemetry, etc.), I cannot confidently narrow this to a specific malware family or threat actor group. The scenario label alone is insufficient.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\nBased on common insider threat patterns, the following TTPs are *plausible candidates*, but *"
+        },
+        {
+          "id": 23,
+          "delta_K": 1.0,
+          "threat_type": "T3",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected Insider Threat (T3-02)\n\n---\n\n### (1) Most Likely Threat Family\n**Insider Threat / Malicious Insider** \u2014 likely involving data exfiltration or privilege abuse by a trusted internal user. Without additional IOCs (user activity logs, file access records, network telemetry), a more specific malware family or actor group **cannot be determined**.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\nBased on typical insider threat patterns (not confirmed by specific IOCs i"
+        },
+        {
+          "id": 24,
+          "delta_K": 0.0,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "## SOC Triage Report \u2014 Alert T4-02 (Suspected DDoS)\n\n---\n\n### (1) Most Likely Threat Family\n**Denial of Service (DoS/DDoS)** \u2014 likely volumetric or application-layer flood attack. Specific malware family (e.g., Mirai, LOIC) cannot be confirmed without additional telemetry (traffic captures, botnet IOCs).\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n| TTP ID | Name |\n|---|---|\n| **T1499** | Endpoint Denial of Service |\n| **T1499.001** | OS Exhaustion Flood |\n\n> \u26a0\ufe0f Additional sub-techniques (e.g., T1"
+        },
+        {
+          "id": 25,
+          "delta_K": 0.0,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected DDoS Attack (T4-01)\n\n---\n\n### (1) Most Likely Threat Family\n**Distributed Denial of Service (DDoS)** \u2014 likely volumetric network flood attack. Could be associated with hacktivist groups, DDoS-for-hire (booter/stresser) services, or ransomware operators using DDoS as extortion leverage.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n| ID | Name |\n|---|---|\n| **T1498** | Network Denial of Service |\n| **T1498.001** | Direct Network Flood |\n\n> **Note:** If amplific"
+        },
+        {
+          "id": 26,
+          "delta_K": 0.25,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected DDoS Attack (T4-02)\n\n---\n\n### (1) Most Likely Threat Family\n**Denial of Service (DoS) / Distributed Denial of Service (DDoS)**\nLikely involving volumetric or application-layer flood attack. Specific malware family (e.g., Mirai botnet, LOIC) cannot be confirmed without additional IOC data.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n| ID | Name |\n|----|------|\n| **T1499** | Endpoint Denial of Service |\n| **T1499.001** | OS Exhaustion Flood |\n\n> **Note:** Addi"
+        },
+        {
+          "id": 27,
+          "delta_K": 0.25,
+          "threat_type": "T4",
+          "hallucinated": false,
+          "output": "## SOC Triage Report \u2014 Alert T4-01 (Suspected DDoS)\n\n---\n\n### (1) Most Likely Threat Family\n**Distributed Denial of Service (DDoS)** \u2014 likely volumetric flood attack (network/bandwidth exhaustion). Could be botnet-driven (e.g., Mirai-family or similar DDoS-for-hire tooling), but specific malware family cannot be confirmed without additional telemetry.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n| ID | Name |\n|---|---|\n| **T1498** | Network Denial of Service |\n| **T1498.001** | Direct Network Flood"
+        },
+        {
+          "id": 28,
+          "delta_K": 0.75,
+          "threat_type": "T4",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert T4-01 (Suspected DDoS)\n\n---\n\n### (1) Most Likely Threat Family\n**Distributed Denial of Service (DDoS)** \u2014 likely volumetric, protocol, or application-layer flood. Without packet captures, flow data, or signatures, a specific malware family or threat actor cannot be attributed.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n\n| TTP ID | Name | Rationale |\n|---|---|---|\n| **T1498** | Network Denial of Service | Direct match for volumetric/protocol DDoS |\n| **T1498.001** | Di"
+        },
+        {
+          "id": 29,
+          "delta_K": 0.75,
+          "threat_type": "T4",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Suspected DDoS Attack (T4-02)\n\n---\n\n### (1) Most Likely Threat Family\n**Distributed Denial of Service (DDoS)** \u2014 likely volumetric, protocol, or application-layer flood. Without additional telemetry (packet captures, flow data, targeted port/protocol), the specific sub-family (e.g., UDP flood, SYN flood, HTTP flood, amplification attack) **cannot be confirmed**.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n\n| TTP ID | Name | Rationale |\n|---|---|---|\n| **T1498** | Network Den"
+        },
+        {
+          "id": 30,
+          "delta_K": 1.0,
+          "threat_type": "T4",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Suspected DDoS Attack (T4-02)\n\n---\n\n### (1) Most Likely Threat Family\n**Distributed Denial of Service (DDoS)** \u2014 likely volumetric, protocol, or application-layer flood. Without packet captures, flow data, or additional IOCs, I cannot narrow this to a specific malware family or threat actor group.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n| TTP ID | Name | Rationale |\n|---|---|---|\n| **T1498** | Network Denial of Service | Direct match for volumetric/protocol DDoS |\n| **T1"
+        },
+        {
+          "id": 31,
+          "delta_K": 1.0,
+          "threat_type": "T4",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected DDoS Attack (T4-01)\n\n---\n\n### (1) Most Likely Threat Family\n**Distributed Denial of Service (DDoS)** \u2014 likely volumetric, protocol, or application-layer flood attack. Without additional telemetry (packet captures, flow data, targeted service info), a more specific family (e.g., UDP flood, SYN flood, HTTP flood, amplification attack) **cannot be determined with confidence**.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n| TTP ID | Name | Rationale |\n|---|---|--"
+        },
+        {
+          "id": 32,
+          "delta_K": 0.0,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "## SOC Triage Report \u2014 Alert T5-01 (Suspected APT Intrusion)\n\n---\n\n### (1) Most Likely Threat Family\n**Advanced Persistent Threat (APT) \u2014 likely a nation-state or sophisticated espionage actor.** Without additional IOCs (hashes, IPs, C2 domains, tooling artifacts), I cannot attribute to a specific named group (e.g., APT28, APT41) \u2014 I will not guess beyond what the data supports.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\nBased on the known related techniques provided:\n\n| TTP ID | Tactic | Techniq"
+        },
+        {
+          "id": 33,
+          "delta_K": 0.0,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected APT Intrusion (T5-02)\n\n---\n\n### (1) Most Likely Threat Family\n**Advanced Persistent Threat (APT) \u2014 Supply Chain / Spear-phishing Initial Access with C2 Implant**\nBased on the associated techniques, this is consistent with a **nation-state or espionage-motivated APT** campaign (e.g., groups like APT29, APT41, or similar), leveraging supply chain compromise for initial access followed by remote command execution and data exfiltration.\n\n---\n\n### (2) Suspected"
+        },
+        {
+          "id": 34,
+          "delta_K": 0.333333,
+          "threat_type": "T5",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert T5-02 (Suspected APT Intrusion)\n\n---\n\n### (1) Most Likely Threat Family\n**Advanced Persistent Threat (APT) \u2014 Supply Chain / Living-off-the-Land intrusion.**\nBased on the associated techniques, this aligns with APT groups known for supply chain compromise and post-exploitation tooling (e.g., groups resembling **APT29/Cozy Bear** or similar nation-state actors). A specific named malware family cannot be confirmed without additional artifact evidence (hashes, C2 indicat"
+        },
+        {
+          "id": 35,
+          "delta_K": 0.3,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "# SOC Triage Report \u2014 Alert T5-01 (Suspected APT Intrusion)\n\n---\n\n## (1) Most Likely Threat Family\n**Advanced Persistent Threat (APT) \u2014 likely a nation-state or espionage-motivated actor.**\nBased on the TTP cluster, this is consistent with groups such as **APT29, APT41, or Lazarus Group**, but I cannot definitively attribute to a specific family without additional IOCs (hashes, C2 infrastructure, tooling signatures). I will not guess beyond the evidence provided.\n\n---\n\n## (2) Suspected MITRE ATT"
+        },
+        {
+          "id": 36,
+          "delta_K": 0.7,
+          "threat_type": "T5",
+          "hallucinated": true,
+          "output": "## SOC Triage Report \u2014 Alert T5-01 (Suspected APT Intrusion)\n\n---\n\n### (1) Most Likely Threat Family\n**APT-class intrusion** \u2014 consistent with a nation-state or sophisticated threat actor conducting multi-stage compromise. Specific group attribution cannot be confirmed without additional forensic indicators (IOCs, malware samples, infrastructure overlap).\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n\n| ID | Technique | Rationale |\n|----|-----------|-----------|\n| **T1190** | Exploit Public-Facing A"
+        },
+        {
+          "id": 37,
+          "delta_K": 0.666667,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected APT Intrusion (T5-02)\n\n---\n\n### (1) Most Likely Threat Family\n**APT Supply Chain / Spear-Phishing Implant** \u2014 consistent with a nation-state or advanced threat actor leveraging supply chain compromise and scripting-based execution. Specific threat family cannot be confirmed without additional IOCs (hashes, C2 infrastructure, victimology).\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n| ID | Technique | Basis |\n|----|-----------|-------|\n| **T1195** | Supply Ch"
+        },
+        {
+          "id": 38,
+          "delta_K": 1.0,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "## SOC Triage Report \u2014 Alert T5-01\n\n---\n\n### (1) Most Likely Threat Family\n**Insufficient data to determine a specific threat family.**\nThe label \"suspected APT intrusion\" is too generic without supporting IOCs, log data, network captures, or behavioral telemetry. I will not speculate on a named APT group.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n**Cannot reliably assign TTP IDs.**\nNo IOCs, process telemetry, network data, or behavioral indicators were provided, and the knowledge base confirms "
+        },
+        {
+          "id": 39,
+          "delta_K": 1.0,
+          "threat_type": "T5",
+          "hallucinated": false,
+          "output": "## SOC Triage Report \u2014 Alert: Suspected APT Intrusion (T5-02)\n\n---\n\n### (1) Most Likely Threat Family\n**Unknown / Insufficient Data.** The alert label \"T5-02\" does not map to a recognized threat family in my knowledge base, and no behavioral indicators (hashes, IPs, process chains, log snippets, etc.) were provided. I cannot responsibly attribute a threat family without fabricating one.\n\n---\n\n### (2) Suspected MITRE ATT&CK TTPs\n**Cannot determine with confidence.** No observable behaviors, artif"
+        }
+      ],
+      "errors": 0
+    }
+  }
+}

@@ -1,0 +1,183 @@
+version: "3.9"
+
+x-common: &common
+  restart: unless-stopped
+  networks:
+    - ares_net
+  env_file:
+    - .env
+
+services:
+  # -----------------------------------------------------------------------
+  # Infrastructure
+  # -----------------------------------------------------------------------
+  postgres:
+    image: postgres:16
+    <<: *common
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7
+    <<: *common
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  opensearch:
+    image: opensearchproject/opensearch:2.13.0
+    <<: *common
+    environment:
+      - discovery.type=single-node
+      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=${OPENSEARCH_INITIAL_ADMIN_PASSWORD}
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+    volumes:
+      - os_data:/usr/share/opensearch/data
+
+  ollama:
+    image: ollama/ollama:latest
+    <<: *common
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  # -----------------------------------------------------------------------
+  # ARES-Bench Services
+  # -----------------------------------------------------------------------
+  scenario_engine:
+    build:
+      context: .
+      dockerfile: services/scenario_engine/Dockerfile
+    <<: *common
+    ports:
+      - "${SCENARIO_ENGINE_PORT}:${SCENARIO_ENGINE_PORT}"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  mismatch_injector:
+    build:
+      context: .
+      dockerfile: services/mismatch_injector/Dockerfile
+    <<: *common
+    ports:
+      - "${MISMATCH_INJECTOR_PORT}:${MISMATCH_INJECTOR_PORT}"
+    depends_on:
+      - scenario_engine
+
+  langgraph_agent:
+    build:
+      context: .
+      dockerfile: services/agents/langgraph_agent/Dockerfile
+    <<: *common
+    ports:
+      - "${LANGGRAPH_AGENT_PORT}:${LANGGRAPH_AGENT_PORT}"
+    depends_on:
+      - ollama
+      - redis
+
+  autogen_agent:
+    build:
+      context: .
+      dockerfile: services/agents/autogen_agent/Dockerfile
+    <<: *common
+    ports:
+      - "${AUTOGEN_AGENT_PORT}:${AUTOGEN_AGENT_PORT}"
+    depends_on:
+      - ollama
+      - redis
+
+  crewai_agent:
+    build:
+      context: .
+      dockerfile: services/agents/crewai_agent/Dockerfile
+    <<: *common
+    ports:
+      - "${CREWAI_AGENT_PORT}:${CREWAI_AGENT_PORT}"
+    depends_on:
+      - ollama
+      - redis
+
+  rulebased_agent:
+    build:
+      context: .
+      dockerfile: services/agents/rulebased_agent/Dockerfile
+    <<: *common
+    ports:
+      - "${RULEBASED_AGENT_PORT}:${RULEBASED_AGENT_PORT}"
+
+  anomaly_monitor:
+    build:
+      context: .
+      dockerfile: services/anomaly_monitor/Dockerfile
+    <<: *common
+    ports:
+      - "${ANOMALY_MONITOR_PORT}:${ANOMALY_MONITOR_PORT}"
+    depends_on:
+      - opensearch
+
+  dataset_writer:
+    build:
+      context: .
+      dockerfile: services/dataset_writer/Dockerfile
+    <<: *common
+    ports:
+      - "${DATASET_WRITER_PORT}:${DATASET_WRITER_PORT}"
+    volumes:
+      - ./output:/app/output
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  orchestrator:
+    build:
+      context: .
+      dockerfile: services/orchestrator/Dockerfile
+    <<: *common
+    ports:
+      - "${ORCHESTRATOR_PORT}:${ORCHESTRATOR_PORT}"
+    volumes:
+      - ./output:/app/output
+    depends_on:
+      - scenario_engine
+      - mismatch_injector
+      - langgraph_agent
+      - autogen_agent
+      - crewai_agent
+      - rulebased_agent
+      - anomaly_monitor
+      - dataset_writer
+
+networks:
+  ares_net:
+    driver: bridge
+
+volumes:
+  pg_data:
+  os_data:
+  ollama_data:

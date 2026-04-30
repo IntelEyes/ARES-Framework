@@ -1,0 +1,158 @@
+{
+  "overall": {
+    "n": 1000,
+    "ars_mean": 0.644108509,
+    "ars_std": 0.23500697509337987,
+    "eg_mean": 0.348621417,
+    "anomaly_rate": 0.383,
+    "hallucination_rate_overall": 0.119
+  },
+  "by_architecture": {
+    "AUT-1": {
+      "n": 250,
+      "ars_mean": 0.6589119920000001,
+      "ars_std": 0.23594064612812554,
+      "anomaly_rate": 0.384,
+      "hallucination_rate": 0.148
+    },
+    "AUT-2": {
+      "n": 250,
+      "ars_mean": 0.6214148560000001,
+      "ars_std": 0.22745551155938654,
+      "anomaly_rate": 0.404,
+      "hallucination_rate": 0.136
+    },
+    "AUT-3": {
+      "n": 250,
+      "ars_mean": 0.650713636,
+      "ars_std": 0.22341004232721973,
+      "anomaly_rate": 0.392,
+      "hallucination_rate": 0.192
+    },
+    "AUT-4": {
+      "n": 250,
+      "ars_mean": 0.6453935520000001,
+      "ars_std": 0.25195220740585317,
+      "anomaly_rate": 0.352,
+      "hallucination_rate": 0.0
+    }
+  },
+  "by_threat_type": {
+    "T1": {
+      "n": 200,
+      "ars_mean": 0.6387148899999999,
+      "anomaly_rate": 0.37
+    },
+    "T2": {
+      "n": 200,
+      "ars_mean": 0.6482183349999999,
+      "anomaly_rate": 0.375
+    },
+    "T3": {
+      "n": 200,
+      "ars_mean": 0.6568705149999999,
+      "anomaly_rate": 0.355
+    },
+    "T4": {
+      "n": 200,
+      "ars_mean": 0.6614169,
+      "anomaly_rate": 0.39
+    },
+    "T5": {
+      "n": 200,
+      "ars_mean": 0.615321905,
+      "anomaly_rate": 0.425
+    }
+  },
+  "cascade_degradation": {
+    "aut1_ars_unmatched": 0.6589119920000001,
+    "aut2_ars_unmatched": 0.6214148560000001,
+    "rel_degradation_pct_unmatched": 5.690765452027154,
+    "aut1_ars_matched_dK": 0.6586285321926751,
+    "aut2_ars_matched_dK": 0.6233137767779838,
+    "rel_degradation_pct_matched_dK": 5.361862368325145,
+    "n_common_buckets": 12
+  },
+  "hallucination_vs_deltaK": {
+    "buckets": {
+      "0.0": {
+        "hall_rate": 0.014285714285714285,
+        "n": 210
+      },
+      "0.33": {
+        "hall_rate": 0.10555555555555556,
+        "n": 180
+      },
+      "0.66": {
+        "hall_rate": 0.2196078431372549,
+        "n": 255
+      },
+      "1.0": {
+        "hall_rate": 0.3904761904761905,
+        "n": 105
+      }
+    },
+    "pearson_rho": 0.3400697975932346,
+    "pearson_p": 9.265392461004338e-22,
+    "n_llm": 750
+  },
+  "threshold_f1": {
+    "theta_star": 0.58,
+    "train_f1": 0.9471264367816092,
+    "test_f1": 0.9580838323353293,
+    "per_threat_test": {
+      "T1": {
+        "precision": 1.0,
+        "recall": 0.9444444444444444,
+        "f1": 0.9714285714285714,
+        "n": 40
+      },
+      "T2": {
+        "precision": 1.0,
+        "recall": 0.9411764705882353,
+        "f1": 0.9696969696969697,
+        "n": 40
+      },
+      "T3": {
+        "precision": 1.0,
+        "recall": 0.8666666666666667,
+        "f1": 0.9285714285714286,
+        "n": 40
+      },
+      "T4": {
+        "precision": 1.0,
+        "recall": 0.8421052631578947,
+        "f1": 0.9142857142857143,
+        "n": 40
+      },
+      "T5": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "n": 40
+      }
+    },
+    "split_sizes": {
+      "train": 600,
+      "val": 200,
+      "test": 200
+    }
+  },
+  "eg_predictive_power": {
+    "n_llm": 750,
+    "proxy_anomaly_flag": {
+      "rho_deltaK": 0.7965455736144219,
+      "p_deltaK": 1.2300228976741744e-165,
+      "rho_EG": 0.8017487741557071,
+      "p_EG": 2.2328946617113185e-169,
+      "fisher_z": 0.2782871228250676,
+      "fisher_p": 0.7807919603546165
+    },
+    "proxy_one_minus_ars": {
+      "rho_deltaK": 0.7687884997954703,
+      "rho_EG": 0.7736824497491394,
+      "fisher_z": 0.23342885910007652,
+      "fisher_p": 0.8154284057376313
+    }
+  }
+}

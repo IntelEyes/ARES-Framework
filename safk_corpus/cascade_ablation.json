@@ -1,0 +1,10 @@
+{
+  "n_common_buckets": 27,
+  "aut1_ars_matched": 0.6715,
+  "aut2_single_stage_ars_matched": 0.6706,
+  "aut2_cascade_ars_matched": 0.555,
+  "framework_identity_effect_pct": 0.13,
+  "pipeline_depth_effect_pct": 17.25,
+  "combined_effect_pct": 17.35,
+  "interpretation": "framework_identity_effect: AUT-2's single-stage ARS vs AUT-1's single-stage ARS under matched mismatch; isolates framework bias. pipeline_depth_effect: AUT-2's cascade ARS vs AUT-2's single-stage ARS; isolates the pure cascade degradation. combined_effect: AUT-2 cascade vs AUT-1 single-stage; matches the 5.7% headline previously reported in E4."
+}
