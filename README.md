@@ -36,13 +36,13 @@ ARES-Framework/
 │   ├── main.tex               LaTeX source (IEEEtran)
 │   ├── references.bib
 │   ├── sections/              Per-section .tex files
-│   └── ISAIA_2026_Overleaf.zip   Direct upload to Overleaf
+│   └── ISAIA_2026_LaTeX.zip      LaTeX source bundle (also Overleaf-ready)
 ├── SP_Magazine_2026/        IEEE Security & Privacy Magazine article
 │   ├── main.pdf               PDF
 │   ├── main.tex               LaTeX source (IEEEtran journal/compsoc)
 │   ├── references.bib
 │   ├── sections/              Per-section .tex files
-│   └── SP_Magazine_2026_Overleaf.zip   Direct upload to Overleaf
+│   └── SP_Magazine_2026_LaTeX.zip      LaTeX source bundle (also Overleaf-ready)
 ├── ares_bench/              ARES-Bench testbed (Docker, 6 microservices)
 │   ├── README.md
 │   ├── docker-compose.yml
