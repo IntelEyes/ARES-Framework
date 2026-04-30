@@ -19,6 +19,10 @@ authors:
     given-names: Anca Delia
     email: anca.jurcut@ucd.ie
     affiliation: "School of Computer Science, University College Dublin, Dublin, Ireland"
+  - family-names: Islam
+    given-names: Moshiul
+    email: moshiul@eicsecure.com
+    affiliation: "EIC Limited, Dhaka, Bangladesh"
 repository-code: "https://github.com/IntelEyes/ARES-Framework"
 license: MIT
 keywords:
@@ -41,6 +45,8 @@ preferred-citation:
       given-names: Sabrein S. E.
     - family-names: Jurcut
       given-names: Anca Delia
+    - family-names: Islam
+      given-names: Moshiul
   conference:
     name: "IEEE International Symposium on Artificial Intelligence Applications (ISAIA)"
   year: 2026

@@ -41,9 +41,7 @@ ARES-Framework/
     ├── main.tex               LaTeX source (IEEEtran journal/compsoc)
     ├── references.bib
     ├── sections/              Per-section .tex files
-    ├── SP_Magazine_2026_Overleaf.zip   Direct upload to Overleaf
-    └── REVIEWER_QA.md         21 anticipated reviewer Qs with
-                               evidence-backed answers (project notes)
+    └── SP_Magazine_2026_Overleaf.zip   Direct upload to Overleaf
 ```
 
 Both papers are self-contained: all definitions, the five-dimensional
@@ -78,8 +76,9 @@ For the magazine article:
 @article{alam2026aresmag,
   title   = {ARES: A Framework for Measuring Reliability and Failure
              Modes in Autonomous AI Security Agents},
-  author  = {Alam, Mohammad Makchudul and Anik, Md.~Redowan Z. and
-             el Bodour, Sabrein S.~E. and Jurcut, Anca Delia},
+  author  = {Alam, Mohammad Makchudul and Jurcut, Anca Delia and
+             Anik, Md.~Redowan Z. and el Bodour, Sabrein S.~E. and
+             Islam, Moshiul},
   journal = {IEEE Security \& Privacy},
   year    = {2026},
   note    = {Special issue on Autonomous AI Agents in Computer Security}
@@ -104,6 +103,9 @@ repository" widget in the sidebar.
 - **Anca Delia Jurcut** — School of Computer Science, University College
   Dublin, Dublin, Ireland
   ([anca.jurcut@ucd.ie](mailto:anca.jurcut@ucd.ie))
+- **Moshiul Islam** — EIC Limited, Dhaka, Bangladesh
+  *(IEEE S&P Magazine article only)*
+  ([moshiul@eicsecure.com](mailto:moshiul@eicsecure.com))
 
 ## License
 
