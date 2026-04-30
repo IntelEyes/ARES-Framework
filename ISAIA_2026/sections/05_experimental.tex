@@ -92,15 +92,17 @@ screening and showed the same directional trend but lower absolute
 discrimination because reasoning mismatch is unavailable before
 execution.
 
-\textbf{Distinct failure signatures per mismatch dimension.} Isolating
-each mismatch dimension at $\delta = 0.66$ yields diagnostically
-separable manifestation distributions (chi-square $= 146.7$,
-$p < 0.001$, dof $= 18$): capability deprivation predominantly
-produces Paralysis ($76\%$), skill deficit produces silent
-Omission ($60\%$), and reasoning perturbation produces
-Confabulation plus Overclaiming ($77\%$ combined) -- the most
-dangerous signature because confidence-inflated errors are the most
-likely to mislead downstream consumers.
+\textbf{Distinct failure signatures per mismatch dimension.}
+Conditioning on the LLM-agent records whose primary mismatch
+dimension is at level $\geq 0.5$ yields diagnostically separable
+manifestation distributions (chi-square test of independence,
+$p < 0.001$): capability deprivation predominantly produces Paralysis
+($78\%$), skill deficit produces silent Omission ($72\%$), knowledge
+deficit produces Hallucination ($32\%$) plus Misclassification
+($21\%$), and reasoning perturbation produces Confabulation ($38\%$)
+plus Overclaiming ($17\%$) -- the most dangerous signature because
+confidence-inflated errors are the most likely to mislead downstream
+consumers.
 
 \textbf{Cascade degradation.} The naive head-line gap between AUT-1
 (single-agent LangGraph) and AUT-2 (three-stage AutoGen pipeline) is
