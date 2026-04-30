@@ -116,7 +116,7 @@ repository" widget in the sidebar.
 - **Sabrein S. E. el Bodour** — Cyber Threat Intelligence, BGD e-GOV CIRT,
   Dhaka, Bangladesh
   ([sabreinserag@gmail.com](mailto:sabreinserag@gmail.com))
-- **Moshiul Islam** — Founder and CEO, EIC Limited, Dhaka, Bangladesh.
+- **Moshiul Islam Mishu** — Founder and CEO, EIC Limited, Dhaka, Bangladesh.
   PCI-DSS QSA and Certified Forensic Examiner; conducts PCI-DSS audits
   and provides cybersecurity services in VAPT, SOC, and GRC domains.
   *(IEEE S&P Magazine article only)*
