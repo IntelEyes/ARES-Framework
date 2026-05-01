@@ -5,7 +5,7 @@ traces** produced by the [ARES-Bench](../ares_bench/) testbed under
 controlled mismatch injection. It supports the empirical claims in
 both ARES papers (`ISAIA_2026/`, `SP_Magazine_2026/`).
 
-**License: Creative Commons Attribution 4.0 International (CC BY 4.0)** — see [`../LICENSE-DATA`](../LICENSE-DATA).
+**License: Creative Commons Attribution 4.0 International (CC BY 4.0)**, see [`../LICENSE-DATA`](../LICENSE-DATA).
 
 ## Composition
 

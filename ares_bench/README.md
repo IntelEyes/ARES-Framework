@@ -75,7 +75,7 @@ harness reads these from the environment).
 ## Reproducibility
 
 To reproduce the headline numbers reported in the papers, see
-[`../safk_corpus/README.md`](../safk_corpus/README.md) — the corpus
+[`../safk_corpus/README.md`](../safk_corpus/README.md), the corpus
 bundle includes `canonical_paper_numbers.json` and the per-experiment
 output files needed to verify each claim without re-running the full
 testbed.

@@ -3,14 +3,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Project page for the **ARES** (Agentic Reliability Evaluation for Security
-systems) framework — a formal reliability and anomaly-detection model for
+systems) framework: a formal reliability and anomaly-detection model for
 autonomous AI agents deployed in Security Operations Centres (SOCs).
 
 ## What is ARES?
 
 ARES quantifies the gap between what a security task demands and what an
-agent can deliver across five dimensions — **Skill, Knowledge, Capability,
-Reasoning, and Temporal drift (SKC + R + T)** — and uses that gap to predict
+agent can deliver across five dimensions, **Skill, Knowledge, Capability,
+Reasoning, and Temporal drift (SKC + R + T)**, and uses that gap to predict
 agent failures *before and during* execution.
 
 The framework introduces:
@@ -106,22 +106,22 @@ repository" widget in the sidebar.
 
 ## Authors
 
-- **Mohammad Makchudul Alam** — CTI, BGD e-GOV CIRT;
+- **Mohammad Makchudul Alam**, CTI, BGD e-GOV CIRT;
   [DNS Research Lab](https://www.dnsresearchlabs.ucd.ie),
   Dhaka, Bangladesh
   ([engrarifcce@gmail.com](mailto:engrarifcce@gmail.com))
-- **Md. Redowan Z. Anik** — Cyber Threat Intelligence, BGD e-GOV CIRT,
+- **Md. Redowan Z. Anik**, Cyber Threat Intelligence, BGD e-GOV CIRT,
   Dhaka, Bangladesh
   ([redowanzanik@gmail.com](mailto:redowanzanik@gmail.com))
-- **Sabrein S. E. el Bodour** — Cyber Threat Intelligence, BGD e-GOV CIRT,
+- **Sabrein S. E. el Bodour**, Cyber Threat Intelligence, BGD e-GOV CIRT,
   Dhaka, Bangladesh
   ([sabreinserag@gmail.com](mailto:sabreinserag@gmail.com))
-- **Moshiul Islam Mishu** — Founder and CEO, EIC Limited, Dhaka, Bangladesh.
+- **Moshiul Islam Mishu**, Founder and CEO, EIC Limited, Dhaka, Bangladesh.
   PCI-DSS QSA and Certified Forensic Examiner; conducts PCI-DSS audits
   and provides cybersecurity services in VAPT, SOC, and GRC domains.
   *(IEEE S&P Magazine article only)*
   ([moshiul@eicsecure.com](mailto:moshiul@eicsecure.com))
-- **Anca Delia Jurcut** — School of Computer Science, University College
+- **Anca Delia Jurcut**, School of Computer Science, University College
   Dublin, Dublin, Ireland
   ([anca.jurcut@ucd.ie](mailto:anca.jurcut@ucd.ie))
 
