@@ -13,7 +13,7 @@ mismatch injection.
 > five frontier models, which shows real agents stay calibrated and abstain
 > under knowledge deficit rather than confidently hallucinate (pooled
 > Pearson(δ_K, fabrication) = +0.11 live vs. +0.92 in this corpus). See the
-> papers' calibration-gap sections.
+> S&P Magazine paper's calibration-gap sections.
 
 ## Live calibration-gap data (real agents)
 

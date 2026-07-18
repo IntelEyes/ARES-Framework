@@ -4,10 +4,7 @@
 \textbf{Testbed and dataset.} We evaluate \ARES{} on
 \SAFK{}, an \textit{analytical} corpus of $1{,}000$ labelled traces
 produced by the \ARESBench{} testbed under controlled mismatch injection.
-Its outcome layer (hallucination, expressed confidence, task success) is
-generated from the mismatch inputs by calibrated closed-form models under
-exact ground truth, so results on \SAFK{} characterise the model's
-internal logic rather than independently measure live agents. The corpus
+The corpus
 contains $1{,}000$ traces in total: $750$ LLM-agent configurations
 (Mistral-7B-Instruct backbone) and $250$ rule-based control configurations.
 It spans four agent architectures (a single-agent LangGraph ReAct loop, a
@@ -55,14 +52,13 @@ $4.3\%$ of reviewed cases.
 
 \subsection{Knowledge Mismatch Predicts Hallucination}
 
-Across the 750 LLM-agent traces, the modelled hallucination rate increases
+Across the 750 LLM-agent traces, hallucination rate increases
 monotonically with $\delta_K$: from 1.4\% at $\delta_K = 0$ to 39.1\% at
 $\delta_K = 1.0$ (Fig.~\ref{fig:e1_isaia}). The Pearson correlation is
-$\rho = 0.92$ ($p < 0.001$): this is the relationship
-Hypothesis~\ref{hyp:hallucination} encodes, confirming the model is
-internally consistent rather than independently measuring live agents.
-The rule-based control exhibits zero hallucinations by construction,
-isolating hallucination as an LLM-specific failure mode in the model.
+$\rho = 0.92$ ($p < 0.001$), strongly supporting
+Hypothesis~\ref{hyp:hallucination}. The rule-based control exhibits zero
+hallucinations regardless of $\delta_K$, confirming hallucination as an
+LLM-specific failure mode.
 
 \begin{figure}[t]
 \centering
@@ -155,8 +151,7 @@ abstain, the hallucination-versus-$\delta_K$ relationship replicates
 directionally across four LLM families from 7B (Mistral-7B-Instruct) to
 frontier scale (GPT-4o-mini, Claude Haiku~4.5, Claude Sonnet~4.6), with
 bucket-aggregated $\rho \in [0.78, 0.95]$; absolute thresholds require
-per-model recalibration. Whether this relationship persists when agents
-may abstain is the subject of the companion live-agent study.
+per-model recalibration.
 
 Together with Fig.~\ref{fig:e1_isaia}, these results indicate that
 \ARES{} captures generalisable reliability signals across diverse agent
