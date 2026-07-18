@@ -50,7 +50,12 @@ threshold flags the execution as anomalous.}
 \subsection{Five Mismatch Dimensions}
 
 For each dimension, we compute a normalised mismatch score between 0 (full
-coverage) and 1 (total mismatch):
+coverage) and 1 (total mismatch); we summarise each here and specify how it
+is measured on a real agent in Section~\ref{sec:aresbench}. Full formal definitions of the
+agent and task profiles and of each indicator (as set-cardinality ratios
+over the task's required skills, ATT\&CK TTP subgraph, and tool manifest,
+with an exponential-decay temporal term) are given in the companion
+technical paper.
 
 \begin{itemize}[noitemsep, leftmargin=*]
   \item \textbf{Skill mismatch} ($\delta_S$): the fraction of required
@@ -122,7 +127,12 @@ that simultaneously reports high confidence ($U \approx 0$) produces a
 maximal Epistemic Gap: the precondition for hallucination. Conversely, an
 agent that correctly identifies its knowledge limits ($U \approx 1$) produces
 a near-zero Epistemic Gap: it may fail the task but will not fabricate
-an answer.
+an answer. Whether the dangerous regime actually arises is an empirical
+question, and one much of the hallucination literature answers by
+assumption. We test it directly (Empirical Insights) and find that real
+frontier agents keep $U$ high as $\delta_K$ rises, so the maximal-gap
+precondition is the exception rather than the rule, which makes
+$\mathcal{E}$ valuable precisely as a detector of that exception.
 
 This concept relates directly to the confidence calibration literature, which
 has shown that modern neural networks (including LLMs) are systematically
@@ -148,21 +158,15 @@ reliability is bounded above by the \textit{weakest agent} in the pipeline.
 This result has a counterintuitive practical consequence: decomposing
 a security task into a multi-agent pipeline cannot improve reliability
 beyond the weakest component agent. It can only reduce it. A triage agent
-that hallucinates an IOC passes corrupted input to the enrichment agent,
-which inherits the error, potentially amplifies it by adding supporting
-(but irrelevant) context, and the recommendation agent acts on the
-compounded misinformation. Our empirical results decompose this effect cleanly. The naive
-head-line gap between single-agent LangGraph and three-stage
-AutoGen is $\sim 5.7\%$ relative ARS, but it conflates framework
-identity with pipeline depth. A controlled ablation on $27$
-strictly matched mismatch buckets isolates the two contributions:
-framework identity contributes $\mathbf{0.13\%}$ (essentially
-zero) and pure pipeline depth contributes $\mathbf{17.25\%}$. The
-cascade-induced reliability loss is therefore an order of
-magnitude larger than the head-line number suggests, and it is
-attributable entirely to multi-stage composition rather than to
-the choice of agent framework. Full ablation numbers are reported
-in the empirical-insights section.
+that hallucinates an IOC passes corrupted input downstream, where
+enrichment inherits and amplifies it and the recommendation agent acts
+on the compounded error. Our analytical results decompose this effect
+cleanly. Under a matched-bucket ablation on the analytical corpus
+(reported in the Empirical Insights section),
+the reliability loss is attributable almost entirely to pipeline depth
+rather than to the choice of agent framework, and is roughly three
+times the size the naive headline gap between single-agent and
+three-stage pipelines would suggest.
 
 \subsection{From Score to Action}
 

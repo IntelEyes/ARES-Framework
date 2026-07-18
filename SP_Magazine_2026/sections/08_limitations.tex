@@ -1,23 +1,43 @@
 \section{Limitations and Future Work}
 
-\textbf{Synthetic benchmark data.} \SAFK{} is generated from
-ATT\&CK and NVD using template-based scenarios. Real SOC incidents
-introduce noise and edge cases this construction does not capture.
+\textbf{Analytical corpus.} \SAFK{}'s outcomes are generated from the
+mismatch inputs by closed-form models, so its dose-response, taxonomy
+signatures, and cascade bound \textit{encode} the relationships they
+describe rather than discover them. We treat them as an organising
+model, and it is exactly this that the calibration-gap experiment tests:
+the model's central assumption (confident ignorance under knowledge
+deficit) did not survive contact with real agents. The taxonomy
+manifestation mapping and the cascade magnitude have not yet been
+re-measured on live agents and should be read as hypotheses, not
+validated empirical rates.
 
-\textbf{Closed-world hallucination labels.} Hallucination labels
-treat ATT\&CK and NVD as ground truth, so novel post-corpus facts may
-be incorrectly flagged as hallucinations.
+\textbf{Scale and scope of the live study.} The calibration-gap result
+rests on 600 executions across five backbones spanning the Claude and GPT families, ten
+ATT\&CK-grounded scenarios, and a single-technique attribution task,
+complemented by 30 post-cutoff CISA KEV incidents across five models.
+This is enough to overturn a universal claim, that frontier agents
+confidently hallucinate under knowledge deficit as a rule, but not to
+characterise the full distribution of agent behaviour: fabrication is
+low (0--20\%) and flat in $\delta_K$ rather than absent. Broader model
+coverage (including open-weight and non-frontier agents, where
+calibration is weaker), more scenarios, multi-step tool-using agents,
+and larger real-incident corpora are the natural next steps.
 
-\textbf{Model-specific thresholds.} Absolute ARS values and the
-$\theta^* = 0.58$ threshold were learned on Mistral-7B-Instruct and
-will require recalibration for larger backbones; directional
-findings should hold because the SKC model is architecture-agnostic.
+\textbf{Closed-world hallucination labels.} Fabrication is scored
+against ATT\&CK/NVD as ground truth, so a genuinely-related technique
+absent from a scenario's curated set can be counted as a fabrication;
+this makes our real fabrication rates, already low, if anything an
+over-estimate, which strengthens rather than weakens the calibration-gap
+conclusion.
 
-\textbf{Reasoning mismatch is diagnostic.} The reasoning mismatch
-dimension ($\delta_R$) is computed post-hoc from output comparison
-with ground truth; in production it must be estimated via proxy
-measures, making it a diagnostic rather than a pre-execution
-predictor. The remaining four dimensions remain fully prospective.
+\textbf{Confidence as expressed, not verified.} We use the agent's
+self-reported confidence. This is the operative signal a monitor would
+actually read, but eliciting well-calibrated confidence remains an open
+problem; a poorly-calibrated agent that reports high confidence under
+ignorance is exactly the residual risk the Epistemic Gap is meant to
+catch.
 
-Future work extends \ARES{} to larger LLMs, real-world SOC data,
-cyclic multi-agent architectures, and adversarial mismatch injection.
+Future work re-measures the taxonomy and cascade findings on live
+agents, extends the calibration study across model families and
+agent architectures, and connects the confidence signal to runtime
+gating in a production SOC.

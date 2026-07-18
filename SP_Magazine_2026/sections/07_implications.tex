@@ -1,22 +1,22 @@
 \section{Deployment Guidance for SOC Teams}
 
-This is the practitioner section. \ARES{} translates into concrete,
-actionable guidance for organisations deploying autonomous AI agents
-in security operations. We organise the guidance around five
-questions SOC architects and security engineers face when
-integrating agentic AI into their workflows, and close with a
-five-step pre-deployment checklist.
+\ARES{} translates into concrete guidance for teams deploying
+autonomous AI agents in security operations, organised around five
+questions SOC architects face when integrating agentic AI, and closing
+with a five-step pre-deployment checklist.
 
 \textbf{When should AI agents be trusted?}
-ARS serves as a pre-execution deployment gate. An agent whose ARS
-falls below the learned threshold ($\theta^* = 0.58$) should not
-execute autonomously: escalate to a human analyst or reconfigure
-(provide additional knowledge context or restore tool access). Four
-of the five mismatch dimensions ($\delta_S, \delta_K, \delta_C,
-\delta_T$) are computable before execution, so screening occurs at
-task-assignment time with no runtime overhead. ARS checks integrate
-into SOAR platforms as a pre-condition for autonomous execution,
-consistent with emerging AI risk management frameworks~\cite{nist_ai_rmf}.
+ARS is proposed as a pre-execution screening signal: an agent scoring
+below a learned threshold is escalated to a human or reconfigured
+(add knowledge context, restore tool access). The threshold is
+deployment-specific and must be fit on the deployer's own labelled
+outcomes, not transplanted (our analytical corpus is illustrative
+only). Because four of the five dimensions ($\delta_S, \delta_K,
+\delta_C, \delta_T$) are computable before execution, screening adds no
+runtime overhead and slots into SOAR platforms as a pre-condition for
+autonomous execution~\cite{nist_ai_rmf}. ARS is a screening heuristic,
+not a validated detector; the calibration signal below is the
+empirically supported lever.
 
 \textbf{How can reliability be monitored continuously?}
 The Epistemic Gap enables runtime hallucination risk monitoring: by
@@ -28,11 +28,14 @@ requires only the agent's confidence and pre-computed $\delta_K$,
 both already in the execution record.
 
 \textbf{How should knowledge maintenance be scheduled?}
-The temporal drift model gives per-domain update schedules. For
-ransomware ($\lambda = 0.005$~day$^{-1}$), ARS drops below threshold
-in $\sim 120$ days (quarterly refresh). For APT attribution
-($\lambda = 0.001$), the same threshold is not crossed for $\sim 500$
-days. These directly inform agent-deployment runbooks.
+The temporal drift model gives the \textit{shape} of a per-domain
+update schedule: reliability decays with a domain-specific rate
+$\lambda$, so fast-moving domains need more frequent refresh. With
+illustrative constants ($\lambda = 0.005$~day$^{-1}$ for ransomware,
+$0.001$ for APT attribution) the model implies roughly quarterly
+versus annual refresh. The constants are not measured here and must
+be fit on each deployer's own drift data; the contribution is the
+schedule form, not these particular numbers.
 
 \textbf{How should multi-agent systems be designed?}
 Cascade analysis shows pipelines amplify rather than mitigate
@@ -44,16 +47,19 @@ inter-agent verification checkpoints; (2) confidence-gated propagation
 agent paths for critical decisions.
 
 \textbf{How can safer agent systems be built?}
-Three principles emerge: (1) \textit{knowledge-first design},
-ensure comprehensive, current threat knowledge before optimising
-reasoning or tool access, since $\delta_K$ is the strongest single
-predictor of dangerous failures; (2) \textit{calibrated uncertainty},
-train or prompt agents to express uncertainty proportional to
-knowledge coverage, reducing the Epistemic Gap; (3) \textit{fail-safe
-defaults}, configure agents to escalate rather than fabricate when
-operating outside their validated envelope. These apply broadly but
-are especially critical in cybersecurity where confident errors
-cascade beyond the immediate incident.
+Our calibration-gap result reorders the usual priorities. (1)
+\textit{Calibration-first design}, the operative lever: prefer and
+validate agents whose expressed confidence falls as their knowledge
+degrades, since it is calibration, not knowledge coverage alone, that
+determines whether a knowledge gap becomes a confident fabrication.
+(2) \textit{Knowledge coverage} still matters, but chiefly for
+\textit{task success}: a well-calibrated but under-informed agent will
+abstain safely, trading coverage for reliability, so knowledge refresh
+is a capability investment more than a safety one. (3) \textit{Fail-safe
+defaults}, preserve and reward the abstention behaviour real agents
+already exhibit, rather than prompting them to always answer. The one
+agent configured or fine-tuned to answer confidently under uncertainty
+is the dangerous exception, and the one to screen out.
 
 \textbf{How does this map to regulatory and governance frameworks?}
 The SKC decomposition aligns directly with emerging AI governance
@@ -62,11 +68,11 @@ Framework~\cite{nist_ai_rmf} identifies ``valid and reliable,''
 ``accountable and transparent,'' and ``safe'' as top-tier
 trustworthiness characteristics: \ARES{} operationalises the first
 via ARS, the second via the traceable mismatch decomposition, and
-the third via the Epistemic-Gap escalation gate. The forthcoming
-NIST Cybersecurity and AI Profile~\cite{nist_cyberai2025} extends
-these controls explicitly to security-domain deployments, making
-pre-execution reliability gates an auditable practice rather than
-an internal engineering hygiene step. At the application layer,
+the third via the Epistemic-Gap escalation gate. The NIST Cybersecurity and
+AI Profile~\cite{nist_cyberai2025}, in preliminary draft, is expected
+to extend these controls to security-domain deployments, which would
+make pre-execution reliability gates an auditable practice rather than
+an internal engineering-hygiene step. At the application layer,
 the OWASP Top~10 for Agentic
 Applications~\cite{owasp2026agentic} catalogues capability
 over-provisioning, tool misuse, and confident hallucination as
@@ -79,14 +85,15 @@ Distilling the above into a pragmatic checklist for SOC
 architects yields five steps: \textit{(i)} estimate pre-execution
 $\delta_S$, $\delta_K$, $\delta_C$, $\delta_T$ for each intended
 task class; \textit{(ii)} apply the task-class-specific weight
-vector and compare ARS against $\theta^* = 0.58$; \textit{(iii)}
+vector and compare ARS against a threshold fit on local labelled
+outcomes; \textit{(iii)}
 if ARS is below threshold, choose one of three mitigations
 (knowledge refresh, capability provisioning, or task-scope
 restriction) and re-score; \textit{(iv)} instrument the runtime
 to emit stated confidence alongside each decision and compute
-$\mathcal{E}$ per record; \textit{(v)} schedule knowledge
-refreshes according to the domain-specific temporal-drift
-constant ($\sim$120 days for ransomware, $\sim$500 days for APT
-attribution in our data). Each step maps to a concrete
+$\mathcal{E}$ per record, and prefer agents whose confidence
+falls under withheld knowledge; \textit{(v)} schedule knowledge
+refreshes according to a domain-specific temporal-drift
+constant fit on local drift data. Each step maps to a concrete
 engineering artefact (a config change, a telemetry hook, a
 cron job) so the reliability gate does not stay theoretical.

@@ -3,14 +3,11 @@
 
 \textbf{AI dependability and fault taxonomies.}
 Avizienis et al.~\cite{avizienis2004} define the foundational taxonomy of
-faults, errors, and failures for computing systems. This framework remains
-the most rigorous treatment of dependability theory, but it was developed
-for conventional deterministic software and has no concept of epistemic
-uncertainty, declarative knowledge coverage, or reasoning chain validity, all of which are
-central to LLM agent reliability. The framework assumes that a correctly
-implemented system has a complete specification against which correctness
-can be verified, an assumption that does not hold for LLM agents operating
-with incomplete and potentially stale knowledge bases.
+faults, errors, and failures, but it targets conventional deterministic
+software: it has no concept of epistemic uncertainty, knowledge coverage,
+or reasoning-chain validity, and assumes a complete specification against
+which correctness can be verified---an assumption that does not hold for
+LLM agents operating with incomplete, potentially stale knowledge.
 
 Humbatova et al.~\cite{humbatova2020} taxonomise real-world bugs in deep
 learning systems across model, data, and training faults, but neither the
@@ -20,23 +17,18 @@ taxonomy captures \textit{implementation} faults; \ARES{} captures
 but insufficiently equipped for the task.
 
 \textbf{LLM hallucination and confidence calibration.}
-Huang et al.~\cite{huang2023hallucination} provide a comprehensive survey
-of hallucination in LLMs, distinguishing intrinsic and extrinsic
-hallucination and cataloguing mitigation strategies. However, this work
-treats hallucination as a property of the model in isolation: it does not
-model the \textit{operational context} (tool availability, task complexity,
-knowledge freshness) that characterises SOC agent deployments. None of
-the existing hallucination literature examines the multi-agent
-setting where a hallucination in one agent propagates to downstream
-reasoning stages.
+Huang et al.~\cite{huang2023hallucination} survey hallucination in LLMs but
+treat it as a property of the model in isolation, not of the
+\textit{operational context} (tool availability, task complexity, knowledge
+freshness) that characterises SOC deployments; nor does this literature
+examine the multi-agent setting where one agent's hallucination propagates
+to downstream reasoning stages.
 
-Guo et al.~\cite{guo2017calibration} demonstrate that modern neural
-networks are systematically overconfident, particularly on out-of-distribution
-inputs. This finding is directly relevant to our Epistemic Gap formulation
-(Section~\ref{sec:epistemic}), which measures the interaction between
-knowledge deficit and confidence miscalibration. Existing calibration work
-measures miscalibration globally; the Epistemic Gap targets the specific
-case where miscalibration occurs at the point of greatest knowledge weakness.
+Guo et al.~\cite{guo2017calibration} show modern neural networks are
+systematically overconfident on out-of-distribution inputs. Existing
+calibration work measures miscalibration globally; our Epistemic Gap
+(Section~\ref{sec:epistemic}) instead targets the specific case where
+miscalibration coincides with the point of greatest knowledge weakness.
 
 \textbf{Agent benchmarking and security AI.}
 AgentBench~\cite{liu2023agentbench} is the closest existing work to our
@@ -45,9 +37,8 @@ across web navigation, code execution, and game playing tasks. However,
 AgentBench includes no security environment, does not model capability
 constraints, and does not support systematic mismatch injection.
 PentestGPT~\cite{deng2023pentest} evaluates LLM penetration testing
-capabilities, and multi-agent cyber defence frameworks~\cite{xu2024}
-demonstrate autonomous defence coordination, but neither models the
-conditions under which agents produce misleading outputs.
+capabilities, but does not model the conditions under which agents
+produce misleading outputs.
 
 The broader AI in cybersecurity literature~\cite{apruzzese2023} catalogues
 AI applications across the security lifecycle but explicitly identifies

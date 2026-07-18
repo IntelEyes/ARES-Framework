@@ -23,6 +23,30 @@ The framework introduces:
 - A **cascade reliability bound** for tightly-coupled multi-agent
   pipelines, and a **temporal-drift model** for knowledge ageing.
 
+## Key empirical finding: the calibration gap
+
+The SOCAgentFailure-1K corpus is **analytical** — its agent outcomes
+(hallucination, confidence, task success) are generated from the mismatch
+inputs by closed-form models, so it exercises the framework's internal
+logic under exact ground truth rather than measuring live agents.
+
+Testing the framework's central assumption — that knowledge deficit drives
+*confident* hallucination — against **600 live executions across five
+frontier models spanning two families** (Anthropic Claude Haiku 4.5 /
+Sonnet 4.6 / Opus 4.7; OpenAI GPT-4o-mini / GPT-4o) reveals a
+**calibration gap**: real agents grow *uncertain* and **abstain** under
+knowledge deficit rather than confidently hallucinate. Expressed
+confidence falls as knowledge is withheld (Pearson −0.35 to −0.51 across
+all five models); pooled Pearson(δ_K, fabrication) = **+0.11** on live
+agents versus **+0.92** in the analytical corpus; fabrication stays
+0–20% (vs. the model's 39%), and the most capable model (Opus 4.7)
+fabricated in 0% of runs. The Epistemic Gap is therefore best read as a
+**detector of the residual, dangerous cases** where a miscalibrated agent
+stays confident under ignorance, not as a predictor of a common failure.
+
+Data and both harnesses are in `safk_corpus/calibration_gap_*.json` and
+`ares_bench/analysis/calibration_gap_harness*.py`.
+
 ## Contents
 
 ```
@@ -49,15 +73,18 @@ ARES-Framework/
 │   ├── .env.example
 │   ├── generate_dataset.py
 │   ├── services/  shared/  analysis/  tests/
-└── safk_corpus/             SOCAgentFailure-1K labelled benchmark
+└── safk_corpus/             SOCAgentFailure-1K + live calibration data
     ├── README.md
-    ├── socagentfailure_1k.jsonl / .csv      1,000 labelled traces
+    ├── socagentfailure_1k.jsonl / .csv      1,000 analytical traces
     ├── dataset_stats.json
-    ├── canonical_paper_numbers.json         Reproducibility bundle
+    ├── canonical_paper_numbers.json         Analytical-model numbers
     ├── cascade_ablation.json
     ├── cross_model_results.json
-    ├── real_incident_runs_v2.json
-    └── real_incident_labels.csv
+    ├── real_incident_runs_v2.json           30 live CISA-KEV incidents
+    ├── real_incident_labels.csv
+    ├── calibration_gap_runs.json            600 live agent executions (5 models)
+    ├── calibration_gap_summary.json         Per-model calibration statistics
+    └── calibration_gap_scenarios.json       10 ATT&CK-grounded scenarios
 ```
 
 Both papers are self-contained: all definitions, the five-dimensional

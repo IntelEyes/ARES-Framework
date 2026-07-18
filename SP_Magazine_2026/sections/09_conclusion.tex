@@ -1,34 +1,36 @@
 \section{Conclusion}
+\label{sec:conclusion}
 
-As AI agents take on greater operational responsibility in defending critical
-infrastructure, frameworks for understanding their failure behaviour become
-essential, not as an afterthought, but as a prerequisite for responsible
-deployment. \ARES{} provides an integrated treatment of this problem
-for the cybersecurity domain: a failure taxonomy that classifies how agents
-fail across origin, manifestation, and impact dimensions; a quantitative
-reliability model based on skill--knowledge--capability mismatch; an open
-evaluation testbed supporting controlled experimentation; and a labelled
-failure dataset enabling reproducible benchmarking.
+As AI agents take on greater operational responsibility in defending
+critical infrastructure, frameworks for understanding their failure
+behaviour become a prerequisite for responsible deployment. \ARES{}
+contributes an integrated treatment for the cybersecurity domain: a
+three-axis failure taxonomy, a skill--knowledge--capability reliability
+model with an Agent Reliability Score and an Epistemic Gap metric, an
+open testbed, and an analytical corpus for reproducible study.
 
-Our empirical results establish three findings with direct implications for
-SOC operations. First, knowledge gaps are the dominant driver of
-hallucination: agents operating without relevant threat context fabricate
-information at alarming rates, making knowledge completeness verification
-the highest-priority deployment check. Second, multi-agent pipelines amplify
-rather than mitigate component failures, challenging the intuition that
-task decomposition improves outcomes. Third, the Epistemic Gap (capturing
-what an agent does not know it does not know) decomposes
-false-negative risk into a knowledge term and a calibration term that
-are statistically equivalent in raw predictive power but independently
-controllable, making confidence calibration as actionable a lever as
-knowledge coverage.
+Our central result, however, is a corrective one. The reliability
+model, in common with much of the hallucination literature, assumes
+that knowledge deficit produces \textit{confident} fabrication. Tested
+against 600 live frontier-agent executions and a post-cutoff live-CVE
+study, that assumption inverts: real agents are calibrated, their
+expressed confidence falls as their knowledge degrades, so they abstain
+rather than confidently hallucinate, and confident fabrication, the
+failure the framework is built to catch, occurs in a small minority of
+cases concentrated in the least-calibrated agents. Knowledge coverage
+is therefore not the first-order reliability lever the model implies;
+\textit{calibration} is. The operative deployment questions become: is
+this agent's confidence actually tracking its knowledge, and which
+agent in the fleet is the one that still answers when it should abstain?
 
-These findings translate into actionable deployment guidance: pre-execution
-reliability screening via ARS, runtime confidence monitoring via the
-Epistemic Gap, evidence-based knowledge refresh scheduling via the temporal
-drift model, and conservative multi-agent pipeline design informed by
-cascade reliability analysis.
+The practical guidance follows: monitor the confidence signal, not the
+knowledge gap alone; gate high-Epistemic-Gap outputs; and treat a
+low-abstention, high-confidence agent under uncertainty as the anomaly.
+More broadly, the result is a caution for the field: reliability claims
+about autonomous agents should be validated on real agents, because the
+failure modes a plausible model predicts are not always the ones that
+occur.
 
-\ARES{}, \ARESBench{}, and \SAFK{} are publicly released to support
-reproducible research in AI security agent
+\ARES{}, \ARESBench{}, \SAFK{}, and the live calibration dataset are
+publicly released to support reproducible research in AI security agent
 dependability.\footnote{\url{https://github.com/IntelEyes/ARES-Framework}}

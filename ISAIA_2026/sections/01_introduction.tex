@@ -30,8 +30,7 @@ concept of epistemic uncertainty or knowledge currency. Hallucination
 research~\cite{huang2023hallucination} analyses LLM reasoning failures but
 ignores operational context. AgentBench~\cite{liu2023agentbench} benchmarks
 agent task performance without modelling capability constraints or failure
-conditions. To the best of our knowledge, no unified formal model
-connects capability mismatch to failure risk.
+conditions.
 
 \textbf{Contribution.}
 We present \ARES{} (Agentic Reliability Evaluation for Security systems),
@@ -46,11 +45,13 @@ is narrow:
   \item An \textbf{Epistemic Gap metric} that formalises the hallucination
     precondition as confident ignorance: the interaction between knowledge
     deficit and miscalibrated confidence.
-  \item An \textbf{illustrative validation} showing that knowledge
-    mismatch dominantly predicts hallucination, the ARS threshold
-    generalises across threat classes, and the Epistemic Gap provides an
-    interpretable decomposition of false-negative risk into knowledge
-    and calibration components.
+  \item An \textbf{analytical validation} showing that, under exact
+    ground truth, knowledge mismatch dominantly predicts the modelled
+    hallucination signal, the ARS threshold separates reliable from
+    unreliable configurations across threat classes, and the Epistemic
+    Gap provides an interpretable decomposition of false-negative risk
+    into knowledge and calibration components; live-agent validation is
+    reported in companion work.
 \end{enumerate}
 \ARES{} contributes to intelligent systems research by providing a
 reliability-oriented representation and decision framework for autonomous

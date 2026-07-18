@@ -49,9 +49,8 @@ work~\cite{guo2017calibration} shows neural networks are miscalibrated but
 does not connect this to agent reliability. Agent
 benchmarks~\cite{liu2023agentbench, deng2023pentest} measure capability
 without modelling failure conditions. The closest
-recent efforts ,
-MAST~\cite{cemri2025mast}, a domain-agnostic 14-mode failure
-taxonomy, and AgentDojo~\cite{debenedetti2024agentdojo}, an
+recent efforts, MAST~\cite{cemri2025mast}, a domain-agnostic 14-mode
+failure taxonomy, and AgentDojo~\cite{debenedetti2024agentdojo}, an
 adversarial prompt-injection environment, each cover one slice of
 the surface. To the best of our knowledge, no existing work provides a
 unified reliability model, evaluation testbed, and labelled failure
@@ -71,12 +70,18 @@ Security systems), a framework designed to fill this gap. \ARES{} provides:
   \item \textbf{\ARESBench{}}, a fully open-source, Docker-deployable
     evaluation testbed supporting four agent architectures across five
     threat scenario classes.
-  \item \textbf{\SAFK{}}, a labelled dataset of 1,000 agent execution
+  \item \textbf{\SAFK{}}, an analytical corpus of 1,000 agent execution
     traces under controlled failure conditions, released under CC~BY~4.0.
+  \item A \textbf{calibration-gap finding}: testing the model's central
+    assumption against 600 live frontier-agent executions, we show that
+    real agents grow uncertain and abstain under knowledge deficit
+    rather than confidently hallucinate, inverting the risk the failure
+    model, and much of the literature, assumes.
 \end{enumerate}
 
 Together they let SOC architects screen an agent for a given task before
-it ever sees production traffic.
+it sees production traffic, and, as importantly, tell them which of the
+model's assumptions survive contact with real agents.
 
 Parallel 2025--2026 efforts confirm the urgency: hallucination
 benchmarks~\cite{bang2025hallulens} treat confident factual errors as

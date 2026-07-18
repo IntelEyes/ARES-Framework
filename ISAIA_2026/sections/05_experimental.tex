@@ -2,10 +2,14 @@
 \label{sec:experimental}
 
 \textbf{Testbed and dataset.} We evaluate \ARES{} on
-\SAFK{}, a labelled corpus of $1{,}000$ agent execution traces produced by
-the \ARESBench{} testbed under controlled mismatch injection. The corpus
-contains $1{,}000$ executions in total: $750$ LLM-agent executions
-(Mistral-7B-Instruct backbone) and $250$ rule-based control executions.
+\SAFK{}, an \textit{analytical} corpus of $1{,}000$ labelled traces
+produced by the \ARESBench{} testbed under controlled mismatch injection.
+Its outcome layer (hallucination, expressed confidence, task success) is
+generated from the mismatch inputs by calibrated closed-form models under
+exact ground truth, so results on \SAFK{} characterise the model's
+internal logic rather than independently measure live agents. The corpus
+contains $1{,}000$ traces in total: $750$ LLM-agent configurations
+(Mistral-7B-Instruct backbone) and $250$ rule-based control configurations.
 It spans four agent architectures (a single-agent LangGraph ReAct loop, a
 three-stage AutoGen pipeline, a role-based CrewAI crew, and a rule-based
 Sigma/YARA control) and five threat classes (Ransomware, Phishing, Insider
@@ -16,6 +20,22 @@ agent output, the agent's stated confidence, the failure label assigned by
 the labelling pipeline, and the observed reliability outcome.
 The corpus is split $600/200/200$ for training, validation, and held-out
 test (stratified by task class and architecture).
+
+\textbf{Dataset construction.} Scenarios are templated from MITRE
+ATT\&CK v14 kill-chains and NVD CVE records: each scenario fixes a
+ground-truth threat class, TTP chain, and required
+$\langle\Sk^*,\K^*,\CC^*\rangle$ profile, against which the agent's
+output is later scored. Mismatch is injected through deliberately
+realistic mechanisms rather than random corruption: $\delta_S$
+disables skill or tool nodes in the agent's execution graph;
+$\delta_K$ filters ATT\&CK TTP context from retrieval to retain only a
+controlled fraction; $\delta_C$ intercepts tool calls through a
+middleware proxy that returns permission-denied errors; $\delta_R$
+inserts misleading content into the system prompt at a controlled
+probability; and $\delta_T$ is set parametrically through the agent's
+knowledge-age attribute. Generation is deterministic (fixed seed), and
+the full generator, injection harness, and per-record provenance are
+released with the testbed so every trace is reproducible from source.
 
 \textbf{Labelling protocol.} Failure modes are first assigned by a
 deterministic rule-based engine that compares each agent output against
@@ -35,12 +55,14 @@ $4.3\%$ of reviewed cases.
 
 \subsection{Knowledge Mismatch Predicts Hallucination}
 
-Across 750 LLM-based executions, hallucination rate increases monotonically
-with $\delta_K$: from 1.4\% at $\delta_K = 0$ to 39.1\% at $\delta_K = 1.0$
-(Fig.~\ref{fig:e1_isaia}). The Pearson correlation is $\rho = 0.92$
-($p < 0.001$), strongly supporting Hypothesis~\ref{hyp:hallucination}. The
-rule-based baseline exhibits zero hallucinations regardless of $\delta_K$,
-confirming hallucination as an LLM-specific failure mode.
+Across the 750 LLM-agent traces, the modelled hallucination rate increases
+monotonically with $\delta_K$: from 1.4\% at $\delta_K = 0$ to 39.1\% at
+$\delta_K = 1.0$ (Fig.~\ref{fig:e1_isaia}). The Pearson correlation is
+$\rho = 0.92$ ($p < 0.001$): this is the relationship
+Hypothesis~\ref{hyp:hallucination} encodes, confirming the model is
+internally consistent rather than independently measuring live agents.
+The rule-based control exhibits zero hallucinations by construction,
+isolating hallucination as an LLM-specific failure mode in the model.
 
 \begin{figure}[t]
 \centering
@@ -127,14 +149,15 @@ against the live CISA KEV catalogue (post-training-cutoff, so
 $\delta_K \approx 1$) yields an operational $\E$ gap of $\sim 66\%$
 at matched $\delta_K$ across five frontier LLM backbones.
 
-\textbf{Cross-model-family generalisation.} The
-hallucination-versus-$\delta_K$ relationship replicates directionally
-across four LLM families from 7B (Mistral-7B-Instruct) to frontier
-scale (GPT-4o-mini, Claude Haiku~4.5, Claude Sonnet~4.6), with
+\textbf{Cross-model-family generalisation.} Under a forced-answer
+evaluation, in which the agent must commit to an attribution rather than
+abstain, the hallucination-versus-$\delta_K$ relationship replicates
+directionally across four LLM families from 7B (Mistral-7B-Instruct) to
+frontier scale (GPT-4o-mini, Claude Haiku~4.5, Claude Sonnet~4.6), with
 bucket-aggregated $\rho \in [0.78, 0.95]$; absolute thresholds require
-per-model recalibration.
+per-model recalibration. Whether this relationship persists when agents
+may abstain is the subject of the companion live-agent study.
 
-Together with the knowledge-hallucination relationship in
-Fig.~\ref{fig:e1_isaia}, these results indicate that \ARES{} captures
-meaningful, generalisable reliability signals across diverse agent
+Together with Fig.~\ref{fig:e1_isaia}, these results indicate that
+\ARES{} captures generalisable reliability signals across diverse agent
 architectures and threat scenarios.

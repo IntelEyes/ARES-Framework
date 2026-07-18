@@ -423,7 +423,7 @@ def simulate_hallucination(
     uncertainty: float,
     rng=None,
 ) -> bool:
-    """Simulate whether the agent hallucinates.
+    """Simulate whether the agent hallucinates (ANALYTICAL MODEL).
 
     P(hallucination) = delta_K^1.5 * (0.5 + 0.5*(1-U))
 
@@ -433,6 +433,11 @@ def simulate_hallucination(
     At delta_K=1.0: HR ~0.52-0.58
 
     AUT-4 (rule-based): NEVER hallucinates.
+
+    CAVEAT: this formula ASSUMES hallucination rises with knowledge deficit under
+    persistent confidence. Real frontier agents do the opposite -- they grow uncertain
+    and abstain (see analysis/calibration_gap_harness*.py). This function defines the
+    analytical corpus, not real agent behaviour.
     """
     if arch == AgentArch.AUT4_RULEBASED:
         return False

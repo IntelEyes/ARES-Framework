@@ -2,6 +2,22 @@
 """
 SOCAgentFailure-1K Dataset Generator for ARES-Bench.
 
+NOTE ON WHAT THIS PRODUCES (read before citing the outputs):
+    This generator produces an ANALYTICAL corpus. Agent outcomes -- hallucination,
+    expressed confidence, task success, delta_R, and the anomaly flag -- are computed
+    from the mismatch inputs by the closed-form models in shared/shared_models.py
+    (simulate_hallucination, simulate_confidence, simulate_task_success, ...), and the
+    agent's own text output is overridden by those calibrated values (see ~line 264).
+    The corpus therefore ENCODES the mismatch->failure relationships (e.g. p_hall grows
+    with delta_K) rather than discovering them from live model execution.
+
+    A real-agent study (analysis/calibration_gap_harness*.py -> output/calibration_gap_runs.json,
+    600 live executions across Claude + GPT families) shows the headline assumption baked in
+    here -- that knowledge deficit yields CONFIDENT hallucination -- does NOT hold for real
+    frontier agents: they are calibrated and abstain instead (pooled Pearson(delta_K, fabricate)
+    = +0.11 vs. the +0.92 encoded here). Use this corpus as an analytical instrument, and the
+    calibration_gap dataset for claims about real agent behaviour.
+
 Generates exactly 1,000 evaluation records stratified across:
   - 5 task classes (T1-T5, ~200 each)
   - 4 agent architectures (AUT-1 to AUT-4, ~250 each)

@@ -9,12 +9,15 @@ introduces three components: a five-dimensional
 Skill--Knowledge--Capability (SKC) mismatch vector; a learnable Agent
 Reliability Score (ARS) with task-class-specific weights; and an
 Epistemic Gap metric that formalises the hallucination precondition as
-confident ignorance. Experimental validation on 1,000 agent execution
-traces demonstrates that knowledge mismatch is the dominant predictor of
-hallucination (bucket-aggregated correlation 0.92 at $p < 0.0001$,
-point-biserial correlation 0.34 at the record level), the ARS threshold
-generalises across five threat classes (held-out test F1 of 0.96), and
-the Epistemic Gap provides an interpretable decomposition of
-false-negative risk into knowledge and calibration components.
+confident ignorance. Validation on an analytical corpus of 1,000 traces, whose outcomes are
+generated from the mismatch inputs under exact ground truth, shows the
+model behaves as designed: knowledge mismatch is the dominant predictor
+of the modelled hallucination signal (bucket-aggregated correlation 0.92
+at $p < 0.0001$, point-biserial correlation 0.34 at the record level),
+the ARS threshold separates reliable from unreliable configurations
+across five threat classes (held-out test F1 of 0.96), and the Epistemic
+Gap provides an interpretable decomposition of false-negative risk into
+knowledge and calibration components. Validation on live frontier agents
+is ongoing and reported in companion work.
 The framework provides an initial formal foundation for pre-deployment
 reliability screening and runtime anomaly detection in agentic AI systems.

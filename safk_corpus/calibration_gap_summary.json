@@ -1,0 +1,39 @@
+{
+ "n_calls": 600,
+ "models": {
+  "claude-haiku-4-5": {
+   "pearson_dK_fabricate": 0.046,
+   "fabricate_at_dK1": 0.133,
+   "pearson_dK_confidence": -0.45,
+   "confident_fabrication_rate": 0.092
+  },
+  "claude-sonnet-4-6": {
+   "pearson_dK_fabricate": 0.269,
+   "fabricate_at_dK1": 0.167,
+   "pearson_dK_confidence": -0.354,
+   "confident_fabrication_rate": 0.067
+  },
+  "claude-opus-4-7": {
+   "pearson_dK_fabricate": NaN,
+   "fabricate_at_dK1": 0.0,
+   "pearson_dK_confidence": -0.399,
+   "confident_fabrication_rate": 0.0
+  },
+  "gpt-4o-mini": {
+   "pearson_dK_fabricate": 0.067,
+   "fabricate_at_dK1": 0.2,
+   "pearson_dK_confidence": -0.496,
+   "confident_fabrication_rate": 0.133
+  },
+  "gpt-4o": {
+   "pearson_dK_fabricate": 0.167,
+   "fabricate_at_dK1": 0.067,
+   "pearson_dK_confidence": -0.512,
+   "confident_fabrication_rate": 0.033
+  }
+ },
+ "pooled": {
+  "pearson_dK_fabricate": 0.107,
+  "pearson_dK_confidence": -0.411
+ }
+}

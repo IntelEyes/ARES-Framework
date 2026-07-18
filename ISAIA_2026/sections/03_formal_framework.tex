@@ -91,18 +91,13 @@ reports both.
 \end{definition}
 
 Intuitively, ARS decreases when a task requires skills, knowledge, tools,
-reasoning quality, or freshness that the agent lacks.
-
-The task-class dependency of $\bw_\tau$ is a critical design choice.
-Empirical results (Section~\ref{sec:experimental}) show that for APT
-investigation, $w_K$ and $w_R$ dominate; for DDoS detection, $w_S$ and
-$w_C$ lead. A universal weight vector would systematically misestimate
-reliability across threat classes.
-
-Table~\ref{tab:weights_isaia} reports the learned weight vectors, confirming
-that $w_K$ is the highest mean-weight dimension ($\bar{w}_K = 0.30$),
-reflecting the knowledge-intensive nature of threat analysis. The
-task-class variability justifies the class-specific design.
+reasoning quality, or freshness that the agent lacks. The task-class
+dependency of $\bw_\tau$ is a deliberate design choice: a universal weight
+vector would systematically misestimate reliability across threat classes
+(for APT investigation $w_K$ and $w_R$ dominate; for DDoS detection $w_S$
+and $w_C$ lead). Table~\ref{tab:weights_isaia} reports the learned vectors;
+$w_K$ is the highest mean-weight dimension ($\bar{w}_K = 0.30$), reflecting
+the knowledge-intensive nature of threat analysis.
 
 \begin{table}[t]
 \caption{Learned Weight Vectors $\bw_\tau$ per Task Class}

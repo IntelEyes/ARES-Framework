@@ -1,4 +1,5 @@
 \section{\ARESBench{} Evaluation Framework}
+\label{sec:aresbench}
 
 To validate the reliability model empirically, we built
 \ARESBench{}: an open-source, Docker-deployable testbed for measuring
@@ -8,7 +9,7 @@ sources public and versioned), generalisability (multiple agent
 architectures and threat classes), and controllability (systematic
 mismatch injection across a structured matrix). The full architecture
 diagram, data-source manifest, and measurement-pipeline details are
-maintained in the project artefact repository (see Section IX).
+maintained in the project artefact repository (see Section~\ref{sec:conclusion}).
 
 \textbf{Agents under test.} \ARESBench{} evaluates four agent
 architectures spanning the major paradigms: \textbf{AUT-1
@@ -43,12 +44,48 @@ and assigns taxonomy labels using a rule-based engine validated
 against human annotations (Cohen's $\kappa = 0.84$ for origin,
 $\kappa = 0.91$ for manifestation).
 
-\textbf{The \SAFK{} dataset.} The pipeline produces a labelled corpus
-of 1{,}000 agent execution traces stratified across five threat
-classes (200 each), four agent architectures (250 each), and 16
-representative mismatch conditions. Each record captures the task
-context (scenario class, TTP chain, ground truth), the agent profile,
-the five-dimensional mismatch vector, the full agent output with
-reasoning trace, the failure-taxonomy labels, the ARS and Epistemic
-Gap scores, and execution metadata. The dataset is released under
-CC BY 4.0 alongside the \ARESBench{} codebase.
+\textbf{From injection to measurement.} Controlled injection is how we
+\textit{construct} the study, not how the model is instantiated in
+deployment: each dimension is computed from artefacts a SOC already
+possesses. \textit{Skill} ($\delta_S$) and \textit{capability}
+($\delta_C$) are read from the agent's registered tool and function
+manifest, the fraction of the task's required procedures and APIs it is
+not wired to invoke. \textit{Knowledge} ($\delta_K$) is measured over
+context, not weights: the fraction of the task kill-chain's ATT\&CK TTP
+nodes absent from the agent's retrieval index or supplied context,
+exactly computable for a retrieval-augmented agent; a genuinely novel
+threat matches nothing and drives $\delta_K \to 1$, precisely the
+high-risk regime the score should flag. \textit{Temporal drift}
+($\delta_T$) uses time since the last knowledge refresh, and expressed
+uncertainty $U$ is the agent's stated confidence. Four of the five
+dimensions are thus prospective, needing no run-time ground truth; only
+$\delta_R$ requires post-hoc comparison. The live-incident harness
+(Empirical Insights) exercises this path on real CVEs, with no
+injection.
+
+\textbf{The \SAFK{} corpus (analytical).} \SAFK{} is a labelled corpus
+of 1{,}000 traces stratified across five threat classes (200 each),
+four agent architectures (250 each), and 16 mismatch conditions.
+Crucially, its \textit{outcomes}, hallucination, expressed confidence,
+task success, and the taxonomy labels, are generated from the mismatch
+inputs by calibrated closed-form models rather than read from live
+model execution. This makes \SAFK{} an analytical instrument: mismatch--failure
+relationships can be studied under exact ground truth and reproduced
+deterministically, at the cost of encoding rather than discovering
+them, which is why this article's central claim is validated not on
+\SAFK{} but on live agents. The corpus is released under CC BY 4.0
+alongside the code.
+
+\textbf{The live-agent harness.} To test the model's assumptions
+against reality, \ARESBench{} also drives \textit{real} agents: it
+applies the same $\delta_K$ manipulation to the prompt of a
+frontier LLM, then measures hallucination against ATT\&CK ground truth
+and records the agent's own expressed confidence. This is the path
+behind the calibration-gap result and the live-incident study
+(Empirical Insights); the harness and its 600-execution output are
+released with the corpus so the comparison is reproducible. Because
+frontier models are stochastic and served behind evolving endpoints,
+re-running the harness reproduces the reported \textit{effects}
+(rising uncertainty and flat fabrication under increasing $\delta_K$)
+directionally rather than the exact per-call values; the committed
+run log is the frozen record behind every number we report.

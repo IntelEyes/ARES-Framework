@@ -1,9 +1,27 @@
 # SOCAgentFailure-1K (SAFK) Corpus
 
-The SAFK corpus is a labelled benchmark of **1,000 agent execution
-traces** produced by the [ARES-Bench](../ares_bench/) testbed under
-controlled mismatch injection. It supports the empirical claims in
-both ARES papers (`ISAIA_2026/`, `SP_Magazine_2026/`).
+The SAFK corpus is a labelled **analytical** benchmark of **1,000 traces**
+produced by the [ARES-Bench](../ares_bench/) testbed under controlled
+mismatch injection.
+
+> ⚠️ **Analytical, not live.** SAFK's *outcomes* (hallucination, expressed
+> confidence, task success, taxonomy labels) are **generated from the
+> mismatch inputs by closed-form models** — they exercise the ARES model's
+> internal logic under exact ground truth; they are **not** measured from
+> live LLM execution. For real-agent behaviour, use the **calibration-gap
+> dataset** below (`calibration_gap_runs.json`): 600 live executions across
+> five frontier models, which shows real agents stay calibrated and abstain
+> under knowledge deficit rather than confidently hallucinate (pooled
+> Pearson(δ_K, fabrication) = +0.11 live vs. +0.92 in this corpus). See the
+> papers' calibration-gap sections.
+
+## Live calibration-gap data (real agents)
+
+- `calibration_gap_runs.json` — 600 live agent executions (Claude Haiku 4.5 /
+  Sonnet 4.6 / Opus 4.7; GPT-4o-mini / GPT-4o), 0 errors.
+- `calibration_gap_summary.json` — per-model calibration statistics.
+- `calibration_gap_scenarios.json` — 10 ATT&CK-grounded scenarios.
+- Harnesses: `../ares_bench/analysis/calibration_gap_harness{,_openai}.py`.
 
 **License: Creative Commons Attribution 4.0 International (CC BY 4.0)**, see [`../LICENSE-DATA`](../LICENSE-DATA).
 

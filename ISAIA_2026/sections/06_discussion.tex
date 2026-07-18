@@ -3,45 +3,51 @@
 
 \subsection{Implications for AI System Evaluation}
 
-The \ARES{} framework provides a principled basis for evaluating AI agent
-reliability \textit{before deployment}. Because four of the five mismatch
-dimensions ($\delta_S$, $\delta_K$, $\delta_C$, $\delta_T$) are computable
-from the agent's declared profile and the task's requirements alone, ARS
-can serve as a pre-execution deployment gate: agents scoring below $\theta^*$
-are automatically escalated to human analysts rather than executing
-autonomously. This approach is consistent with the NIST AI Risk Management
-Framework~\cite{nist_ai_rmf}, which recommends continuous monitoring of AI
-system performance against operational requirements.
+Because four of the five mismatch dimensions ($\delta_S$, $\delta_K$,
+$\delta_C$, $\delta_T$) are computable from the agent's declared profile
+and the task requirements alone, ARS can serve as a pre-execution
+deployment gate: agents scoring below $\theta^*$ are escalated to human
+analysts rather than executing autonomously. This is consistent with the
+NIST AI Risk Management Framework~\cite{nist_ai_rmf}, which recommends
+continuous monitoring against operational requirements.
 
 The task-class-specific weight vectors (Table~\ref{tab:weights_isaia})
-provide additional operational value: they reveal which capability
-dimensions matter most for each threat type. A SOC deploying an agent for
-ransomware detection should prioritise knowledge coverage ($w_K = 0.35$),
-while an agent assigned to DDoS mitigation should be evaluated primarily
-on skill and capability access ($w_S + w_C = 0.60$). This dimension-specific
-guidance enables targeted agent improvement rather than generic capability
+reveal which dimensions matter most per threat type: ransomware detection
+prioritises knowledge coverage ($w_K = 0.35$), while DDoS mitigation is
+dominated by skill and capability access ($w_S + w_C = 0.60$). This
+enables targeted agent improvement rather than generic capability
 enhancement.
 
 \subsection{Trustworthy Deployment of AI Agents}
 
-The Epistemic Gap metric supports runtime monitoring of hallucination
-risk: by comparing an agent's stated confidence against its known
-knowledge coverage, organisations can flag high-risk outputs for human
-review before they trigger automated actions. The temporal drift model
-($\delta_T$) provides a quantitative basis for scheduling knowledge
-updates -- e.g., for high-volatility domains like ransomware
-($\lambda = 0.005$), ARS degrades below $\theta^*$ in approximately
-$120$ days, suggesting a quarterly refresh cycle. The cascade
-reliability bound (Theorem~\ref{thm:cascade}) implies that decomposing
-a task into a tightly-coupled pipeline cannot improve reliability beyond
-the weakest agent, so single-agent designs should be preferred for
-critical tasks unless per-agent reliability is independently verified.
+The Epistemic Gap supports runtime monitoring: comparing stated confidence
+against known knowledge coverage flags high-risk outputs for human review
+before they trigger automated actions. The temporal-drift model
+($\delta_T$) gives a quantitative basis for scheduling knowledge
+updates---for high-volatility domains like ransomware ($\lambda = 0.005$),
+ARS degrades below $\theta^*$ in roughly $120$ days, suggesting a quarterly
+refresh. The cascade bound (Theorem~\ref{thm:cascade}) implies that
+tightly-coupled pipeline decomposition cannot improve reliability beyond
+the weakest agent, so single-agent designs should be preferred for critical
+tasks unless per-agent reliability is independently verified.
 
 \subsection{Limitations}
 
-\textbf{LLM specificity.} Experiments use Mistral-7B-Instruct; absolute
-thresholds will require recalibration for larger models, though directional
-findings should hold since the SKC model is architecture-agnostic.
+\textbf{LLM specificity.} The primary experiments use Mistral-7B-Instruct;
+absolute thresholds will require recalibration for larger models, though
+directional findings should hold since the SKC model is
+architecture-agnostic. The cross-model-family results in
+Section~\ref{sec:experimental} provide initial evidence for this: under a
+forced-answer evaluation, the knowledge--hallucination relationship
+replicates across GPT-4o-mini, Claude~Haiku~4.5, and Claude~Sonnet~4.6
+(bucket-aggregated $\rho \in [0.78, 0.95]$), indicating that the
+\textit{shape} of the signal transfers even though the \textit{threshold}
+must be re-fit per backbone. Whether the relationship survives when agents
+are permitted to abstain is examined in companion live-agent work, and is
+an important qualifier on this evidence. A systematic multi-backbone
+recalibration study, spanning open- and closed-weight models at several
+parameter scales and reporting per-model $\theta^*$, is a natural next
+step.
 \textbf{Linear formulation.} The additive ARS is chosen for
 interpretability and decomposability; nonlinear alternatives may improve
 predictive power at the cost of transparency.

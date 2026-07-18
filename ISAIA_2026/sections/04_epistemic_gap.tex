@@ -30,35 +30,29 @@ will not fabricate an answer.
 \begin{hypothesis}[Hallucination Precondition]
 \label{hyp:hallucination}
   Hallucination probability $P_H$ is driven primarily by confident ignorance:
-  $P_H \propto \E(\A, \T) = \delta_K \cdot (1 - U)$. This is empirically
-  supported in Section~\ref{sec:experimental}.
+  $P_H \propto \E(\A, \T) = \delta_K \cdot (1 - U)$. This holds by
+  construction in the analytical corpus of
+  Section~\ref{sec:experimental}; its status on live agents is examined
+  in companion work.
 \end{hypothesis}
 
 \textbf{Connection to calibration theory.}
-The Epistemic Gap operationalises findings from the confidence calibration
-literature~\cite{guo2017calibration} for the specific case of agentic AI.
-Modern neural networks are known to be systematically overconfident,
-particularly on out-of-distribution inputs. The Epistemic Gap measures
-whether this miscalibration occurs precisely where the agent's knowledge
-is weakest: the most dangerous combination. A well-calibrated agent (one
-whose confidence accurately reflects its accuracy) will produce low
-$\E$ even under knowledge deficit, because it appropriately hedges its
-outputs. This suggests that improving calibration in LLM-based security
-agents may be as important as expanding their knowledge for reducing
-dangerous failures.
+The Epistemic Gap operationalises the confidence-calibration
+literature~\cite{guo2017calibration} for agentic AI: it measures whether a
+network's known overconfidence on out-of-distribution inputs occurs
+precisely where the agent's knowledge is weakest. A well-calibrated agent
+hedges under knowledge deficit and so produces low $\E$, suggesting that
+improving calibration may matter as much as expanding knowledge for
+reducing dangerous failures.
 
-\textbf{Why hallucination is particularly dangerous in SOC.}
-An agent that says ``I don't have sufficient context'' is safe: it triggers
-human escalation. An agent that confidently asserts a false threat
-attribution is dangerous: it may trigger automated containment actions,
-propagate fabricated IOCs to shared feeds, and erode analyst trust. The
-Epistemic Gap captures exactly this distinction: it separates safe ignorance
-(high $\delta_K$, high $U$, low $\E$) from dangerous confident ignorance
-(high $\delta_K$, low $U$, high $\E$).
-
-\textbf{Practical interpretation.}
-Table~\ref{tab:eg_examples} illustrates the four quadrants of the Epistemic
-Gap space with concrete SOC scenarios.
+\textbf{Why this matters in a SOC.}
+An agent that admits ``I lack sufficient context'' is safe---it triggers
+human escalation---whereas one that confidently asserts a false attribution
+may trigger automated containment, propagate fabricated IOCs, and erode
+analyst trust. The Epistemic Gap separates safe ignorance (high $\delta_K$,
+high $U$, low $\E$) from dangerous confident ignorance (high $\delta_K$,
+low $U$, high $\E$); Table~\ref{tab:eg_examples} illustrates the four
+quadrants with concrete SOC scenarios.
 
 \begin{table}[t]
 \caption{Epistemic Gap Quadrants with SOC Examples}
@@ -78,9 +72,7 @@ High & Low  & Agent lacks knowledge but is confident. \textit{Dangerous: halluci
 \end{tabular}
 \end{table}
 
-The bottom-right quadrant (high $\delta_K$, low $U$, maximal $\E$) is
-precisely where hallucination occurs: the agent does not possess the
-knowledge required to answer correctly but proceeds with high confidence
-regardless. The Epistemic Gap metric targets this quadrant specifically,
+The bottom-right quadrant (high $\delta_K$, low $U$, maximal $\E$) is where
+hallucination occurs, and the Epistemic Gap targets it specifically,
 enabling monitoring systems to flag the most dangerous outputs before they
 trigger automated actions.

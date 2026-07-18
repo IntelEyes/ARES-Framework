@@ -17,25 +17,23 @@ its training data, a failure mode known as hallucination. In cybersecurity,
 hallucination is particularly dangerous because the domain is dense with
 specific factual claims (CVE identifiers, threat actor names, TTP chains)
 that are easy to fabricate convincingly but difficult to verify in
-real-time~\cite{llmagent_halluc_survey2025}. The consequences of
+real time~\cite{llmagent_halluc_survey2025}. The consequences of
 incorrect autonomous decisions are often irreversible: once a compromised
 host is left un-isolated or a fabricated IOC enters a shared feed, the damage
 propagates faster than human review can contain it.
 
 \textbf{Impact on incident response.}
-Consider a three-stage agent pipeline: triage, enrichment, and remediation
-recommendation. If the triage agent misclassifies a ransomware intrusion as
-a benign false positive, the enrichment agent never investigates, and the
-remediation agent recommends no action. The intrusion persists, the attacker
-escalates privileges, and exfiltration proceeds undetected. Conversely,
-if the triage agent hallucinates a threat actor attribution (for example,
-incorrectly attributing a commodity phishing campaign to an APT group) the
-enrichment agent may propagate fabricated IOCs to shared intelligence feeds
-such as STIX/TAXII repositories, corrupting defences across every
-organisation that consumes those feeds. In a third scenario, an agent that
-lacks access to the EDR containment API (capability mismatch) may correctly
-identify the threat but fail to execute the recommended isolation action,
-introducing a critical delay in response.
+Consider a three-stage pipeline: triage, enrichment, and remediation.
+If triage misclassifies a ransomware intrusion as a benign false
+positive, enrichment never investigates and remediation recommends no
+action, so the intrusion persists and exfiltration proceeds undetected.
+If instead triage hallucinates a threat-actor attribution, for example
+pinning a commodity phishing campaign on an APT group, enrichment may
+propagate fabricated IOCs to shared STIX/TAXII feeds, corrupting
+defences across every organisation that consumes them. A third agent
+lacking EDR containment access (capability mismatch) may identify the
+threat correctly yet fail to execute isolation, introducing a critical
+response delay.
 
 \textbf{Trust and accountability.}
 SOC analysts must trust AI agent outputs enough to act on them, but not so

@@ -1,128 +1,166 @@
 \section{Empirical Insights}
 
-We summarise five findings from the \SAFK{} experiments most
-relevant to practitioners deploying AI agents in security
-environments. Each is paired with the operational implication it
-carries for SOC teams.
+We first report the result that most changed our own view of the
+problem, then the analytical findings that motivated the test. The
+headline is a \textit{calibration gap}: the reliability model, like the
+broader literature it builds on, assumes that knowledge deficit drives
+\textit{confident} fabrication, but real frontier agents do the
+opposite, they express uncertainty and abstain. Practitioners should
+therefore calibrate their expectations to real model behaviour, not to
+the failure model.
 
-\subsection{Knowledge Mismatch Drives Hallucination}
+\subsection{The Calibration Gap: Real Agents Abstain Where the Model
+Predicts Hallucination}
 
-\textbf{Finding.} Across 750 LLM-based agent executions,
-hallucination rate increases monotonically with knowledge mismatch
-($\delta_K$): from 1.4\% at $\delta_K = 0$ to 39.1\% at $\delta_K = 1.0$
-(Pearson $\rho = 0.92$, $p < 0.001$). The pattern holds across all three
-LLM architectures (LangGraph, AutoGen, CrewAI). The rule-based baseline
-(AUT-4) hallucinates zero times regardless of $\delta_K$, confirming
-hallucination as an LLM-specific failure mode.
+\textbf{Setup.} \SAFK{} is an \textit{analytical} corpus: its outcomes
+(hallucination, confidence, task success) are generated from the
+mismatch inputs by calibrated closed-form models, so that the
+mismatch--failure relationships can be studied under known ground
+truth. That construction encodes a specific assumption drawn from the
+hallucination literature, that an agent's expressed confidence stays
+high as its knowledge degrades (``confident ignorance''), producing a
+steep $\delta_K \to$ hallucination dose-response. We tested that
+assumption directly against live agents.
 
-\textbf{Implication.} Verify threat-knowledge coverage before
-autonomous execution. Knowledge gaps are the single strongest
-predictor of dangerous output fabrication, which makes
-retrieval-augmented generation (RAG) pipeline quality a first-order
-reliability concern: the completeness of the retrieved context
-directly determines hallucination risk.
+We ran \textbf{600 real executions} across five frontier backbones
+spanning two model families (Claude Haiku~4.5, Sonnet~4.6, and
+Opus~4.7; GPT-4o-mini and GPT-4o) on ten ATT\&CK-grounded SOC
+scenarios. Knowledge mismatch $\delta_K$ was applied as a genuine
+manipulation, withholding a controlled fraction of the scenario's
+ground-truth TTP context from the prompt, and every outcome was
+\textit{measured} from real output: the agent either named a primary
+ATT\&CK technique (correct, or a fabrication if absent from ground
+truth) or abstained (``insufficient information''), together with its
+stated confidence.
 
-\subsection{Different Mismatches Produce Distinct Failure Signatures}
-
-\textbf{Finding.} Each mismatch dimension produces a diagnostically
-separable failure pattern (chi-square test of independence,
-$p < 0.001$). Conditioning on the LLM-agent records whose
-\textit{primary} mismatch dimension is at level $\geq 0.5$:
-capability deprivation ($\delta_C$) predominantly produces
-\textit{Paralysis} (78\%); skill deficit ($\delta_S$) produces silent
-\textit{Omission} (72\%); knowledge gaps ($\delta_K$) produce
-\textit{Hallucination} (32\%) and \textit{Misclassification} (21\%);
-reasoning perturbation ($\delta_R$) produces \textit{Confabulation}
-(38\%) and \textit{Overclaiming} (17\%).
-
-\textbf{Implication.} The manifestation pattern is a diagnostic
-fingerprint. A SOC observing high paralysis should investigate tool
-access and API permissions, not LLM quality. A high confabulation rate
-suggests reasoning corruption or adversarial input manipulation rather
-than knowledge gaps. This enables targeted remediation rather than
-wholesale agent replacement.
-
-\subsection{ARS Generalises as a Reliability Gate}
-
-\textbf{Finding.} The learned ARS threshold ($\theta^* = 0.58$)
-achieves test F1 = 0.96 across all five threat classes
-(Table~\ref{tab:e3_mag}), with perfect precision (1.00) and recall
-ranging from 0.84 to 1.00. The minimal train-test gap (0.95 vs.\ 0.96)
-indicates that ARS captures a generalisable reliability signal rather
-than overfitting to specific threat classes or agent architectures.
-The reported F1 uses the post-execution ARS that includes $\delta_R$;
-in deployment, the pre-execution gate uses $\delta_S$, $\delta_K$,
-$\delta_C$, and $\delta_T$, with $\delta_R$ added after execution
-for diagnosis and continuous improvement.
+\textbf{Finding.} The assumed dose-response does not hold
+(Table~\ref{tab:calib_mag}). Where the analytical model rises to a
+39\% fabrication rate at $\delta_K = 1$ with correlation $\rho = 0.92$,
+real fabrication stays low (0--20\%) and essentially flat in $\delta_K$
+(pooled Pearson $\rho = 0.11$). The mechanism is calibration: real
+confidence \textit{falls} as knowledge is withheld (Pearson $\rho$
+between $-0.35$ and $-0.51$ across all five models, both families),
+inverting the built-in overconfidence the failure model assumes.
+Because expressed uncertainty rises exactly when knowledge drops, the
+``confident ignorance'' precondition rarely materialises, and confident
+fabrication, the dangerous quadrant the whole framework targets, occurs
+in at most 13\% of executions. The effect scales with capability: the
+most capable model, Claude Opus~4.7, fabricated in \textbf{0\%} of 120
+executions and instead raised its abstention rate from 10\% at
+$\delta_K = 0$ to 67\% at $\delta_K = 1$, while the smallest,
+GPT-4o-mini, is the least calibrated (13\% confident fabrication) yet
+still far short of the model's 39\%. That the same pattern holds across
+two independent model families is the point: it is not a quirk of one
+vendor's alignment but a general property of current frontier agents.
 
 \begin{table}[t]
-\caption{ARS Anomaly Detection Performance (Test Set)}
-\label{tab:e3_mag}
+\caption{Calibration gap: analytical failure model vs.\ 600 live agent
+executions across two model families. Fabrication is measured against
+ATT\&CK ground truth; confidence is the agent's stated value.}
+\label{tab:calib_mag}
 \centering
 \footnotesize
-\begin{tabular}{lccc}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lcccc}
 \toprule
-\textbf{Threat Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+ & $\rho(\delta_K,$ & fab.\ at & $\rho(\delta_K,$ & conf.\ \\
+\textbf{Agent} & fab.$)$ & $\delta_K{=}1$ & conf.$)$ & risk \\
 \midrule
-Ransomware     & 1.00 & 0.94 & 0.97 \\
-Phishing       & 1.00 & 0.94 & 0.97 \\
-Insider Threat & 1.00 & 0.87 & 0.93 \\
-DDoS           & 1.00 & 0.84 & 0.91 \\
-APT Intrusion  & 1.00 & 1.00 & 1.00 \\
+\SAFK{} model      & $+0.92$ & 0.39 & $\approx 0$ & high \\
 \midrule
-\textbf{Overall} & \textbf{1.00} & \textbf{0.92} & \textbf{0.96} \\
+Haiku 4.5          & $+0.05$ & 0.13 & $-0.45$ & 0.09 \\
+Sonnet 4.6         & $+0.27$ & 0.17 & $-0.35$ & 0.07 \\
+Opus 4.7           & $\approx 0$ & \textbf{0.00} & $-0.40$ & \textbf{0.00} \\
+GPT-4o-mini        & $+0.07$ & 0.20 & $-0.50$ & 0.13 \\
+GPT-4o             & $+0.17$ & 0.07 & $-0.51$ & 0.03 \\
 \bottomrule
+\multicolumn{5}{l}{\footnotesize ``conf.\ risk'' = rate of confident
+fabrication (wrong \& conf.\ $\geq 0.7$).}
 \end{tabular}
 \end{table}
 
-\textbf{Implication.} ARS works operationally as a pre-execution
-deployment gate. Perfect precision means no false alarms: every
-flagged execution truly exhibited anomalous behaviour, removing the
-common adoption blocker where reliability tooling generates so many
-false alerts that SOC teams disable it.
+This corroborates our second real-data probe. On 30 live CISA KEV
+incidents disclosed after every model's training cutoff (so $\delta_K
+\approx 1$ by construction), five frontier LLMs scored identically on
+surface accuracy (vendor 67\%, product 63\%, CVE $\leq$3\%), yet
+confidence behaviour diverged: the OpenAI models answered almost
+every record at mean confidence 0.68--0.78, whereas the strongest
+Claude model abstained on 26 of 30 rather than assert an unsupported
+attribution.\footnote{Exact API version strings and evaluation dates for
+all runs are recorded in the artefact repository; we describe models by
+family here because specific version identifiers change rapidly.} Both
+studies point the same way: whether an agent hallucinates under
+knowledge deficit is not a property of the deficit but of the model's
+calibration, and modern frontier models are calibrated to abstain.
 
-\subsection{Multi-Agent Pipelines Amplify Failures}
+\textbf{Implication.} Do not assume that missing threat knowledge
+translates into confident fabrication; on well-calibrated agents it
+translates into \textit{abstention and reduced coverage}. The
+first-order deployment risk shifts accordingly, from ``the agent will
+confidently invent a threat attribution'' to ``the agent will decline
+to act, and a poorly-calibrated agent in the fleet is the exception
+that still fabricates.'' Reliability tooling should therefore watch the
+confidence signal, not the knowledge gap alone, and treat a
+low-abstention, high-confidence agent as the anomaly.
 
-\textbf{Finding.} Comparing AUT-1 (single-agent LangGraph) with
-AUT-2 (three-stage AutoGen pipeline) shows a 5.7\% headline ARS gap
-that conflates framework identity with pipeline depth. A controlled
-ablation on 27 strictly matched mismatch buckets isolates the two
-contributions: framework identity contributes \textbf{0.13\%}
-(essentially zero) and pure pipeline depth contributes
-\textbf{17.25\%} relative ARS reduction, consistent across all five
-threat classes.
+\subsection{Different Mismatches Produce Distinct Failure Signatures}
 
-\textbf{Implication.} Decomposing a security task into a multi-agent
-pipeline does not improve reliability; it reduces it whenever
-component agents carry mismatch vulnerabilities. Prefer well-validated
-single-agent designs for critical tasks. If multi-agent is required,
-add inter-stage verification checkpoints and confidence-gated
-propagation so that low-confidence intermediate outputs do not silently
-seed downstream stages.
+\textbf{Finding (analytical).} Within \SAFK{}, each mismatch dimension
+maps to a diagnostically separable manifestation (chi-square test of
+independence, $p < 0.001$): capability deprivation ($\delta_C$)
+predominantly produces \textit{Paralysis} (78\%); skill deficit
+($\delta_S$) produces silent \textit{Omission} (72\%); knowledge gaps
+($\delta_K$) produce \textit{Hallucination} (32\%) and
+\textit{Misclassification} (21\%); reasoning perturbation ($\delta_R$)
+produces \textit{Confabulation} (38\%) and \textit{Overclaiming}
+(17\%). Because these mappings are part of the model's construction,
+we present them as the taxonomy's \textit{design}, an organising
+hypothesis about how root causes surface, rather than as an
+independent empirical discovery; the calibration-gap experiment is what
+tests such hypotheses against reality.
 
-\subsection{Epistemic Gap Separates Knowledge Risk from Confidence Risk}
+\textbf{Implication.} The manifestation pattern is a diagnostic
+fingerprint hypothesis a SOC can validate on its own telemetry: high
+paralysis points at tool access and API permissions rather than LLM
+quality; high confabulation points at reasoning corruption or
+adversarial input rather than knowledge gaps.
 
-\textbf{Finding.} The Epistemic Gap ($\mathcal{E}$) and raw knowledge
-mismatch ($\delta_K$) achieve statistically equivalent correlation
-with false-negative severity ($\rho_\mathcal{E} = \rho_{\delta_K} =
-0.80$, Fisher $z$-test $p = 0.78$). On 30 live CISA KEV incidents
-beyond every model's training cutoff, five frontier LLMs scored
-identically on surface accuracy (vendor 67\%, product 63\%, CVE
-$\leq$3\%), yet stated confidence diverged sharply: GPT-5.4-mini
-reported mean confidence 0.78 on 29/30 records while Claude Opus 4.7
-abstained on 27/30.\footnote{Model identifiers reflect the public API
-versions current at evaluation time (April 2026); \texttt{gpt-5.4-mini}
-and \texttt{claude-opus-4-7} are accessed through the OpenAI and
-Anthropic APIs respectively.} Same accuracy, different operational
-risk.
+\subsection{The Epistemic Gap Targets the Residual Risk}
 
-\textbf{Implication.} The Epistemic Gap's value is not raw predictive
-lift but \textit{interpretability}: it factorises risk into a
-``what the agent does not know'' term ($\delta_K$) and a
-``how confidently it acts under that ignorance'' term ($1 - U$),
-exposing two independently controllable mitigations. Calibration is
-therefore as actionable a lever as knowledge coverage. The
-hallucination-versus-$\delta_K$ relationship replicates directionally
-across four LLM families from 7B to frontier scale (bucket-aggregated
-$\rho \in [0.78, 0.95]$), so the reliability signal is structural
-rather than backbone-specific.
+\textbf{Finding.} The calibration gap does not make hallucination
+harmless, it relocates it. Confident fabrication still occurs, just in
+a minority of executions (0--13\% above) concentrated in weaker or
+mis-prompted agents. This is precisely the case the \textbf{Epistemic
+Gap} $\mathcal{E} = \delta_K \times (1 - U)$ is built to isolate: it is
+large only when knowledge is low \textit{and} expressed confidence is
+high. On well-calibrated agents, rising $\delta_K$ is met by rising
+uncertainty, so $\mathcal{E}$ stays small and the gate correctly stays
+quiet; on the residual confident-ignorance cases, $\mathcal{E}$ spikes.
+The metric's value is thus not a headline correlation but a factoring
+of risk into a ``what the agent does not know'' term ($\delta_K$) and a
+``how confidently it acts under that ignorance'' term ($1 - U$), of
+which our data show the \textit{second} to be the operative one.
+
+\textbf{Implication.} Calibration is the actionable lever. Because
+real agents already hedge under ignorance, the highest-value
+intervention is to preserve and monitor that hedging, gate high-$\mathcal{E}$
+outputs to human review, and flag any agent whose confidence fails to
+fall as its knowledge does.
+
+\subsection{Multi-Agent Composition: an Analytical Bound}
+
+\textbf{Finding (analytical).} Within the model, composing agents into
+a pipeline cannot raise reliability above the weakest stage. A
+matched-bucket ablation on \SAFK{} attributes the AUT-1 vs.\ AUT-2 gap
+almost entirely to pipeline depth (17.25\%) rather than framework
+identity (0.13\%), and the analytic weakest-link bound holds in 100\%
+of the 250 pipeline records (zero violations). We report this as a
+property of the cascade model; its real-world magnitude awaits the same
+kind of live measurement we applied to the calibration question.
+
+\textbf{Implication.} Treat multi-agent decomposition as a reliability
+cost to be justified, not a default. Prefer validated single-agent
+designs for critical tasks; if composition is required, add inter-stage
+verification and confidence-gated propagation so that a low-confidence
+intermediate output, exactly the calibrated signal above, does not
+silently seed downstream stages.
