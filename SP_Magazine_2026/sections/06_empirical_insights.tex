@@ -97,12 +97,14 @@ calibration, and modern frontier models are calibrated to abstain.
 agents are well-calibrated: pooled expected calibration error
 (ECE)~\cite{guo2017calibration} is $0.04$ (Brier $0.09$; $n=419$ answered
 runs), well below the levels reported for uncalibrated deep networks. This
-is exactly why raw confidence alone barely predicts fabrication (AUROC
+is exactly why raw verbalized confidence~\cite{tian2023calibration} alone
+barely predicts fabrication (AUROC
 $0.51$, chance level): a calibrated agent is confident on both correct
 answers and the rare miss. The Epistemic Gap---which fires only when high
 $\delta_K$ meets high confidence---separates fabrication better than either
 single-signal baseline (AUROC $0.68$, versus $0.62$ for $\delta_K$ and
-$0.51$ for confidence), and confidence-ordered selective prediction cuts
+$0.51$ for confidence), and confidence-ordered selective
+prediction~\cite{elyaniv2010selective} cuts
 error from $10\%$ at full coverage to $1\%$ at $25\%$ coverage.
 
 \textbf{Implication.} Do not assume that missing threat knowledge
