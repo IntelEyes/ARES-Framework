@@ -53,8 +53,11 @@ DEFAULT_BUNDLE_FILES = [
     "real_incident_runs.json",
     "real_incident_runs_v2.json",
     "real_incident_labels.csv",
-    "advanced_threats.json",
-    "advanced_threats_v2.json",
+    "calibration_gap_runs.json",
+    "calibration_gap_summary.json",
+    "calibration_gap_scenarios.json",
+    "cascade_live_runs.json",
+    "cascade_live_summary.json",
 ]
 
 DEFAULT_ANALYSIS_SCRIPTS = [
@@ -65,7 +68,10 @@ DEFAULT_ANALYSIS_SCRIPTS = [
     "cascade_ablation.py",
     "cross_model_validation.py",
     "real_incident_harness.py",
-    "advanced_threats.py",
+    "calibration_gap_harness.py",
+    "calibration_gap_harness_openai.py",
+    "calibration_baseline.py",
+    "cascade_live_harness.py",
     "run_experiments.py",
 ]
 
@@ -168,8 +174,10 @@ def build_readme(manifest: List[Dict]) -> str:
         "- `output/cross_model_results.json` -- cross-model generalisation on GPT-4o-mini,",
         "  Claude Haiku 4.5, Claude Sonnet 4.6.",
         "- `output/real_incidents.json`, `real_incident_runs.json` -- CISA KEV + DFIR Report validation.",
-        "- `output/advanced_threats.json` -- prompt injection, out-of-corpus,",
-        "  living-off-the-land stress tests.",
+        "- `output/calibration_gap_runs.json`, `calibration_gap_summary.json` -- 600 live",
+        "  frontier-agent executions (the calibration-gap study).",
+        "- `output/cascade_live_runs.json`, `cascade_live_summary.json` -- live multi-agent",
+        "  cascade study (120 paired trials, CIs).",
         "- `analysis/*.py` -- reproduction scripts.",
         "",
         "## Reproducing paper tables",
