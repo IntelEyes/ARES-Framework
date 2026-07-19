@@ -1,0 +1,1922 @@
+[
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T1-01",
+  "rep": 0,
+  "gt_primary": "T1486",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": false,
+  "pipe_final": "T1059",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Execution",
+   "enrich": "T1059",
+   "confirm": "T1059"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T1-01",
+  "rep": 1,
+  "gt_primary": "T1486",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": false,
+  "pipe_final": "T1059",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Execution",
+   "enrich": "T1059",
+   "confirm": "T1059"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T1-01",
+  "rep": 2,
+  "gt_primary": "T1486",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": false,
+  "pipe_final": "T1059",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Execution",
+   "enrich": "T1059",
+   "confirm": "T1059"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T1-01",
+  "rep": 3,
+  "gt_primary": "T1486",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": false,
+  "pipe_final": "T1059",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Execution",
+   "enrich": "T1059",
+   "confirm": "T1059"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T1-02",
+  "rep": 0,
+  "gt_primary": "T1059",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": true,
+  "pipe_final": "T1105",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Execution",
+   "enrich": "T1059",
+   "confirm": "T1105"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T1-02",
+  "rep": 1,
+  "gt_primary": "T1059",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": true,
+  "pipe_final": "T1105",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Execution",
+   "enrich": "T1059",
+   "confirm": "T1105"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T1-02",
+  "rep": 2,
+  "gt_primary": "T1059",
+  "err": false,
+  "single_final": "T1105",
+  "single_correct": false,
+  "pipe_final": "T1105",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Execution",
+   "enrich": "T1059",
+   "confirm": "T1105"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T1-02",
+  "rep": 3,
+  "gt_primary": "T1059",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": true,
+  "pipe_final": "T1105",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Execution",
+   "enrich": "T1059",
+   "confirm": "T1105"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T2-01",
+  "rep": 0,
+  "gt_primary": "T1566.001",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T2-01",
+  "rep": 1,
+  "gt_primary": "T1566.001",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T2-01",
+  "rep": 2,
+  "gt_primary": "T1566.001",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T2-01",
+  "rep": 3,
+  "gt_primary": "T1566.001",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T2-02",
+  "rep": 0,
+  "gt_primary": "T1566.002",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T2-02",
+  "rep": 1,
+  "gt_primary": "T1566.002",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T2-02",
+  "rep": 2,
+  "gt_primary": "T1566.002",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T2-02",
+  "rep": 3,
+  "gt_primary": "T1566.002",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T3-01",
+  "rep": 0,
+  "gt_primary": "T1078",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Credential Access",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T3-01",
+  "rep": 1,
+  "gt_primary": "T1078",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Credential Access",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T3-01",
+  "rep": 2,
+  "gt_primary": "T1078",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Credential Access",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T3-01",
+  "rep": 3,
+  "gt_primary": "T1078",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T3-02",
+  "rep": 0,
+  "gt_primary": "T1078.004",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Persistence",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T3-02",
+  "rep": 1,
+  "gt_primary": "T1078.004",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Persistence",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T3-02",
+  "rep": 2,
+  "gt_primary": "T1078.004",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Looking at the three techniques and their logical sequence i",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T3-02",
+  "rep": 3,
+  "gt_primary": "T1078.004",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Persistence",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T4-01",
+  "rep": 0,
+  "gt_primary": "T1498",
+  "err": false,
+  "single_final": "T1498",
+  "single_correct": true,
+  "pipe_final": "T1498",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1498",
+   "confirm": "T1498"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T4-01",
+  "rep": 1,
+  "gt_primary": "T1498",
+  "err": false,
+  "single_final": "T1498",
+  "single_correct": true,
+  "pipe_final": "T1498",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1498",
+   "confirm": "T1498"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T4-01",
+  "rep": 2,
+  "gt_primary": "T1498",
+  "err": false,
+  "single_final": "T1498",
+  "single_correct": true,
+  "pipe_final": "T1498",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1498",
+   "confirm": "T1498"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T4-01",
+  "rep": 3,
+  "gt_primary": "T1498",
+  "err": false,
+  "single_final": "T1498",
+  "single_correct": true,
+  "pipe_final": "T1498",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1498",
+   "confirm": "T1498"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T4-02",
+  "rep": 0,
+  "gt_primary": "T1499",
+  "err": false,
+  "single_final": "T1499",
+  "single_correct": true,
+  "pipe_final": "T1499",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1499",
+   "confirm": "T1499"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T4-02",
+  "rep": 1,
+  "gt_primary": "T1499",
+  "err": false,
+  "single_final": "T1499",
+  "single_correct": true,
+  "pipe_final": "T1499",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1499",
+   "confirm": "T1499"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T4-02",
+  "rep": 2,
+  "gt_primary": "T1499",
+  "err": false,
+  "single_final": "T1499",
+  "single_correct": true,
+  "pipe_final": "T1499",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1499",
+   "confirm": "T1499"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T4-02",
+  "rep": 3,
+  "gt_primary": "T1499",
+  "err": false,
+  "single_final": "T1499",
+  "single_correct": true,
+  "pipe_final": "T1499",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1499",
+   "confirm": "T1499"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T5-01",
+  "rep": 0,
+  "gt_primary": "T1190",
+  "err": false,
+  "single_final": "T1190",
+  "single_correct": true,
+  "pipe_final": "T1190",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1190",
+   "confirm": "T1190"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T5-01",
+  "rep": 1,
+  "gt_primary": "T1190",
+  "err": false,
+  "single_final": "T1190",
+  "single_correct": true,
+  "pipe_final": "T1190",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1190",
+   "confirm": "T1190"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T5-01",
+  "rep": 2,
+  "gt_primary": "T1190",
+  "err": false,
+  "single_final": "T1190",
+  "single_correct": true,
+  "pipe_final": "T1190",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1190",
+   "confirm": "T1190"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T5-01",
+  "rep": 3,
+  "gt_primary": "T1190",
+  "err": false,
+  "single_final": "T1190",
+  "single_correct": true,
+  "pipe_final": "T1190",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1190",
+   "confirm": "T1190"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T5-02",
+  "rep": 0,
+  "gt_primary": "T1195",
+  "err": false,
+  "single_final": "T1195",
+  "single_correct": true,
+  "pipe_final": "T1195",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1195",
+   "confirm": "T1195"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T5-02",
+  "rep": 1,
+  "gt_primary": "T1195",
+  "err": false,
+  "single_final": "T1195",
+  "single_correct": true,
+  "pipe_final": "T1195",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1195",
+   "confirm": "T1195"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T5-02",
+  "rep": 2,
+  "gt_primary": "T1195",
+  "err": false,
+  "single_final": "T1195",
+  "single_correct": true,
+  "pipe_final": "T1195",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1195",
+   "confirm": "T1195"
+  }
+ },
+ {
+  "model": "claude-haiku-4-5",
+  "sid": "T5-02",
+  "rep": 3,
+  "gt_primary": "T1195",
+  "err": false,
+  "single_final": "T1195",
+  "single_correct": true,
+  "pipe_final": "T1195",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1195",
+   "confirm": "T1195"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T1-01",
+  "rep": 0,
+  "gt_primary": "T1486",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": false,
+  "pipe_final": "T1059",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "I need to order the techniques into a logical kill chain and",
+   "enrich": "T1059",
+   "confirm": "T1059"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T1-01",
+  "rep": 1,
+  "gt_primary": "T1486",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": false,
+  "pipe_final": "T1059",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Looking at the four techniques:",
+   "enrich": "T1059",
+   "confirm": "T1059"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T1-01",
+  "rep": 2,
+  "gt_primary": "T1486",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": false,
+  "pipe_final": "T1059",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Looking at the observed techniques:",
+   "enrich": "T1059",
+   "confirm": "T1059"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T1-01",
+  "rep": 3,
+  "gt_primary": "T1486",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": false,
+  "pipe_final": "T1059",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Looking at the observed techniques:",
+   "enrich": "T1059",
+   "confirm": "T1059"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T1-02",
+  "rep": 0,
+  "gt_primary": "T1059",
+  "err": false,
+  "single_final": "T1105",
+  "single_correct": false,
+  "pipe_final": "T1105",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Looking at the observed techniques:",
+   "enrich": "T1105",
+   "confirm": "T1105"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T1-02",
+  "rep": 1,
+  "gt_primary": "T1059",
+  "err": false,
+  "single_final": "T1105",
+  "single_correct": false,
+  "pipe_final": "T1105",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "I need to order these techniques into a logical kill chain f",
+   "enrich": "T1105",
+   "confirm": "T1105"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T1-02",
+  "rep": 2,
+  "gt_primary": "T1059",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": true,
+  "pipe_final": "T1105",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Looking at the four techniques and mapping them to tactics:",
+   "enrich": "T1105",
+   "confirm": "T1105"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T1-02",
+  "rep": 3,
+  "gt_primary": "T1059",
+  "err": false,
+  "single_final": "T1105",
+  "single_correct": false,
+  "pipe_final": "T1105",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "I need to order the techniques into a logical kill chain and",
+   "enrich": "T1105",
+   "confirm": "T1105"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T2-01",
+  "rep": 0,
+  "gt_primary": "T1566.001",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T2-01",
+  "rep": 1,
+  "gt_primary": "T1566.001",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T2-01",
+  "rep": 2,
+  "gt_primary": "T1566.001",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T2-01",
+  "rep": 3,
+  "gt_primary": "T1566.001",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T2-02",
+  "rep": 0,
+  "gt_primary": "T1566.002",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "The two techniques are:",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T2-02",
+  "rep": 1,
+  "gt_primary": "T1566.002",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T2-02",
+  "rep": 2,
+  "gt_primary": "T1566.002",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T2-02",
+  "rep": 3,
+  "gt_primary": "T1566.002",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "The two techniques are:",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T3-01",
+  "rep": 0,
+  "gt_primary": "T1078",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Looking at the four techniques and mapping them to tactics:",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T3-01",
+  "rep": 1,
+  "gt_primary": "T1078",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "**Initial Access**",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T3-01",
+  "rep": 2,
+  "gt_primary": "T1078",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Looking at the four techniques and mapping them to tactics:",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T3-01",
+  "rep": 3,
+  "gt_primary": "T1078",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "**Initial Access**",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T3-02",
+  "rep": 0,
+  "gt_primary": "T1078.004",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "I need to determine the kill chain order of these three tech",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T3-02",
+  "rep": 1,
+  "gt_primary": "T1078.004",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "**Initial Access**",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T3-02",
+  "rep": 2,
+  "gt_primary": "T1078.004",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "I need to determine the order of these techniques in a kill ",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T3-02",
+  "rep": 3,
+  "gt_primary": "T1078.004",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "**Initial Access**",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T4-01",
+  "rep": 0,
+  "gt_primary": "T1498",
+  "err": false,
+  "single_final": "T1498",
+  "single_correct": true,
+  "pipe_final": "T1498",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1498",
+   "confirm": "T1498"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T4-01",
+  "rep": 1,
+  "gt_primary": "T1498",
+  "err": false,
+  "single_final": "T1498",
+  "single_correct": true,
+  "pipe_final": "T1498",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1498",
+   "confirm": "T1498"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T4-01",
+  "rep": 2,
+  "gt_primary": "T1498",
+  "err": false,
+  "single_final": "T1498",
+  "single_correct": true,
+  "pipe_final": "T1498",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1498",
+   "confirm": "T1498"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T4-01",
+  "rep": 3,
+  "gt_primary": "T1498",
+  "err": false,
+  "single_final": "T1498",
+  "single_correct": true,
+  "pipe_final": "T1498",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1498",
+   "confirm": "T1498"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T4-02",
+  "rep": 0,
+  "gt_primary": "T1499",
+  "err": false,
+  "single_final": "T1499",
+  "single_correct": true,
+  "pipe_final": "T1499",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1499",
+   "confirm": "T1499"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T4-02",
+  "rep": 1,
+  "gt_primary": "T1499",
+  "err": false,
+  "single_final": "T1499",
+  "single_correct": true,
+  "pipe_final": "T1499",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1499",
+   "confirm": "T1499"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T4-02",
+  "rep": 2,
+  "gt_primary": "T1499",
+  "err": false,
+  "single_final": "T1499",
+  "single_correct": true,
+  "pipe_final": "T1499",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1499",
+   "confirm": "T1499"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T4-02",
+  "rep": 3,
+  "gt_primary": "T1499",
+  "err": false,
+  "single_final": "T1499",
+  "single_correct": true,
+  "pipe_final": "T1499",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1499",
+   "confirm": "T1499"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T5-01",
+  "rep": 0,
+  "gt_primary": "T1190",
+  "err": false,
+  "single_final": "T1190",
+  "single_correct": true,
+  "pipe_final": "T1190",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1190",
+   "confirm": "T1190"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T5-01",
+  "rep": 1,
+  "gt_primary": "T1190",
+  "err": false,
+  "single_final": "T1190",
+  "single_correct": true,
+  "pipe_final": "T1190",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1190",
+   "confirm": "T1190"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T5-01",
+  "rep": 2,
+  "gt_primary": "T1190",
+  "err": false,
+  "single_final": "T1190",
+  "single_correct": true,
+  "pipe_final": "T1190",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1190",
+   "confirm": "T1190"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T5-01",
+  "rep": 3,
+  "gt_primary": "T1190",
+  "err": false,
+  "single_final": "T1190",
+  "single_correct": true,
+  "pipe_final": "T1190",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1190",
+   "confirm": "T1190"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T5-02",
+  "rep": 0,
+  "gt_primary": "T1195",
+  "err": false,
+  "single_final": "T1195",
+  "single_correct": true,
+  "pipe_final": "T1195",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1195",
+   "confirm": "T1195"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T5-02",
+  "rep": 1,
+  "gt_primary": "T1195",
+  "err": false,
+  "single_final": "T1195",
+  "single_correct": true,
+  "pipe_final": "T1195",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1195",
+   "confirm": "T1195"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T5-02",
+  "rep": 2,
+  "gt_primary": "T1195",
+  "err": false,
+  "single_final": "T1195",
+  "single_correct": true,
+  "pipe_final": "T1195",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1195",
+   "confirm": "T1195"
+  }
+ },
+ {
+  "model": "claude-sonnet-4-6",
+  "sid": "T5-02",
+  "rep": 3,
+  "gt_primary": "T1195",
+  "err": false,
+  "single_final": "T1195",
+  "single_correct": true,
+  "pipe_final": "T1195",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1195",
+   "confirm": "T1195"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T1-01",
+  "rep": 0,
+  "gt_primary": "T1486",
+  "err": false,
+  "single_final": "T1490",
+  "single_correct": false,
+  "pipe_final": "T1490",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1490",
+   "confirm": "T1490"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T1-01",
+  "rep": 1,
+  "gt_primary": "T1486",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": false,
+  "pipe_final": "T1059",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Execution",
+   "enrich": "T1059",
+   "confirm": "T1059"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T1-01",
+  "rep": 2,
+  "gt_primary": "T1486",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": false,
+  "pipe_final": "T1059",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Execution",
+   "enrich": "T1059",
+   "confirm": "T1059"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T1-01",
+  "rep": 3,
+  "gt_primary": "T1486",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": false,
+  "pipe_final": "T1059",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Execution",
+   "enrich": "T1059",
+   "confirm": "T1059"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T1-02",
+  "rep": 0,
+  "gt_primary": "T1059",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": true,
+  "pipe_final": "T1059",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1059",
+   "confirm": "T1059"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T1-02",
+  "rep": 1,
+  "gt_primary": "T1059",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": true,
+  "pipe_final": "T1059",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1059",
+   "confirm": "T1059"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T1-02",
+  "rep": 2,
+  "gt_primary": "T1059",
+  "err": false,
+  "single_final": "T1059",
+  "single_correct": true,
+  "pipe_final": "T1059",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1059",
+   "confirm": "T1059"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T1-02",
+  "rep": 3,
+  "gt_primary": "T1059",
+  "err": false,
+  "single_final": "T1003",
+  "single_correct": false,
+  "pipe_final": "T1003",
+  "pipe_correct": false,
+  "pipe_stages": {
+   "triage_tactic": "Credential Access",
+   "enrich": "T1003",
+   "confirm": "T1003"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T2-01",
+  "rep": 0,
+  "gt_primary": "T1566.001",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T2-01",
+  "rep": 1,
+  "gt_primary": "T1566.001",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T2-01",
+  "rep": 2,
+  "gt_primary": "T1566.001",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T2-01",
+  "rep": 3,
+  "gt_primary": "T1566.001",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T2-02",
+  "rep": 0,
+  "gt_primary": "T1566.002",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T2-02",
+  "rep": 1,
+  "gt_primary": "T1566.002",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T2-02",
+  "rep": 2,
+  "gt_primary": "T1566.002",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T2-02",
+  "rep": 3,
+  "gt_primary": "T1566.002",
+  "err": false,
+  "single_final": "T1566",
+  "single_correct": true,
+  "pipe_final": "T1566",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1566",
+   "confirm": "T1566"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T3-01",
+  "rep": 0,
+  "gt_primary": "T1078",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Credential Access",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T3-01",
+  "rep": 1,
+  "gt_primary": "T1078",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T3-01",
+  "rep": 2,
+  "gt_primary": "T1078",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Credential Access",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T3-01",
+  "rep": 3,
+  "gt_primary": "T1078",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Credential Access",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T3-02",
+  "rep": 0,
+  "gt_primary": "T1078.004",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Credential Access",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T3-02",
+  "rep": 1,
+  "gt_primary": "T1078.004",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Credential Access",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T3-02",
+  "rep": 2,
+  "gt_primary": "T1078.004",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Privilege Escalation",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T3-02",
+  "rep": 3,
+  "gt_primary": "T1078.004",
+  "err": false,
+  "single_final": "T1078",
+  "single_correct": true,
+  "pipe_final": "T1078",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Privilege Escalation",
+   "enrich": "T1078",
+   "confirm": "T1078"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T4-01",
+  "rep": 0,
+  "gt_primary": "T1498",
+  "err": false,
+  "single_final": "T1498",
+  "single_correct": true,
+  "pipe_final": "T1498",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1498",
+   "confirm": "T1498"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T4-01",
+  "rep": 1,
+  "gt_primary": "T1498",
+  "err": false,
+  "single_final": "T1498",
+  "single_correct": true,
+  "pipe_final": "T1498",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1498",
+   "confirm": "T1498"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T4-01",
+  "rep": 2,
+  "gt_primary": "T1498",
+  "err": false,
+  "single_final": "T1498",
+  "single_correct": true,
+  "pipe_final": "T1498",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1498",
+   "confirm": "T1498"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T4-01",
+  "rep": 3,
+  "gt_primary": "T1498",
+  "err": false,
+  "single_final": "T1498",
+  "single_correct": true,
+  "pipe_final": "T1498",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1498",
+   "confirm": "T1498"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T4-02",
+  "rep": 0,
+  "gt_primary": "T1499",
+  "err": false,
+  "single_final": "T1499",
+  "single_correct": true,
+  "pipe_final": "T1499",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1499",
+   "confirm": "T1499"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T4-02",
+  "rep": 1,
+  "gt_primary": "T1499",
+  "err": false,
+  "single_final": "T1499",
+  "single_correct": true,
+  "pipe_final": "T1499",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1499",
+   "confirm": "T1499"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T4-02",
+  "rep": 2,
+  "gt_primary": "T1499",
+  "err": false,
+  "single_final": "T1499",
+  "single_correct": true,
+  "pipe_final": "T1499",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1499",
+   "confirm": "T1499"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T4-02",
+  "rep": 3,
+  "gt_primary": "T1499",
+  "err": false,
+  "single_final": "T1499",
+  "single_correct": true,
+  "pipe_final": "T1499",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Impact",
+   "enrich": "T1499",
+   "confirm": "T1499"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T5-01",
+  "rep": 0,
+  "gt_primary": "T1190",
+  "err": false,
+  "single_final": "T1190",
+  "single_correct": true,
+  "pipe_final": "T1190",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1190",
+   "confirm": "T1190"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T5-01",
+  "rep": 1,
+  "gt_primary": "T1190",
+  "err": false,
+  "single_final": "T1190",
+  "single_correct": true,
+  "pipe_final": "T1190",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1190",
+   "confirm": "T1190"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T5-01",
+  "rep": 2,
+  "gt_primary": "T1190",
+  "err": false,
+  "single_final": "T1190",
+  "single_correct": true,
+  "pipe_final": "T1190",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1190",
+   "confirm": "T1190"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T5-01",
+  "rep": 3,
+  "gt_primary": "T1190",
+  "err": false,
+  "single_final": "T1190",
+  "single_correct": true,
+  "pipe_final": "T1190",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1190",
+   "confirm": "T1190"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T5-02",
+  "rep": 0,
+  "gt_primary": "T1195",
+  "err": false,
+  "single_final": "T1195",
+  "single_correct": true,
+  "pipe_final": "T1195",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1195",
+   "confirm": "T1195"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T5-02",
+  "rep": 1,
+  "gt_primary": "T1195",
+  "err": false,
+  "single_final": "T1195",
+  "single_correct": true,
+  "pipe_final": "T1195",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1195",
+   "confirm": "T1195"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T5-02",
+  "rep": 2,
+  "gt_primary": "T1195",
+  "err": false,
+  "single_final": "T1195",
+  "single_correct": true,
+  "pipe_final": "T1195",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1195",
+   "confirm": "T1195"
+  }
+ },
+ {
+  "model": "gpt-4o-mini",
+  "sid": "T5-02",
+  "rep": 3,
+  "gt_primary": "T1195",
+  "err": false,
+  "single_final": "T1195",
+  "single_correct": true,
+  "pipe_final": "T1195",
+  "pipe_correct": true,
+  "pipe_stages": {
+   "triage_tactic": "Initial Access",
+   "enrich": "T1195",
+   "confirm": "T1195"
+  }
+ }
+]

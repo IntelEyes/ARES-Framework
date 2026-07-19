@@ -128,11 +128,9 @@ predominantly produces \textit{Paralysis} (78\%); skill deficit
 ($\delta_K$) produce \textit{Hallucination} (32\%) and
 \textit{Misclassification} (21\%); reasoning perturbation ($\delta_R$)
 produces \textit{Confabulation} (38\%) and \textit{Overclaiming}
-(17\%). Because these mappings are part of the model's construction,
-we present them as the taxonomy's \textit{design}, an organising
-hypothesis about how root causes surface, rather than as an
-independent empirical discovery; the calibration-gap experiment is what
-tests such hypotheses against reality.
+(17\%). Because these mappings are built into the model, we present them
+as the taxonomy's \textit{design}---a hypothesis about how root causes
+surface---not an independent empirical discovery.
 
 \textbf{Implication.} The manifestation pattern is a diagnostic
 fingerprint a SOC can validate on its own telemetry: high paralysis points
@@ -161,20 +159,27 @@ intervention is to preserve and monitor that hedging, gate high-$\mathcal{E}$
 outputs to human review, and flag any agent whose confidence fails to
 fall as its knowledge does.
 
-\subsection{Multi-Agent Composition: an Analytical Bound}
+\subsection{Multi-Agent Composition: Bound and Live Test}
 
 \textbf{Finding (analytical).} Within the model, composing agents into
 a pipeline cannot raise reliability above the weakest stage. A
 matched-bucket ablation on \SAFK{} attributes the AUT-1 vs.\ AUT-2 gap
 almost entirely to pipeline depth (17.25\%) rather than framework
 identity (0.13\%), and the analytic weakest-link bound holds in 100\%
-of the 250 pipeline records (zero violations). We report this as a
-property of the cascade model; its real-world magnitude awaits the same
-kind of live measurement we applied to the calibration question.
+of the 250 pipeline records (zero violations).
+
+\textbf{Live test.} Running the same attribution task as a single agent
+versus a tightly-coupled three-stage pipeline (three models, 120 paired
+trials, temperature 0.7, identical token budget---only depth varies)
+confirms the bound's \emph{direction} but not its magnitude: end-to-end
+reliability drops from $0.86$ to $0.82$, a small but significant
+$3.3$~pp degradation (95\% CI $[0.8, 6.7]$), and pipeline reliability
+never exceeds the single agent. As with the calibration gap, the
+analytical model over-states the live failure rate---real pipelines
+degrade far less than its encoded $17\%$ depth effect.
 
 \textbf{Implication.} Treat multi-agent decomposition as a reliability
-cost to be justified, not a default. Prefer validated single-agent
-designs for critical tasks; if composition is required, add inter-stage
-verification and confidence-gated propagation so that a low-confidence
-intermediate output, exactly the calibrated signal above, does not
-silently seed downstream stages.
+cost to justify, not a default: prefer validated single-agent designs
+for critical tasks, and if composition is required, add inter-stage
+verification and confidence-gated propagation so a low-confidence
+intermediate does not silently seed downstream stages.

@@ -1,0 +1,85 @@
+{
+  "design": "single-agent (depth 1) vs tightly-coupled 3-stage pipeline (depth 3), same ATT&CK attribution task; only pipeline depth varies (model, max_tokens, temperature=0.7 held fixed)",
+  "reps": 4,
+  "models": [
+    "claude-haiku-4-5",
+    "claude-sonnet-4-6",
+    "gpt-4o-mini"
+  ],
+  "n_records": 120,
+  "pooled": {
+    "n": 120,
+    "single_reliability": 0.858,
+    "single_ci": [
+      0.785,
+      0.91
+    ],
+    "pipeline_reliability": 0.825,
+    "pipeline_ci": [
+      0.747,
+      0.883
+    ],
+    "degradation_pp": 3.3,
+    "degradation_ci_pp": [
+      0.8,
+      6.7
+    ]
+  },
+  "per_model": {
+    "claude-haiku-4-5": {
+      "n": 40,
+      "single_reliability": 0.875,
+      "single_ci": [
+        0.739,
+        0.945
+      ],
+      "pipeline_reliability": 0.8,
+      "pipeline_ci": [
+        0.652,
+        0.895
+      ],
+      "degradation_pp": 7.5,
+      "degradation_ci_pp": [
+        0.0,
+        17.5
+      ]
+    },
+    "claude-sonnet-4-6": {
+      "n": 40,
+      "single_reliability": 0.825,
+      "single_ci": [
+        0.68,
+        0.913
+      ],
+      "pipeline_reliability": 0.8,
+      "pipeline_ci": [
+        0.652,
+        0.895
+      ],
+      "degradation_pp": 2.5,
+      "degradation_ci_pp": [
+        0.0,
+        7.5
+      ]
+    },
+    "gpt-4o-mini": {
+      "n": 40,
+      "single_reliability": 0.875,
+      "single_ci": [
+        0.739,
+        0.945
+      ],
+      "pipeline_reliability": 0.875,
+      "pipeline_ci": [
+        0.739,
+        0.945
+      ],
+      "degradation_pp": 0.0,
+      "degradation_ci_pp": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "weakest_link": "pipeline reliability never exceeds single-agent in any cell (bound holds live)"
+}
