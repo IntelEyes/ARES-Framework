@@ -104,13 +104,13 @@ capability and task demand; values below a learned threshold $\theta^*$
 flag the agent as unreliable for that task.
 
 The weights are learned per threat class because different security tasks
-stress different dimensions. In our experiments, knowledge coverage
-($w_K = 0.35$) dominates for ransomware detection, while skill and
-capability access ($w_S = 0.32$, $w_C = 0.28$) lead for DDoS mitigation,
-and knowledge combined with reasoning ($w_K = 0.38$, $w_R = 0.24$) lead
-for APT intrusion investigation. A single universal weight vector would
-systematically misestimate reliability by at least 12\% on certain threat
-classes.
+stress different dimensions. On the analytical corpus, knowledge coverage
+($w_K = 0.35$) dominates for ransomware detection, skill and capability
+access ($w_S = 0.32$, $w_C = 0.28$) lead for DDoS mitigation, and knowledge
+with reasoning ($w_K = 0.38$, $w_R = 0.24$) lead for APT investigation;
+within that model a universal weight vector misestimates reliability by at
+least 12\% on some classes. These values illustrate the model's structure
+and must be re-fit on a deployer's own labelled outcomes.
 
 \subsection{Epistemic Gap: The ``Confident Ignorance'' Problem}
 

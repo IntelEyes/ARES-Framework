@@ -36,8 +36,8 @@ stated confidence.
 \textbf{Finding.} The assumed dose-response does not hold
 (Table~\ref{tab:calib_mag}). Where the analytical model rises to a
 39\% fabrication rate at $\delta_K = 1$ with correlation $\rho = 0.92$,
-real fabrication stays low (0--20\%) and essentially flat in $\delta_K$
-(pooled Pearson $\rho = 0.11$). The mechanism is calibration: real
+real fabrication stays low (0--20\%) and only weakly related to $\delta_K$
+(pooled Pearson $\rho = 0.11$; at most $0.27$ for any single model). The mechanism is calibration: real
 confidence \textit{falls} as knowledge is withheld (Pearson $\rho$
 between $-0.35$ and $-0.51$ across all five models, both families),
 inverting the built-in overconfidence the failure model assumes.
@@ -86,9 +86,9 @@ surface accuracy (vendor 67\%, product 63\%, CVE $\leq$3\%), yet
 confidence behaviour diverged: the OpenAI models answered almost
 every record at mean confidence 0.68--0.78, whereas the strongest
 Claude model abstained on 26 of 30 rather than assert an unsupported
-attribution.\footnote{Exact API version strings and evaluation dates for
-all runs are recorded in the artefact repository; we describe models by
-family here because specific version identifiers change rapidly.} Both
+attribution.\footnote{The specific models evaluated are named above; their
+exact API version strings and evaluation dates for all runs are recorded in
+the artefact repository so every result is reproducible.} Both
 studies point the same way: whether an agent hallucinates under
 knowledge deficit is not a property of the deficit but of the model's
 calibration, and modern frontier models are calibrated to abstain.
