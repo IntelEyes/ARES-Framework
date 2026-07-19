@@ -19,9 +19,11 @@ multi-agent pipeline (triage $\to$ enrichment $\to$ recommendation);
 \textbf{AUT-3 (CrewAI)}, a role-based crew (analyst, enrichment,
 incident commander); and \textbf{AUT-4}, a deterministic Sigma/YARA
 evaluator with no LLM component, serving as the $\delta_R = 0$
-control. Hallucination is structurally impossible in AUT-4. All
-LLM-based agents use locally deployed Mistral-7B-Instruct via
-Ollama.
+control. Hallucination is structurally impossible in AUT-4. In live mode the
+testbed drives these agents with a local Mistral-7B-Instruct backbone
+via Ollama; the released \SAFK{} corpus, however, uses the analytical
+path (below), and the live calibration and cascade studies use hosted
+frontier models, not Ollama.
 
 \textbf{Controlled mismatch injection.} A Mismatch Injector applies
 controlled degradation across four dimensions ($\delta_S, \delta_K,

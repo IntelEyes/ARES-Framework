@@ -27,8 +27,10 @@ mismatch injection.
 
 ## Composition
 
-- 1,000 records total: **750 LLM-agent executions** (Mistral-7B-Instruct
-  backbone) + **250 rule-based control executions**.
+- 1,000 records total: **750 LLM-agent records** (nominal Mistral-7B-Instruct
+  backbone) + **250 rule-based control records**. Outcomes are analytically
+  generated (see the banner above), not live Mistral executions; the live
+  calibration and cascade studies use frontier APIs, not Ollama.
 - 4 agent architectures × 250 records each: AUT-1 (LangGraph), AUT-2
   (AutoGen 3-stage pipeline), AUT-3 (CrewAI role-based crew), AUT-4
   (rule-based Sigma/YARA control).
