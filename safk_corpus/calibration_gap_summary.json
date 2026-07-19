@@ -1,39 +1,59 @@
 {
- "n_calls": 600,
- "models": {
-  "claude-haiku-4-5": {
-   "pearson_dK_fabricate": 0.046,
-   "fabricate_at_dK1": 0.133,
-   "pearson_dK_confidence": -0.45,
-   "confident_fabrication_rate": 0.092
-  },
-  "claude-sonnet-4-6": {
-   "pearson_dK_fabricate": 0.269,
-   "fabricate_at_dK1": 0.167,
-   "pearson_dK_confidence": -0.354,
-   "confident_fabrication_rate": 0.067
-  },
-  "claude-opus-4-7": {
-   "pearson_dK_fabricate": NaN,
-   "fabricate_at_dK1": 0.0,
-   "pearson_dK_confidence": -0.399,
-   "confident_fabrication_rate": 0.0
-  },
-  "gpt-4o-mini": {
-   "pearson_dK_fabricate": 0.067,
-   "fabricate_at_dK1": 0.2,
-   "pearson_dK_confidence": -0.496,
-   "confident_fabrication_rate": 0.133
-  },
-  "gpt-4o": {
-   "pearson_dK_fabricate": 0.167,
-   "fabricate_at_dK1": 0.067,
-   "pearson_dK_confidence": -0.512,
-   "confident_fabrication_rate": 0.033
-  }
- },
- "pooled": {
-  "pearson_dK_fabricate": 0.107,
-  "pearson_dK_confidence": -0.411
- }
+    "n_calls": 600,
+    "models": {
+        "claude-haiku-4-5": {
+            "pearson_dK_fabricate": 0.046,
+            "fabricate_at_dK1": 0.133,
+            "pearson_dK_confidence": -0.45,
+            "confident_fabrication_rate": 0.092
+        },
+        "claude-sonnet-4-6": {
+            "pearson_dK_fabricate": 0.269,
+            "fabricate_at_dK1": 0.167,
+            "pearson_dK_confidence": -0.354,
+            "confident_fabrication_rate": 0.067
+        },
+        "claude-opus-4-7": {
+            "pearson_dK_fabricate": null,
+            "fabricate_at_dK1": 0.0,
+            "pearson_dK_confidence": -0.399,
+            "confident_fabrication_rate": 0.0
+        },
+        "gpt-4o-mini": {
+            "pearson_dK_fabricate": 0.067,
+            "fabricate_at_dK1": 0.2,
+            "pearson_dK_confidence": -0.496,
+            "confident_fabrication_rate": 0.133
+        },
+        "gpt-4o": {
+            "pearson_dK_fabricate": 0.167,
+            "fabricate_at_dK1": 0.067,
+            "pearson_dK_confidence": -0.512,
+            "confident_fabrication_rate": 0.033
+        }
+    },
+    "pooled": {
+        "pearson_dK_fabricate": 0.107,
+        "pearson_dK_confidence": -0.411
+    },
+    "calibration_baseline": {
+        "n_runs": 600,
+        "n_answered": 419,
+        "calibration": {
+            "ece_pooled": 0.04,
+            "brier_pooled": 0.088,
+            "accuracy_answered": 0.897
+        },
+        "fabrication_detector_auroc": {
+            "epistemic_gap": 0.681,
+            "raw_confidence": 0.51,
+            "raw_delta_K": 0.616
+        },
+        "selective_prediction_risk_coverage": {
+            "0.25": 0.01,
+            "0.50": 0.062,
+            "0.75": 0.076,
+            "1.00": 0.103
+        }
+    }
 }

@@ -48,15 +48,13 @@ incident response decisions must be traceable regardless of whether a human
 or an AI agent made the initial assessment.
 
 \textbf{Why hallucination is uniquely dangerous in SOC environments.}
-General-purpose hallucination is problematic; hallucination in security
-operations is \textit{actionable and consequential}. A hallucinated medical
-diagnosis triggers further tests before treatment. A hallucinated legal
-citation is caught during review. But a hallucinated threat attribution may
-trigger immediate containment actions (host isolation, network segmentation,
-threat feed updates) with real operational cost and often no natural
-verification checkpoint before execution. The combination of high confidence,
-domain-specific factual density, and automated downstream actions makes SOC
-hallucination uniquely dangerous among AI application domains.
+Hallucination in security operations is \textit{actionable}. A hallucinated
+medical diagnosis triggers further tests; a hallucinated legal citation is
+caught in review; but a hallucinated threat attribution can trigger immediate
+containment (host isolation, feed updates) with real cost and often no
+verification checkpoint before execution. High confidence, factual density,
+and automated downstream actions make SOC hallucination uniquely dangerous
+among AI application domains.
 
 \textbf{Why existing assurance approaches fall short.}
 Classical software testing does not catch stochastic, context-dependent

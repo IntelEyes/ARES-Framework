@@ -93,6 +93,18 @@ studies point the same way: whether an agent hallucinates under
 knowledge deficit is not a property of the deficit but of the model's
 calibration, and modern frontier models are calibrated to abstain.
 
+\textbf{Comparison to calibration baselines.} By the standard metric the
+agents are well-calibrated: pooled expected calibration error
+(ECE)~\cite{guo2017calibration} is $0.04$ (Brier $0.09$; $n=419$ answered
+runs), well below the levels reported for uncalibrated deep networks. This
+is exactly why raw confidence alone barely predicts fabrication (AUROC
+$0.51$, chance level): a calibrated agent is confident on both correct
+answers and the rare miss. The Epistemic Gap---which fires only when high
+$\delta_K$ meets high confidence---separates fabrication better than either
+single-signal baseline (AUROC $0.68$, versus $0.62$ for $\delta_K$ and
+$0.51$ for confidence), and confidence-ordered selective prediction cuts
+error from $10\%$ at full coverage to $1\%$ at $25\%$ coverage.
+
 \textbf{Implication.} Do not assume that missing threat knowledge
 translates into confident fabrication; on well-calibrated agents it
 translates into \textit{abstention and reduced coverage}. The
@@ -120,10 +132,9 @@ independent empirical discovery; the calibration-gap experiment is what
 tests such hypotheses against reality.
 
 \textbf{Implication.} The manifestation pattern is a diagnostic
-fingerprint hypothesis a SOC can validate on its own telemetry: high
-paralysis points at tool access and API permissions rather than LLM
-quality; high confabulation points at reasoning corruption or
-adversarial input rather than knowledge gaps.
+fingerprint a SOC can validate on its own telemetry: high paralysis points
+at tool/API access rather than LLM quality; high confabulation at reasoning
+corruption or adversarial input rather than knowledge gaps.
 
 \subsection{The Epistemic Gap Targets the Residual Risk}
 
