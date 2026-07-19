@@ -55,8 +55,9 @@ vendor's alignment but a general property of current frontier agents.
 
 \begin{table}[t]
 \caption{Calibration gap: analytical failure model vs.\ 600 live agent
-executions across two model families. Fabrication is measured against
-ATT\&CK ground truth; confidence is the agent's stated value.}
+executions across two model families. The top row is the failure model's
+\emph{assumed} behaviour; all agent rows are \emph{measured}. Fabrication is
+scored against ATT\&CK ground truth; confidence is the agent's stated value.}
 \label{tab:calib_mag}
 \centering
 \footnotesize
@@ -66,7 +67,7 @@ ATT\&CK ground truth; confidence is the agent's stated value.}
  & $\rho(\delta_K,$ & fab.\ at & $\rho(\delta_K,$ & conf.\ \\
 \textbf{Agent} & fab.$)$ & $\delta_K{=}1$ & conf.$)$ & risk \\
 \midrule
-\SAFK{} model      & $+0.92$ & 0.39 & $\approx 0$ & high \\
+\SAFK{} \emph{(assumed)} & $+0.92$ & 0.39 & $\approx 0$ & high \\
 \midrule
 Haiku 4.5          & $+0.05$ & 0.13 & $-0.45$ & 0.09 \\
 Sonnet 4.6         & $+0.27$ & 0.17 & $-0.35$ & 0.07 \\
