@@ -36,16 +36,14 @@ threat correctly yet fail to execute isolation, introducing a critical
 response delay.
 
 \textbf{Trust and accountability.}
-SOC analysts must trust AI agent outputs enough to act on them, but not so
-much that they stop verifying. When agents fail silently, producing
-plausible but incorrect outputs, they erode this trust calibration over
-time. Repeated false confidence leads analysts to either
-over-rely on AI-assisted workflows (automation complacency) or disengage
-from them entirely (automation aversion), both of which degrade operational
-effectiveness. The challenge is compounded in organisations subject to
-regulatory frameworks such as NIS2 or DORA, where accountability for
-incident response decisions must be traceable regardless of whether a human
-or an AI agent made the initial assessment.
+SOC analysts must trust agent outputs enough to act on them, but not so
+much that they stop verifying. Agents that fail silently---plausible but
+wrong---erode that calibration: repeated false confidence pushes analysts
+into either over-reliance (automation complacency) or disengagement
+(automation aversion), both degrading effectiveness. Under regulatory
+frameworks such as NIS2 or DORA the challenge compounds, since
+incident-response decisions must be traceable whether a human or an agent
+made the call.
 
 \textbf{Why hallucination is uniquely dangerous in SOC environments.}
 Hallucination in security operations is \textit{actionable}. A hallucinated
