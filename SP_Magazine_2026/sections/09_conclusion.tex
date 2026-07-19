@@ -7,7 +7,12 @@ behaviour become a prerequisite for responsible deployment. \ARES{}
 contributes an integrated treatment for the cybersecurity domain: a
 three-axis failure taxonomy, a skill--knowledge--capability reliability
 model with an Agent Reliability Score and an Epistemic Gap metric, an
-open testbed, and an analytical corpus for reproducible study.
+open testbed, and an analytical corpus for reproducible study. To be
+explicit about scope: what this article \emph{validates} on real agents
+is the calibration gap and the Epistemic Gap as a fabrication-risk
+detector; the taxonomy, the ARS weights, and the cascade magnitude are
+analytical structure to be re-fit and re-measured per deployment, not
+empirical rates.
 
 Our central result, however, is a corrective one. The reliability
 model, in common with much of the hallucination literature, assumes
@@ -19,9 +24,7 @@ rather than confidently hallucinate, and confident fabrication, the
 failure the framework is built to catch, occurs in a small minority of
 cases concentrated in the least-calibrated agents. Knowledge coverage
 is therefore not the first-order reliability lever the model implies;
-\textit{calibration} is. The operative deployment questions become: is
-this agent's confidence actually tracking its knowledge, and which
-agent in the fleet is the one that still answers when it should abstain?
+\textit{calibration} is.
 
 The practical guidance follows: monitor the confidence signal, not the
 knowledge gap alone; gate high-Epistemic-Gap outputs; and treat a
