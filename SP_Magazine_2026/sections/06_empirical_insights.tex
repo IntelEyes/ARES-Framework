@@ -101,8 +101,8 @@ runs), well below the levels reported for uncalibrated deep networks. This
 is exactly why raw verbalized confidence~\cite{tian2023calibration} alone
 barely predicts fabrication (AUROC
 $0.51$, chance level): a calibrated agent is confident on both correct
-answers and the rare miss. The Epistemic Gap---which fires only when high
-$\delta_K$ meets high confidence---separates fabrication better than either
+answers and the rare miss. The Epistemic Gap, which fires only when high
+$\delta_K$ meets high confidence, separates fabrication better than either
 single-signal baseline (AUROC $0.68$, versus $0.62$ for $\delta_K$ and
 $0.51$ for confidence), and confidence-ordered selective
 prediction~\cite{elyaniv2010selective} cuts
@@ -129,8 +129,8 @@ predominantly produces \textit{Paralysis} (78\%); skill deficit
 \textit{Misclassification} (21\%); reasoning perturbation ($\delta_R$)
 produces \textit{Confabulation} (38\%) and \textit{Overclaiming}
 (17\%). Because these mappings are built into the model, we present them
-as the taxonomy's \textit{design}---a hypothesis about how root causes
-surface---not an independent empirical discovery.
+as the taxonomy's \textit{design}, a hypothesis about how root causes
+surface, not an independent empirical discovery.
 
 \textbf{Implication.} The manifestation pattern is a diagnostic
 fingerprint a SOC can validate on its own telemetry: high paralysis points
@@ -170,12 +170,15 @@ of the 250 pipeline records (zero violations).
 
 \textbf{Live test.} Running the same attribution task as a single agent
 versus a tightly-coupled three-stage pipeline (three models, 120 paired
-trials, temperature 0.7, identical token budget---only depth varies)
+trials, temperature 0.7, identical token budget; only depth varies)
 confirms the bound's \emph{direction} but not its magnitude: end-to-end
 reliability drops from $0.86$ to $0.82$, a small but significant
 $3.3$~pp degradation (95\% CI $[0.8, 6.7]$), and pipeline reliability
-never exceeds the single agent. As with the calibration gap, the
-analytical model over-states the live failure rate---real pipelines
+never exceeds the single agent in any cell. The penalty is
+model-dependent, not universal ($7.5$, $2.5$ and $0.0$~pp for
+Haiku~4.5, Sonnet~4.6 and GPT-4o-mini; two of three per-model intervals
+include zero). As with the calibration gap, the
+analytical model over-states the live failure rate: real pipelines
 degrade far less than its encoded $17\%$ depth effect.
 
 \textbf{Implication.} Treat multi-agent decomposition as a reliability

@@ -25,13 +25,13 @@ The framework introduces:
 
 ## Key empirical finding: the calibration gap
 
-The SOCAgentFailure-1K corpus is **analytical** — its agent outcomes
+The SOCAgentFailure-1K corpus is **analytical**: its agent outcomes
 (hallucination, confidence, task success) are generated from the mismatch
 inputs by closed-form models, so it exercises the framework's internal
 logic under exact ground truth rather than measuring live agents.
 
-Testing the framework's central assumption — that knowledge deficit drives
-*confident* hallucination — against **600 live executions across five
+Testing the framework's central assumption (that knowledge deficit drives
+*confident* hallucination) against **600 live executions across five
 frontier models spanning two families** (Anthropic Claude Haiku 4.5 /
 Sonnet 4.6 / Opus 4.7; OpenAI GPT-4o-mini / GPT-4o) reveals a
 **calibration gap**: real agents grow *uncertain* and **abstain** under
@@ -44,8 +44,19 @@ fabricated in 0% of runs. The Epistemic Gap is therefore best read as a
 **detector of the residual, dangerous cases** where a miscalibrated agent
 stays confident under ignorance, not as a predictor of a common failure.
 
-Data and both harnesses are in `safk_corpus/calibration_gap_*.json` and
-`ares_bench/analysis/calibration_gap_harness*.py`.
+A second live study tests the cascade bound. Running the same attribution
+task as a single agent versus a tightly-coupled three-stage pipeline
+(**120 paired trials**, 3 models, temperature and token budget held fixed
+so only depth varies) confirms the bound's *direction* but not its
+magnitude: reliability drops 0.86 to 0.82, a small **3.3 pp** degradation
+(95% CI [0.8, 6.7]), and pipeline reliability never exceeds the single
+agent. The penalty is model-dependent rather than universal (7.5, 2.5 and
+0.0 pp across the three models). As with the calibration gap, the
+analytical model over-states the live failure rate.
+
+Data and harnesses are in `safk_corpus/calibration_gap_*.json`,
+`safk_corpus/cascade_live_*.json`, and
+`ares_bench/analysis/{calibration_gap_harness*,cascade_live_harness}.py`.
 
 ## Contents
 
@@ -84,13 +95,16 @@ ARES-Framework/
     ├── real_incident_labels.csv
     ├── calibration_gap_runs.json            600 live agent executions (5 models)
     ├── calibration_gap_summary.json         Per-model calibration statistics
-    └── calibration_gap_scenarios.json       10 ATT&CK-grounded scenarios
+    ├── calibration_gap_scenarios.json       10 ATT&CK-grounded scenarios
+    ├── cascade_live_runs.json               120 paired live cascade trials
+    └── cascade_live_summary.json            Pooled + per-model degradation
 ```
 
 Both papers are self-contained: all definitions, the five-dimensional
 SKC mismatch model, the Agent Reliability Score, the Epistemic Gap,
-the cascade reliability bound, and the experimental findings on 1,000
-labelled execution traces are reported inside the respective PDFs.
+the cascade reliability bound, and the experimental findings (the 1,000
+analytical traces, the 600 live calibration executions, and the 120-trial
+live cascade) are reported inside the respective PDFs.
 The conference paper (ISAIA 2026) gives the formal contribution; the
 magazine article (S&P Magazine 2026) translates it into deployment
 guidance for SOC teams. This page is the project home where future

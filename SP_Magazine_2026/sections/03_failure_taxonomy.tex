@@ -79,8 +79,8 @@ A pipeline correctly identifies a phishing campaign, but the enrichment
 stage invents three IOC URLs by extrapolating a domain pattern; a
 downstream automation pushes them to the shared feed, and within minutes
 partner SOCs block legitimate subdomains of a real service. The trace
-decomposes cleanly---origin O1 (missing TTP chain), manifestation M1
+decomposes cleanly: origin O1 (missing TTP chain), manifestation M1
 (hallucinated facts), impact I5 (blast radius beyond the originating
-organisation)---and motivates per-IOC confidence gating,
+organisation), and it motivates per-IOC confidence gating,
 confidence-proportional feed propagation, and human review for feed
 writes, each traceable to a distinct axis.

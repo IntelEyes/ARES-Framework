@@ -6,7 +6,7 @@ mismatch injection.
 
 > ⚠️ **Analytical, not live.** SAFK's *outcomes* (hallucination, expressed
 > confidence, task success, taxonomy labels) are **generated from the
-> mismatch inputs by closed-form models** — they exercise the ARES model's
+> mismatch inputs by closed-form models**: they exercise the ARES model's
 > internal logic under exact ground truth; they are **not** measured from
 > live LLM execution. For real-agent behaviour, use the **calibration-gap
 > dataset** below (`calibration_gap_runs.json`): 600 live executions across
@@ -17,11 +17,16 @@ mismatch injection.
 
 ## Live calibration-gap data (real agents)
 
-- `calibration_gap_runs.json` — 600 live agent executions (Claude Haiku 4.5 /
+- `calibration_gap_runs.json`: 600 live agent executions (Claude Haiku 4.5 /
   Sonnet 4.6 / Opus 4.7; GPT-4o-mini / GPT-4o), 0 errors.
-- `calibration_gap_summary.json` — per-model calibration statistics.
-- `calibration_gap_scenarios.json` — 10 ATT&CK-grounded scenarios.
-- Harnesses: `../ares_bench/analysis/calibration_gap_harness{,_openai}.py`.
+- `calibration_gap_summary.json`: per-model calibration statistics.
+- `calibration_gap_scenarios.json`: 10 ATT&CK-grounded scenarios.
+- `cascade_live_runs.json`: 120 paired live cascade trials (single agent vs.
+  tightly-coupled 3-stage pipeline, 3 models, only depth varies).
+- `cascade_live_summary.json`: pooled and per-model degradation (3.3 pp pooled,
+  95% CI [0.8, 6.7]; 7.5 / 2.5 / 0.0 pp per model).
+- Harnesses: `../ares_bench/analysis/calibration_gap_harness{,_openai}.py` and
+  `../ares_bench/analysis/cascade_live_harness.py`.
 
 **License: Creative Commons Attribution 4.0 International (CC BY 4.0)**, see [`../LICENSE-DATA`](../LICENSE-DATA).
 
@@ -73,6 +78,11 @@ CSV variant (`socagentfailure_1k.csv`) carries the same columns flattened.
 | `cross_model_results.json` | 40-record cross-model panel (Mistral-7B + GPT-4o-mini + Claude Haiku/Sonnet) |
 | `real_incident_runs_v2.json` | 30-incident CISA KEV validation × 5 LLMs |
 | `real_incident_labels.csv` | Ground-truth labels for the real-incident validation set |
+| `calibration_gap_runs.json` | 600 live frontier-agent executions (5 models, 2 families) |
+| `calibration_gap_summary.json` | Per-model calibration statistics for the 600 runs |
+| `calibration_gap_scenarios.json` | The 10 ATT&CK-grounded scenarios used |
+| `cascade_live_runs.json` | 120 paired live cascade trials (depth 1 vs depth 3) |
+| `cascade_live_summary.json` | Pooled + per-model cascade degradation with 95% CIs |
 
 ## Quick reproduction
 

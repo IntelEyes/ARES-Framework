@@ -1,9 +1,9 @@
 \section{Deployment Guidance for SOC Teams}
 
 \ARES{} translates into concrete guidance for teams deploying
-autonomous AI agents in security operations, organised around five
-questions SOC architects face when integrating agentic AI, and closing
-with a five-step pre-deployment checklist.
+autonomous AI agents, organised around six questions SOC architects
+face when integrating agentic AI, and closing with a five-step
+pre-deployment checklist.
 
 \textbf{When should AI agents be trusted?}
 ARS is proposed as a pre-execution screening signal: an agent scoring
@@ -33,14 +33,15 @@ update schedule: reliability decays at a domain-specific rate
 $\lambda$, so fast-moving domains need more frequent refresh.
 Illustrative constants ($\lambda = 0.005$~day$^{-1}$ for ransomware,
 $0.001$ for APT attribution) imply roughly quarterly versus annual
-refresh, but must be fit on each deployer's own drift data---the
+refresh, but must be fit on each deployer's own drift data; the
 contribution is the schedule form, not these numbers.
 
 \textbf{How should multi-agent systems be designed?}
-Cascade analysis shows pipelines amplify rather than mitigate
-component failures. Prefer single-agent designs for critical tasks,
-or independently verify per-agent reliability before composition. If
-multi-agent is required, three mitigations reduce cascade risk: (1)
+Composition never beat the best single agent live, but the penalty was
+small ($3.3$~pp) and model-dependent, not the large amplification the
+model predicts. Treat decomposition as a reliability cost to justify,
+not a default: measure the depth penalty for your own backbone. Where
+composition is warranted, three mitigations reduce cascade risk: (1)
 inter-agent verification checkpoints; (2) confidence-gated propagation
 (low-confidence outputs go to humans, not downstream); (3) redundant
 agent paths for critical decisions.
@@ -61,8 +62,7 @@ agent configured or fine-tuned to answer confidently under uncertainty
 is the dangerous exception, and the one to screen out.
 
 \textbf{How does this map to regulatory and governance frameworks?}
-The SKC decomposition aligns directly with emerging AI governance
-standards. The NIST AI Risk Management
+The NIST AI Risk Management
 Framework~\cite{nist_ai_rmf} identifies ``valid and reliable,''
 ``accountable and transparent,'' and ``safe'' as top-tier
 trustworthiness characteristics: \ARES{} operationalises the first
@@ -90,5 +90,5 @@ $\mathcal{E}$ per record, and prefer agents whose confidence
 falls under withheld knowledge; \textit{(v)} schedule knowledge
 refreshes according to a domain-specific temporal-drift
 constant fit on local drift data. Each step maps to a concrete
-engineering artefact (a config change, a telemetry hook, a
-cron job) so the reliability gate does not stay theoretical.
+engineering artefact, so the reliability gate does not stay
+theoretical.
