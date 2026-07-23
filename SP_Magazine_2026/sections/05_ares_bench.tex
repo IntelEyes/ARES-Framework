@@ -70,8 +70,7 @@ of 1{,}000 traces stratified across five threat classes (200 each),
 four agent architectures (250 each), and 16 mismatch conditions.
 Crucially, its \textit{outcomes}, hallucination, expressed confidence,
 task success, and the taxonomy labels, are generated from the mismatch
-inputs by calibrated closed-form models rather than read from live
-model execution. This makes \SAFK{} an analytical instrument: mismatch--failure
+inputs by closed-form models, not read from live execution. This makes \SAFK{} an analytical instrument: mismatch--failure
 relationships can be studied under exact ground truth and reproduced
 deterministically, at the cost of encoding rather than discovering
 them, which is why this article's central claim is validated not on
