@@ -19,7 +19,15 @@ the cascade bound informs conservative multi-agent design, an initial
 formal foundation for trustworthy agentic AI in cybersecurity that may
 generalise to other domains where autonomous agents decide under
 incomplete knowledge.
-Future work extends \ARES{} with real-world SOC data, cyclic
-multi-agent architectures, adversarial mismatch injection, and the
-public release of the \SAFK{} corpus and evaluation
-testbed.\footnote{Project page: \url{https://github.com/IntelEyes/ARES-Framework}}
+
+Future work follows the limitations above. The most consequential step
+is to move from controlled injection to measurement: recovering the
+mismatch dimensions from live agents in a production SOC, where
+$\delta_K$ and expressed uncertainty must be read from real telemetry
+rather than set by construction. Companion work takes a first step for
+the knowledge and calibration terms, and early results there suggest
+that agent calibration, not knowledge coverage alone, governs whether a
+mismatch becomes a dangerous failure. Cyclic multi-agent architectures
+and adversarial mismatch injection remain open. The \SAFK{} corpus and
+evaluation testbed are released
+publicly.\footnote{Project page: \url{https://github.com/IntelEyes/ARES-Framework}}
