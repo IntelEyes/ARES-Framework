@@ -1,4 +1,7 @@
 \documentclass[conference]{IEEEtran}
+% CAMERA-READY step 1 of 3: required, or IEEEtran silently ignores
+% \IEEEpubid in conference mode ("locked out" warning in the .log).
+%\IEEEoverridecommandlockouts
 
 % ── Encoding & Fonts ─────────────────────────────────────────────
 \usepackage[T1]{fontenc}
@@ -94,6 +97,27 @@ anca.jurcut@ucd.ie}
 }
 
 \maketitle
+
+% ── CAMERA-READY step 2 of 3: IEEE copyright notice ──────────────
+% ISAIA 2026 will supply the conference ISBN and confirm which of the
+% four IEEE copyright lines applies. Uncomment ONE line below, insert
+% the ISBN, and also uncomment step 1 (above) and step 3 (the
+% \IEEEpubidadjcol in sections/01_introduction.tex). Verified recipe:
+% the notice then sets at the foot of column 1 on page 1 and the text
+% reflows to make room, with the paper still at 6 pages.
+%
+% 1. Standard (most authors):
+%\IEEEpubid{\makebox[\columnwidth]{979-8-XXXX-XXXX-X/26/\$31.00~\copyright2026 IEEE \hfill}\hspace{\columnsep}\makebox[\columnwidth]{}}
+%
+% 2. All authors are US government employees:
+%\IEEEpubid{\makebox[\columnwidth]{U.S. Government work not protected by U.S. copyright \hfill}\hspace{\columnsep}\makebox[\columnwidth]{}}
+%
+% 3. Crown copyright (UK/Canada/Australia government):
+%\IEEEpubid{\makebox[\columnwidth]{979-8-XXXX-XXXX-X/26/\$31.00~\copyright2026 Crown \hfill}\hspace{\columnsep}\makebox[\columnwidth]{}}
+%
+% 4. European Union:
+%\IEEEpubid{\makebox[\columnwidth]{979-8-XXXX-XXXX-X/26/\$31.00~\copyright2026 European Union \hfill}\hspace{\columnsep}\makebox[\columnwidth]{}}
+% ─────────────────────────────────────────────────────────────────
 
 \begin{abstract}
 \input{sections/00_abstract}
