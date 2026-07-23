@@ -121,8 +121,8 @@ If you use this work, please cite the conference paper:
                Anomalous Behaviour in Agentic AI Systems},
   author    = {Alam, Mohammad Makchudul and Anik, Md.~Redowan Z. and
                el Bodour, Sabrein S.~E. and Jurcut, Anca Delia},
-  booktitle = {Proc.\ IEEE Int.\ Symp.\ on Artificial Intelligence
-               Applications (ISAIA)},
+  booktitle = {Proc.\ IEEE Int.\ Conf.\ on Intelligent Systems and
+               Interdisciplinary Applications (ISAIA)},
   year      = {2026}
 }
 ```
