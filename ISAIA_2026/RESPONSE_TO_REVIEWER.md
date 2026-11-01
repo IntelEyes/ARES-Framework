@@ -21,7 +21,7 @@ with a pointer to the relevant text.
 ### Comment 1: Clarify how the benchmark data was generated / collected, and the annotation process (for reproducibility)
 
 We agree that reproducibility rests on this being explicit, and Section V now
-documents both the generation and the annotation pipeline in full.
+documents both the generation and the labelling pipeline in full.
 
 **Data generation** (Section V, *Dataset construction*): scenarios are templated
 from MITRE ATT&CK v14 kill-chains and NVD CVE records, each fixing a ground-truth
