@@ -36,13 +36,16 @@ Generation is deterministic (fixed seed), and the full generator, injection
 harness, and per-record provenance are released with the testbed so every trace
 is reproducible from source.
 
-**Annotation** (Section V, *Labelling protocol*): failure modes are first
-assigned by a deterministic rule-based engine that compares each agent output
-against the ATT&CK-derived ground truth using a fixed codebook of five
-manifestations. A 10% stratified sample (n = 100) is then independently reviewed
-by two annotators; inter-rater agreement is Cohen's κ = 0.84 for origin code and
-κ = 0.91 for manifestation code, with disagreements resolved by adjudication and
-rule-based labels revised to match human judgement in 4.3% of reviewed cases.
+**Annotation** (Section V, *Labelling protocol*): failure modes are assigned by
+a deterministic rule-based engine that compares each agent output against the
+ATT&CK-derived ground truth using a fixed codebook of five manifestations.
+Because the corpus is analytical — each scenario fixes the ground truth by
+construction — labels are assigned programmatically rather than estimated from
+human annotation, so they are exact rather than inter-annotator estimates. The
+full codebook and labelling engine are released with the testbed, and external
+validity is assessed separately on real, post-cutoff incidents (the 30-incident
+CISA KEV validation) rather than by re-annotating the analytically generated
+corpus.
 
 To support reproducibility beyond the description, the SOCAgentFailure-1K corpus,
 the generator, and the evaluation testbed are released publicly

@@ -43,12 +43,14 @@ contradict or are absent from the ground-truth incident),
 \textit{Paralysis} (the agent halts because a required capability is
 unavailable), \textit{Confabulation} (intermediate reasoning invents
 nonexistent intermediate facts), and \textit{Overclaiming} (the agent
-asserts coverage of TTPs or IOCs not present in the incident). A $10\%$
-stratified sample ($n = 100$) is independently reviewed by two annotators;
-inter-rater agreement is Cohen's $\kappa = 0.84$ for origin code and
-$\kappa = 0.91$ for manifestation code, with disagreements resolved by
-adjudication and rule-based labels revised to match human judgement in
-$4.3\%$ of reviewed cases.
+asserts coverage of TTPs or IOCs not present in the incident). Because
+each scenario fixes this ground truth by construction, labels are
+assigned programmatically rather than estimated from human annotation,
+and are therefore exact rather than inter-annotator estimates; the full
+codebook and labelling engine are released with the testbed. External
+validity is assessed separately on real, post-cutoff incidents (the
+CISA KEV validation reported below) rather than by re-annotating the
+analytically generated corpus.
 
 \subsection{Knowledge Mismatch Predicts Hallucination}
 
