@@ -61,7 +61,7 @@ Each record in `socagentfailure_1k.jsonl` (one JSON object per line) has:
 | `uncertainty`, `confidence` | Stated confidence U and complement |
 | `fn_score`, `task_success` | False-negative severity, binary success |
 | `latency_ms`, `timestamp` | Execution metadata |
-| `hallucinated` | Binary hallucination label (M1 manifestation) |
+| `hallucinated` | Binary hallucination label, set independently of the O/M/I code (119 positives = 11.9% overall rate, distributed across all manifestation codes) |
 | `split` | `train` / `val` / `test` |
 
 CSV variant (`socagentfailure_1k.csv`) carries the same columns flattened.

@@ -36,14 +36,17 @@ released with the testbed so every trace is reproducible from source.
 
 \textbf{Labelling protocol.} Failure modes are first assigned by a
 deterministic rule-based engine that compares each agent output against
-the ATT\&CK-derived ground truth using a fixed codebook. We label five
-manifestations: \textit{Hallucination} (output asserts facts that
+the ATT\&CK-derived ground truth using a fixed codebook. We foreground
+five manifestations: \textit{Hallucination} (output asserts facts that
 contradict or are absent from the ground-truth incident),
 \textit{Omission} (a required step is silently skipped),
 \textit{Paralysis} (the agent halts because a required capability is
 unavailable), \textit{Confabulation} (intermediate reasoning invents
 nonexistent intermediate facts), and \textit{Overclaiming} (the agent
-asserts coverage of TTPs or IOCs not present in the incident). Because
+asserts coverage of TTPs or IOCs not present in the incident). In the
+released O/M/I taxonomy these are codes M3, M2, M5, M4, and M6
+respectively (codes M1 \textit{Missed Detection} and M7 \textit{Stale
+Context} also occur). Because
 each scenario fixes this ground truth by construction, labels are
 assigned programmatically rather than estimated from human annotation,
 and are therefore exact rather than inter-annotator estimates; the full
@@ -118,8 +121,8 @@ dimension is at level $\geq 0.5$ yields diagnostically separable
 manifestation distributions (chi-square test of independence,
 $p < 0.001$): capability deprivation predominantly produces Paralysis
 ($78\%$), skill deficit produces silent Omission ($72\%$), knowledge
-deficit produces Hallucination ($32\%$) plus Misclassification
-($21\%$), and reasoning perturbation produces Confabulation ($38\%$)
+deficit produces Missed Detection ($32\%$) plus Hallucination
+($26\%$), and reasoning perturbation produces Confabulation ($38\%$)
 plus Overclaiming ($17\%$) -- the most dangerous signature because
 confidence-inflated errors are the most likely to mislead downstream
 consumers.
