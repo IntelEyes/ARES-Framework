@@ -74,5 +74,24 @@ further open directions.
 
 ---
 
+## Camera-ready formatting compliance (Organizing Committee, final proceedings review)
+
+Separately from the reviewer's technical comments above, the IEEE ISAIA 2026
+Organizing Committee's final-review of the proceedings identified one IEEE
+formatting-policy issue, which we have corrected in the camera-ready.
+
+### Committee comment: Remove labels "1st Author," "2nd Author," etc. — these are in the IEEE template for illustration purposes only.
+
+Addressed. The `\IEEEauthorblockN{}` entries in `main.tex` retained the
+illustration-only ordinal prefixes from the IEEEtran template
+("1st", "2nd", "3rd", "4th"). These have been removed so each entry now
+carries only the author's name; affiliations and contact details are
+unchanged. The PDF was rebuilt (still 6 pages, no reflow) and the bundled
+`ISAIA_2026_LaTeX.zip` source package regenerated from the corrected source.
+The revised PDF will be re-validated through IEEE PDF eXpress prior to final
+submission.
+
+---
+
 We thank the reviewer again for the careful reading and the helpful suggestions,
 which have improved the clarity and reproducibility of the final version.
