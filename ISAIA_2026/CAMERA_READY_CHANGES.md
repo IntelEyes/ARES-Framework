@@ -80,6 +80,23 @@ ISAIA_2026/main.pdf                      | (rebuilt)
 safk_corpus/README.md                    |  2 +-
 ```
 
+## Post-review consistency pass (Section V/VI)
+A full read-through surfaced three residual issues, now fixed (no claim altered,
+still **6 pages**):
+- **§V.A correlation (V)** — The body attributed $\rho = 0.92$ to "the 750
+  LLM-agent traces" (record-level framing), but 0.92 is the *bucket-aggregated*
+  value; the record-level point-biserial is **0.34** (`canonical_paper_numbers.json`).
+  Reworded to state both, matching the abstract. Also aligned the $p$-value to
+  the abstract ($p < 0.0001$) and pointed to the Epistemic Gap for the $(1-U)$ term.
+- **§VI temporal drift** — Softened an overstated claim: $\delta_T$ alone
+  (weight $w_T \approx 0.08$) cannot push ARS below $\theta^*$, and $\lambda = 0.005$
+  is a slow, not "high-volatility", decay. Now: the drift term reaches
+  $\delta_T \approx 0.45$ by ~120 days, "a measurable erosion of ARS" motivating a
+  quarterly refresh.
+- Trimmed a redundant §V.B closing sentence to keep the paper at 6 pages.
+
 ## Follow-ups (not in this change set)
+- [ ] Wire in the IEEE copyright notice (`\IEEEpubid`) once the conference ISBN
+      is provided (preamble already scaffolded).
 - [ ] Validate `main.pdf` via **IEEE PDF eXpress** before resubmission.
 - [ ] Resubmit corrected final paper by **Nov 4, 2026**.

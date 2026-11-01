@@ -24,9 +24,9 @@ The Epistemic Gap supports runtime monitoring: comparing stated confidence
 against known knowledge coverage flags high-risk outputs for human review
 before they trigger automated actions. The temporal-drift model
 ($\delta_T$) gives a quantitative basis for scheduling knowledge
-updates: for high-volatility domains like ransomware ($\lambda = 0.005$),
-ARS degrades below $\theta^*$ in roughly $120$ days, suggesting a quarterly
-refresh. The cascade bound (Theorem~\ref{thm:cascade}) implies that
+updates: at $\lambda = 0.005$ for a domain such as ransomware, the drift
+term reaches $\delta_T \approx 0.45$ by roughly $120$ days, a measurable
+erosion of ARS that motivates a quarterly refresh. The cascade bound (Theorem~\ref{thm:cascade}) implies that
 tightly-coupled pipeline decomposition cannot improve reliability beyond
 the weakest agent, so single-agent designs should be preferred for critical
 tasks unless per-agent reliability is independently verified.

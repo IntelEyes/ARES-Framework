@@ -59,11 +59,12 @@ analytically generated corpus.
 
 Across the 750 LLM-agent traces, hallucination rate increases
 monotonically with $\delta_K$: from 1.4\% at $\delta_K = 0$ to 39.1\% at
-$\delta_K = 1.0$ (Fig.~\ref{fig:e1_isaia}). The Pearson correlation is
-$\rho = 0.92$ ($p < 0.001$), strongly supporting
-Hypothesis~\ref{hyp:hallucination}. The rule-based control exhibits zero
-hallucinations regardless of $\delta_K$, confirming hallucination as an
-LLM-specific failure mode.
+$\delta_K = 1.0$ (Fig.~\ref{fig:e1_isaia}). The bucket-aggregated
+correlation is $\rho = 0.92$ ($p < 0.0001$; record-level point-biserial
+$0.34$), supporting the knowledge-deficit component of
+Hypothesis~\ref{hyp:hallucination}; the $(1{-}U)$ interaction is tested
+below. The rule-based control exhibits zero hallucinations regardless
+of $\delta_K$, confirming hallucination as an LLM-specific failure mode.
 
 \begin{figure}[t]
 \centering
@@ -109,11 +110,9 @@ with the minimum per-class test F1 at $0.91$ and a one-point
 train--test gap. A stricter leave-one-threat-class-out protocol
 recovers mean test F1 $= 0.957$, supporting ARS as a generalisable
 reliability signal rather than a class-memorising score.
-The reported threshold result uses the post-execution ARS including
-$\delta_R$; $\ARS^{\mathrm{pre}}$ is intended for pre-execution
-screening and showed the same directional trend but lower absolute
-discrimination because reasoning mismatch is unavailable before
-execution.
+The reported result uses the post-execution ARS (with $\delta_R$);
+$\ARS^{\mathrm{pre}}$ shows the same directional trend at lower absolute
+discrimination, as $\delta_R$ is unavailable pre-execution.
 
 \textbf{Distinct failure signatures per mismatch dimension.}
 Conditioning on the LLM-agent records whose primary mismatch
@@ -157,7 +156,3 @@ directionally across four LLM families from 7B (Mistral-7B-Instruct) to
 frontier scale (GPT-4o-mini, Claude Haiku~4.5, Claude Sonnet~4.6), with
 bucket-aggregated $\rho \in [0.78, 0.95]$; absolute thresholds require
 per-model recalibration.
-
-Together with Fig.~\ref{fig:e1_isaia}, these results indicate that
-\ARES{} captures generalisable reliability signals across diverse agent
-architectures and threat scenarios.
