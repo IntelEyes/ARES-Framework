@@ -96,5 +96,37 @@ submission.
 
 ---
 
+## Additional camera-ready corrections (authors' final consistency pass)
+
+While preparing the camera-ready we ran a consistency pass of Section V against
+the released benchmark code and corpus, and corrected the following for
+accuracy and reproducibility. None alter the paper's claims or conclusions.
+
+1. **Result count (Section V-B).** The summary sentence said "four additional
+   framework-level results" while five labeled results are presented; the
+   cross-model-family result added in response to Comment 2 was not reflected
+   in the count. Corrected to "five."
+
+2. **Labelling protocol (Section V).** The description of a two-annotator
+   inter-rater study (Cohen's κ, revision rate) was removed, as it did not
+   correspond to the released artifacts: the SOCAgentFailure-1K corpus is
+   analytical, with taxonomy labels assigned programmatically from
+   ground-truth-by-construction rather than by human annotation. The paragraph
+   now states this accurately, and external validity is attributed to the
+   real-incident (CISA KEV) validation set.
+
+3. **Failure-signature labels (Section V-B).** Reconciled the manifestation
+   names with the released O/M/I taxonomy. The knowledge-deficit signature was
+   corrected — the 32% bucket is *Missed Detection* (code M1), not
+   *Hallucination*; the *Hallucinated* share (M3) is 26% — and an unmatched
+   "Misclassification (21%)" figure was removed. A mapping from the paper's
+   five manifestation names to the released codes (M3, M2, M5, M4, M6) was
+   added so the prose and the public corpus labels agree.
+
+All corrections were verified against `ares_bench/shared/taxonomy.py` and the
+`safk_corpus/` data, and the camera-ready PDF remains 6 pages.
+
+---
+
 We thank the reviewer again for the careful reading and the helpful suggestions,
 which have improved the clarity and reproducibility of the final version.
